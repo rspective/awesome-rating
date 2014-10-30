@@ -1,0 +1,11 @@
+.rating-star { color: lightgrey; }
+.rating-star.first-selected { color: #CA5252; }
+.rating-star.first-unselected { color: lightgrey; }
+.rating-star.second-selected { color: #E59257; }
+.rating-star.second-unselected { color: lightgrey; }
+.rating-star.third-selected { color: #FDD05B; }
+.rating-star.third-unselected { color: lightgrey; }
+.rating-star.forth-selected { color: #8DBE5E; }
+.rating-star.forth-unselected { color: lightgrey; }
+.rating-star.fifth-selected { color: #2CAF61; }
+.rating-star.fifth-unselected { color: lightgrey; }
