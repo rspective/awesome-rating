@@ -112,7 +112,8 @@ $.fn.awesomeRating = function(options) {
     this.awesomeRating = _api.external;
 
     return this;
-};;angular.module('awesome-rating', []).directive('awesomeRating', function() {
+};
+angular.module('awesome-rating', []).directive('awesomeRating', function() {
     return {
         restrict: 'A',
         scope: {
