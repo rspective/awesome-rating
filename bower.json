@@ -1,0 +1,17 @@
+{
+  "name": "awesome-rating",
+  "version": "0.0.1",
+  "homepage": "https://github.com/bandraszyk/awesome-rating",
+  "main": "dist/awesomeRating.js",
+  "authors": [
+    "bandro"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
