@@ -121,14 +121,20 @@ angular.module('awesome-rating', []).directive('awesomeRating', function() {
             awesomeRatingOptions: '@'
         },
         link: function($scope, element) {
+            //-- Initialize the options
             var options = ($scope.awesomeRatingOptions && JSON.parse($scope.awesomeRatingOptions)) || { };
             options.valueInitial = $scope.awesomeRating;
-            $(element).awesomeRating(options)
+            //-- Apply jquery plugin
+            $element = $(element).awesomeRating(options)
                 .on('rated', function(event, rate){
                     $scope.$apply(function() {
                         $scope.awesomeRating = rate;
                     });
                 });
+            //-- Apply external changes
+            $scope.$watch('awesomeRating', function(value){
+                $element.awesomeRating.val(value);
+            })
         }
     };
 });
