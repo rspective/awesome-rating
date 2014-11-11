@@ -1,2 +1,4 @@
 awesome-rating
 ==============
+
+Sample description.
