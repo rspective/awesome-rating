@@ -4,16 +4,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <title>Awesome-rating by bandraszyk</title>
-
         <link rel="stylesheet" href="stylesheets/styles.css">
         <link rel="stylesheet" href="stylesheets/awesomeRating.min.css">
         <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
         <![endif]-->
+        <script src="javascripts/scale.fix.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                console.log($('.jquery-example-simple').length);
+                $('.jquery-example-simple').awesomeRating();
+            });
+        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -38,21 +46,12 @@
                 <p>
                     <div class="jquery-example-simple"></div>
                 </p>
-                <pre>
-                    <code>
-                        $('.jquery-example-simple').awesomeRating();
-                    </code>
-                </pre>
+                <pre><code>$('.jquery-example-simple').awesomeRating();</code></pre>
             </section>
             <footer>
                 <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>
                 <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
             </footer>
         </div>
-        <script src="javascripts/scale.fix.js"></script>
-        <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
-        <script type="text/javascript">
-            $('.jquery-example-simple').awesomeRating();
-        </script>
     </body>
 </html>
