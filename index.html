@@ -18,8 +18,7 @@
         <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
         <script type="text/javascript">
             $(function() {
-                console.log($('.jquery-example-simple').length);
-                $('.jquery-example-simple').awesomeRating();
+                var jqueryExampleSimpleRating = $('.jquery-example-simple').awesomeRating({ valueInitial: 4 });
             });
         </script>
     </head>
@@ -43,10 +42,10 @@
                     <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     jQuery Example
                 </h3>
+                <pre><code>$('.jquery-example-simple').awesomeRating({ valueInitial: 4 });</code></pre>
                 <p>
                     <div class="jquery-example-simple"></div>
                 </p>
-                <pre><code>$('.jquery-example-simple').awesomeRating();</code></pre>
             </section>
             <footer>
                 <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>

@@ -253,3 +253,8 @@ footer {
     color:#444;
   }
 }
+
+.fa {
+  font-size: 3.0em !important;
+  margin: 0.05em;
+}
