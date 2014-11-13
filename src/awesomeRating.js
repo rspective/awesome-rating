@@ -18,7 +18,6 @@ $.fn.awesomeRating = function(options) {
     };
 
     return this.each(function() {
-
         //-- Check if plugin is already initialized
         if (this._awesomeRatingApi) { return; }
 
@@ -60,7 +59,7 @@ $.fn.awesomeRating = function(options) {
                 }
             },
             temp : {
-                $initial 		: null
+                $initial        : null
             },
             storeValue : function(value) {
                 _api.values.current = value;
@@ -79,7 +78,7 @@ $.fn.awesomeRating = function(options) {
                     $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
                     // Apply styles basing on value if css are defined per value
-                    if (_api.css.values.selected.length ==  _api.values.list.length && _api.css.values.selected.length ==  _api.values.list.length) {
+                    if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.selected.length == _api.values.list.length) {
                         $.each(_api.values.list, function(valueIndex, value) {
                             //-- Toggle defined classes for selected and unselected state
                             $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && value === _api.values.current);
