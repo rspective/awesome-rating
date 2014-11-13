@@ -78,17 +78,13 @@ $.fn.awesomeRating = function(options) {
                     $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
                     $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
-                    if (typeof _api.css.values.selected == typeof [] && typeof _api.css.values.unselected == typeof []) {
-                        // Apply styles basing on value if css are defined per value
+                    // Apply styles basing on value if css are defined per value
+                    if (_api.css.values.selected.length ==  _api.values.list.length && _api.css.values.selected.length ==  _api.values.list.length) {
                         $.each(_api.values.list, function(valueIndex, value) {
                             //-- Toggle defined classes for selected and unselected state
                             $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && value === _api.values.current);
                             $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && value === _api.values.current);
                         });
-                    } else {
-                        // Apply styles basing on value if css are defined as single values
-                        $rate.toggleClass(_api.css.values.selected, !isCurrentValueSet);
-                        $rate.toggleClass(_api.css.values.unselected, isCurrentValueSet);
                     }
 
                     if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValueSet = true; }
