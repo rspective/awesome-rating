@@ -112,7 +112,7 @@
 <pre><code>$('div.jquery-example-event-rated')
     .awesomeRating({ valueInitial: 5 })
     .on('rated', function(event, rate) {
-        $('span.jquery-example-event-rated');
+        $('span.jquery-example-event-rated').text(rate);
     });</code></pre>
                 <p>
                     <div class="jquery-example-event-rated"></div>
@@ -170,8 +170,8 @@
                 </p>
 
                 <h3>
-                    <a id="jquery-example-css" class="anchor" href="#jquery-example-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Css
+                    <a id="jquery-example-single-css" class="anchor" href="#jquery-example-single-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Css Single Color
                 </h3>
 <pre><code>$('div.jquery-example-single-css').awesomeRating({
     valueInitial: 9,
