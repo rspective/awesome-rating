@@ -10,7 +10,7 @@ $.fn.awesomeRating = function(options) {
         cssBaseSelected     : 'fa-star',
         cssBaseUnselected   : 'fa-star-o',
         cssValuesSelected   : [ 'first-selected', 'second-selected', 'third-selected', 'forth-selected', 'fifth-selected' ],
-        cssValuesUnelected  : [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected'],
+        cssValuesUnselected : [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected'],
         targetSelector      : null,
         htmlBase            : '<i></i>',
         htmlSelector        : ':last-child',
@@ -43,7 +43,7 @@ $.fn.awesomeRating = function(options) {
                 unselected      : options.cssBaseUnselected || defaultOptions.cssBaseUnselected,
                 values : {
                     selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
-                    unselected  : options.cssValuesUnelected || defaultOptions.cssValuesUnelected || []
+                    unselected  : options.cssValuesUnselected || defaultOptions.cssValuesUnselected || []
                 }
             },
             external : {
@@ -69,20 +69,20 @@ $.fn.awesomeRating = function(options) {
             },
             updateCss : function() {
                 // Make sure that none of the rates will be marked as selected when null is passed
-                var isCurrentValuerSet = false || (_api.values.current == null);
+                var isCurrentValueSet = false || (_api.values.current == null);
 
                 _api.external.$.rates.each(function(rateIndex) {
                     var $rate = $(this);
 
                     // Apply base styles
-                    $rate.toggleClass(_api.css.selected, !isCurrentValuerSet);
-                    $rate.toggleClass(_api.css.unselected, isCurrentValuerSet);
+                    $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
+                    $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
                     // Apply styles basing on value
                     $.each(_api.values.list, function(valueIndex, value) {
                         //-- Toggle defined classes for selected and unselected state
-                        $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValuerSet && value === _api.values.current);
-                        $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValuerSet && value === _api.values.current);
+                        $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && value === _api.values.current);
+                        $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && value === _api.values.current);
                     });
 
                     if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValuerSet = true; }
