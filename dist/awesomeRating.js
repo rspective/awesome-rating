@@ -64,7 +64,7 @@ $.fn.awesomeRating = function(options) {
             },
             storeValue : function(value) {
                 _api.values.current = value;
-                _api.external.$.target && _api.external.$.target.val(value);
+                _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
             },
             updateCss : function() {
                 // Make sure that none of the rates will be marked as selected when null is passed
