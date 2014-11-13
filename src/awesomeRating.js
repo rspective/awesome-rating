@@ -17,99 +17,106 @@ $.fn.awesomeRating = function(options) {
         htmlEvent           : 'click'
     };
 
-    //-- Merge passed options with default values
-    var _api = {
-        values : {
-            list            : options.values || defaultOptions.values || [],
-            initial         : options.valueInitial || defaultOptions.valueInitial || null,
-            current         : null
-        },
-        html : {
-            base            : options.htmlBase || defaultOptions.htmlBase,
-            selector        : options.htmlSelector || defaultOptions.htmlSelector,
-            event           : options.htmlEvent || defaultOptions.htmlEvent
-        },
-        css : {
-            base            : options.cssBase || defaultOptions.cssBase,
-            selected        : options.cssBaseSelected || defaultOptions.cssBaseSelected,
-            unselected      : options.cssBaseUnselected || defaultOptions.cssBaseUnselected,
+    return this.each(function() {
+
+        //-- Check if plugin is already initialized
+        if (this._awesomeRatingApi) { return; }
+
+        //-- Select current element
+        var $element = $(this);
+
+        //-- Merge passed options with default values
+        var _api = {
             values : {
-                selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
-                unselected  : options.cssValuesUnelected || defaultOptions.cssValuesUnelected || []
-            }
-        },
-        external : {
-            $ : {
-                element     : this,
-                target      : $(options.targetSelector || defaultOptions.targetSelector),
-                rates       : null
+                list            : options.values || defaultOptions.values || [],
+                initial         : options.valueInitial || defaultOptions.valueInitial || null,
+                current         : null
             },
-            val	: function(value) {
-                if (value === undefined) { return _api.values.current; }
+            html : {
+                base            : options.htmlBase || defaultOptions.htmlBase,
+                selector        : options.htmlSelector || defaultOptions.htmlSelector,
+                event           : options.htmlEvent || defaultOptions.htmlEvent
+            },
+            css : {
+                base            : options.cssBase || defaultOptions.cssBase,
+                selected        : options.cssBaseSelected || defaultOptions.cssBaseSelected,
+                unselected      : options.cssBaseUnselected || defaultOptions.cssBaseUnselected,
+                values : {
+                    selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
+                    unselected  : options.cssValuesUnelected || defaultOptions.cssValuesUnelected || []
+                }
+            },
+            external : {
+                $ : {
+                    element     : $element,
+                    target      : $(options.targetSelector || defaultOptions.targetSelector),
+                    rates       : null
+                },
+                val	: function(value) {
+                    if (value === undefined) { return _api.values.current; }
+
+                    _api.storeValue(value);
+                    _api.updateCss();
+                }
+            },
+            temp : {
+                $initial 		: null
+            },
+            storeValue : function(value) {
+                _api.values.current = value;
+                _api.external.$.target && _api.external.$.target.val(value);
+            },
+            updateCss : function() {
+                // Make sure that none of the rates will be marked as selected when null is passed
+                var isCurrentValuerSet = false || (_api.values.current == null);
+
+                _api.external.$.rates.each(function(rateIndex) {
+                    var $rate = $(this);
+
+                    // Apply base styles
+                    $rate.toggleClass(_api.css.selected, !isCurrentValuerSet);
+                    $rate.toggleClass(_api.css.unselected, isCurrentValuerSet);
+
+                    // Apply styles basing on value
+                    $.each(_api.values.list, function(valueIndex, value) {
+                        //-- Toggle defined classes for selected and unselected state
+                        $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValuerSet && value === _api.values.current);
+                        $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValuerSet && value === _api.values.current);
+                    });
+
+                    if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValuerSet = true; }
+                });
+            }
+        };
+
+        //-- Generate rates
+        $.each(_api.values.list, function(valueIndex, value) {
+            // Add requested html object
+            var $rate = _api.external.$.element.append(_api.html.base).find(_api.html.selector);
+            // Toggle base and unselected class
+            $rate.toggleClass(_api.css.base, true);
+            $rate.toggleClass(_api.css.unselected, true);
+
+            $rate.on(_api.html.event, function() {
+                // Check if current value has changed
+                if (value == _api.values.current) { return };
 
                 _api.storeValue(value);
-                _api.updateCss();
-            }
-        },
-        temp : {
-            $initial 		: null
-        },
-        storeValue : function(value) {
-            _api.values.current = value;
-            _api.external.$.target && this.external.$.target.val(value);
-        },
-        updateCss : function() {
-            // Make sure that none of the rates will be marked as selected when null is passed
-            var isCurrentValuerSet = false || (_api.values.current == null);
-
-            _api.external.$.rates.each(function(rateIndex) {
-                var $rate = $(this);
-
-                // Apply base styles
-                $rate.toggleClass(_api.css.selected, !isCurrentValuerSet);
-                $rate.toggleClass(_api.css.unselected, isCurrentValuerSet);
-
-                // Apply styles basing on value
-                $.each(_api.values.list, function(valueIndex, value) {
-                    //-- Toggle defined classes for selected and unselected state
-                    $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValuerSet && value === _api.values.current);
-                    $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValuerSet && value === _api.values.current);
-                });
-
-                if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValuerSet = true; }
+                _api.updateCss($rate);
+                _api.external.$.element.trigger('rated', [ _api.values.current ]);
             });
-        }
-    };
 
-    //-- Generate rates
-    $.each(_api.values.list, function(valueIndex, value) {
-        // Add requested html object
-        var $rate = _api.external.$.element.append(_api.html.base).find(_api.html.selector);
-        // Toggle base and unselected class
-        $rate.toggleClass(_api.css.base, true);
-        $rate.toggleClass(_api.css.unselected, true);
-
-        $rate.on(_api.html.event, function() {
-            // Check if current value has changed
-            if (value == _api.values.current) { return };
-
-            _api.storeValue(value);
-            _api.updateCss($rate);
-            _api.external.$.element.trigger('rated', [ _api.values.current ]);
+            // Check for initial value that will be selected at beginning
+            if (value == _api.values.initial) { _api.temp.$initial = $rate; }
         });
 
-        // Check for initial value that will be selected at beginning
-        if (value == _api.values.initial) { _api.temp.$initial = $rate; }
+        //-- Store rates as external API's variable
+        _api.external.$.rates = _api.external.$.element.children();
+
+        //-- Make initial selection
+        _api.temp.$initial && _api.temp.$initial.trigger(_api.html.event);
+
+        //-- Expose the external part of API
+        this._awesomeRatingApi = _api.external;
     });
-
-    //-- Store rates as external API's variable
-    _api.external.$.rates = _api.external.$.element.children();
-
-    //-- Make initial selection
-    _api.temp.$initial && _api.temp.$initial.trigger(_api.html.event);
-
-    //-- Expose the external part of API
-    this.awesomeRating = _api.external;
-
-    return this;
 };
