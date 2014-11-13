@@ -85,7 +85,7 @@ $.fn.awesomeRating = function(options) {
                         $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && value === _api.values.current);
                     });
 
-                    if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValuerSet = true; }
+                    if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValueSet = true; }
                 });
             },
             triggerEvent : function() {
