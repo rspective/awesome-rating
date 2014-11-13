@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <title>Awesome-rating by bandraszyk</title>
         <link rel="stylesheet" href="stylesheets/styles.css">
-        <link rel="stylesheet" href="stylesheets/awesomeRating.min.css">
+        <link rel="stylesheet" href="stylesheets/awesomeRating.css">
         <link rel="stylesheet" href="stylesheets/pygment_trac.css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -18,8 +18,30 @@
         <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
         <script type="text/javascript">
             $(function() {
-                var jqueryExampleInitial = $('.jquery-example-initial').awesomeRating({ valueInitial: 4 });
-                var jqueryExampleIcons = $('.jquery-example-icons').awesomeRating({ valueInitial: 2, cssBaseSelected: 'fa-arrow-circle-o-right', cssBaseUnselected : 'fa-arrow-circle-o-left' });
+                var jqueryExampleInitial = $('div.jquery-example-initial').awesomeRating({ valueInitial: 4 });
+                var jqueryExampleIcons = $('div.jquery-example-icons').awesomeRating({ valueInitial: 2, cssBaseSelected: 'fa-arrow-circle-o-right', cssBaseUnselected : 'fa-arrow-circle-o-left' });
+                var jqueryExampleTarget = $('div.jquery-example-target').awesomeRating({ valueInitial: 3, targetSelector: 'span.jquery-example-target' });
+                var jqueryExampleEventRated = $('div.jquery-example-event-rated').awesomeRating({ valueInitial: 5 })
+                    .on('rated', function(event, rate) {
+                        $('span.jquery-example-event-rated').text(rate);
+                    });
+                var jqueryExampleEventMouse = $('div.jquery-example-event-mouse').awesomeRating({
+                    valueInitial: 1,
+                    htmlEvent : 'mouseenter',
+                    targetSelector: 'span.jquery-example-event-mouse'
+                });
+                var jqueryExampleValues = $('div.jquery-example-values').awesomeRating({
+                    valueInitial: 'Third',
+                    values: ['First', 'Second', 'Third', 'Forth', 'Fifth'],
+                    targetSelector: 'span.jquery-example-values'
+                });
+                var jqueryExampleCss = $('div.jquery-example-css').awesomeRating({
+                    valueInitial: 11,
+                    values: [1, 3, 5, 7, 9 , 11, 13],
+                    cssValuesSelected : [ 'first-selected', 'second-selected', 'third-selected', 'forth-selected', 'fifth-selected', 'sixth-selected', 'seventh-selected' ],
+                    cssValuesUnselected: [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected', 'sixth-unselected', 'seventh-unselected' ],
+                    targetSelector: 'span.jquery-example-css'
+                });
             });
         </script>
     </head>
@@ -43,7 +65,7 @@
                     <a id="jquery-example-initial" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     (jQuery) Initial Value
                 </h3>
-<pre><code>$('.jquery-example-initial').awesomeRating({ valueInitial: 4 });</code></pre>
+<pre><code>$('div.jquery-example-initial').awesomeRating({ valueInitial: 4 });</code></pre>
                 <p>
                     <div class="jquery-example-initial"></div>
                 </p>
@@ -51,7 +73,7 @@
                     <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     (jQuery) Icons
                 </h3>
-<pre><code>$('.jquery-example-icons').awesomeRating({
+<pre><code>$('div.jquery-example-icons').awesomeRating({
     valueInitial: 2,
     cssBaseSelected: 'fa-arrow-circle-o-right',
     cssBaseUnselected : 'fa-arrow-circle-o-left'
@@ -60,16 +82,81 @@
                     <div class="jquery-example-icons"></div>
                 </p>
                 <h3>
+                    <a id="jquery-example-target" class="anchor" href="#jquery-example-target" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Target
+                </h3>
+<pre><code>$('div.jquery-example-target').awesomeRating({
+    valueInitial: 3,
+    targetSelector: 'span.jquery-example-target'
+});</code></pre>
+                <p>
+                    <div class="jquery-example-target"></div>
+                </p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-target"></span>
+                </p>
+                <h3>
+                    <a id="jquery-example-event-rated" class="anchor" href="#jquery-example-event-rated" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Event Rated
+                </h3>
+<pre><code>$('div.jquery-example-event-rated')
+    .awesomeRating({ valueInitial: 5 })
+    .on('rated', function(event, rate) {
+        $('span.jquery-example-event-rated');
+    });</code></pre>
+                <p>
+                    <div class="jquery-example-event-rated"></div>
+                </p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-event-rated"></span>
+                </p>
+                <h3>
+                    <a id="jquery-example-event-mouse" class="anchor" href="#jquery-example-event-mouse" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Event Mouse Enter
+                </h3>
+<pre><code>$('div.jquery-example-event-mouse').awesomeRating({
+    valueInitial: 1,
+    htmlEvent : 'mouseenter',
+    targetSelector: 'span.jquery-example-event-mouse'
+});</code></pre>
+                <p>
+                    <div class="jquery-example-event-mouse"></div>
+                </p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-event-mouse"></span>
+                </p>
+                <h3>
                     <a id="jquery-example-values" class="anchor" href="#jquery-example-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     (jQuery) Values
                 </h3>
-<pre><code>$('.jquery-example-icons').awesomeRating({
-    valueInitial: 2,
-    cssBaseSelected: 'fa-arrow-circle-o-right',
-    cssBaseUnselected : 'fa-arrow-circle-o-left'
+<pre><code>$('div.jquery-example-values').awesomeRating({
+    valueInitial: 3,
+    values: ['First', 'Second', 'Third', 'Forth', 'Fifth'],
+    targetSelector: 'span.jquery-example-values'
     });</code></pre>
                 <p>
-                <div class="jquery-example-values"></div>
+                    <div class="jquery-example-values"></div>
+                </p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-values"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-css" class="anchor" href="#jquery-example-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Css
+                </h3>
+<pre><code>$('div.jquery-example-css').awesomeRating({
+    valueInitial: 11,
+    values: [1, 3, 5, 7, 9 , 11, 13],
+    cssValuesSelected : [ 'first-selected', 'second-selected', 'third-selected', 'forth-selected', 'fifth-selected', 'sixth-selected', 'seventh-selected' ],
+    cssValuesUnselected: [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected', 'sixth-unselected', 'seventh-unselected' ],
+    targetSelector: 'span.jquery-example-css'
+    });</code></pre>
+                <p>
+                <div class="jquery-example-css"></div>
+                </p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-css"></span>
                 </p>
             </section>
             <footer>
