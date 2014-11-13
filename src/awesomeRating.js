@@ -65,6 +65,7 @@ $.fn.awesomeRating = function(options) {
             storeValue : function(value) {
                 _api.values.current = value;
                 _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
+                _api.triggerEvent();
             },
             updateCss : function() {
                 // Make sure that none of the rates will be marked as selected when null is passed
@@ -86,6 +87,9 @@ $.fn.awesomeRating = function(options) {
 
                     if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValuerSet = true; }
                 });
+            },
+            triggerEvent : function() {
+                _api.external.$.element.trigger('rated', [ _api.values.current ]);
             }
         };
 
@@ -103,7 +107,6 @@ $.fn.awesomeRating = function(options) {
 
                 _api.storeValue(value);
                 _api.updateCss($rate);
-                _api.external.$.element.trigger('rated', [ _api.values.current ]);
             });
 
             // Check for initial value that will be selected at beginning
