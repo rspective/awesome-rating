@@ -18,7 +18,8 @@
         <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
         <script type="text/javascript">
             $(function() {
-                var jqueryExampleSimpleRating = $('.jquery-example-simple').awesomeRating({ valueInitial: 4 });
+                var jqueryExampleInitial = $('.jquery-example-initial').awesomeRating({ valueInitial: 4 });
+                var jqueryExampleIcons = $('.jquery-example-icons').awesomeRating({ valueInitial: 2, cssBaseSelected: 'fa-arrow-circle-o-right', cssBaseUnselected : 'fa-arrow-circle-o-left' });
             });
         </script>
     </head>
@@ -39,12 +40,36 @@
             </header>
             <section>
                 <h3>
-                    <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    jQuery Example
+                    <a id="jquery-example-initial" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Initial Value
                 </h3>
-                <pre><code>$('.jquery-example-simple').awesomeRating({ valueInitial: 4 });</code></pre>
+<pre><code>$('.jquery-example-initial').awesomeRating({ valueInitial: 4 });</code></pre>
                 <p>
-                    <div class="jquery-example-simple"></div>
+                    <div class="jquery-example-initial"></div>
+                </p>
+                <h3>
+                    <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Icons
+                </h3>
+<pre><code>$('.jquery-example-icons').awesomeRating({
+    valueInitial: 2,
+    cssBaseSelected: 'fa-arrow-circle-o-right',
+    cssBaseUnselected : 'fa-arrow-circle-o-left'
+});</code></pre>
+                <p>
+                    <div class="jquery-example-icons"></div>
+                </p>
+                <h3>
+                    <a id="jquery-example-values" class="anchor" href="#jquery-example-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Values
+                </h3>
+<pre><code>$('.jquery-example-icons').awesomeRating({
+    valueInitial: 2,
+    cssBaseSelected: 'fa-arrow-circle-o-right',
+    cssBaseUnselected : 'fa-arrow-circle-o-left'
+    });</code></pre>
+                <p>
+                <div class="jquery-example-values"></div>
                 </p>
             </section>
             <footer>
