@@ -6,19 +6,18 @@ $.fn.awesomeRating = function(options) {
     var defaultOptions = {
         values              : [ 1, 2, 3, 4, 5 ],
         valueInitial        : null,
-        cssBase             : 'rating-star fa',
-        cssBaseSelected     : 'fa-star',
-        cssBaseUnselected   : 'fa-star-o',
-        cssValuesSelected   : [ 'first-selected', 'second-selected', 'third-selected', 'forth-selected', 'fifth-selected' ],
-        cssValuesUnselected : [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected'],
+        cssBase             : "rating-star fa",
+        cssBaseSelected     : "fa-star",
+        cssBaseUnselected   : "fa-star-o",
+        cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
+        cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
         targetSelector      : null,
-        htmlBase            : '<i></i>',
-        htmlSelector        : ':last-child',
-        htmlEvent           : 'click'
+        htmlBase            : "<i></i>",
+        htmlSelector        : ":last-child",
+        htmlEvent           : "click"
     };
 
     return this.each(function() {
-
         //-- Check if plugin is already initialized
         if (this._awesomeRatingApi) { return; }
 
@@ -52,7 +51,7 @@ $.fn.awesomeRating = function(options) {
                     target      : $(options.targetSelector || defaultOptions.targetSelector),
                     rates       : null
                 },
-                val	: function(value) {
+                val : function(value) {
                     if (value === undefined) { return _api.values.current; }
 
                     _api.storeValue(value);
@@ -60,7 +59,7 @@ $.fn.awesomeRating = function(options) {
                 }
             },
             temp : {
-                $initial 		: null
+                $initial        : null
             },
             storeValue : function(value) {
                 _api.values.current = value;
@@ -79,7 +78,7 @@ $.fn.awesomeRating = function(options) {
                     $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
                     // Apply styles basing on value if css are defined per value
-                    if (_api.css.values.selected.length ==  _api.values.list.length && _api.css.values.selected.length ==  _api.values.list.length) {
+                    if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.selected.length == _api.values.list.length) {
                         $.each(_api.values.list, function(valueIndex, value) {
                             //-- Toggle defined classes for selected and unselected state
                             $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && value === _api.values.current);

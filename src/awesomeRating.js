@@ -6,15 +6,15 @@ $.fn.awesomeRating = function(options) {
     var defaultOptions = {
         values              : [ 1, 2, 3, 4, 5 ],
         valueInitial        : null,
-        cssBase             : 'rating-star fa',
-        cssBaseSelected     : 'fa-star',
-        cssBaseUnselected   : 'fa-star-o',
-        cssValuesSelected   : [ 'first-selected', 'second-selected', 'third-selected', 'forth-selected', 'fifth-selected' ],
-        cssValuesUnselected : [ 'first-unselected', 'second-unselected', 'third-unselected', 'forth-unselected', 'fifth-unselected'],
+        cssBase             : "rating-star fa",
+        cssBaseSelected     : "fa-star",
+        cssBaseUnselected   : "fa-star-o",
+        cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
+        cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
         targetSelector      : null,
-        htmlBase            : '<i></i>',
-        htmlSelector        : ':last-child',
-        htmlEvent           : 'click'
+        htmlBase            : "<i></i>",
+        htmlSelector        : ":last-child",
+        htmlEvent           : "click"
     };
 
     return this.each(function() {
@@ -51,7 +51,7 @@ $.fn.awesomeRating = function(options) {
                     target      : $(options.targetSelector || defaultOptions.targetSelector),
                     rates       : null
                 },
-                val	: function(value) {
+                val : function(value) {
                     if (value === undefined) { return _api.values.current; }
 
                     _api.storeValue(value);
