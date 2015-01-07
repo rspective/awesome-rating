@@ -1,4 +1,4 @@
-angular.module('awesome-rating', []).directive('awesomeRating', function($timeout) {
+angular.module('awesome-rating', []).directive('awesomeRating', ['$timeout', function($timeout) {
     return {
         restrict: 'A',
         scope: {
@@ -22,4 +22,4 @@ angular.module('awesome-rating', []).directive('awesomeRating', function($timeou
             })
         }
     };
-});
+}]);
