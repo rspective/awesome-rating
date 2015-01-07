@@ -1,4 +1,4 @@
-angular.module('awesome-rating', []).directive('awesomeRating', function() {
+angular.module('awesome-rating', []).directive('awesomeRating', function($timeout) {
     return {
         restrict: 'A',
         scope: {
@@ -12,13 +12,13 @@ angular.module('awesome-rating', []).directive('awesomeRating', function() {
             //-- Apply jquery plugin
             $element = $(element).awesomeRating(options)
                 .on('rated', function(event, rate){
-                    $scope.$apply(function() {
+                    $timeout(function() {
                         $scope.awesomeRating = rate;
                     });
                 });
             //-- Apply external changes
             $scope.$watch('awesomeRating', function(value){
-                $element.awesomeRating.val(value);
+                $element.each(function() { this._awesomeRatingApi.val(value); });
             })
         }
     };
