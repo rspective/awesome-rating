@@ -11,10 +11,12 @@ $.fn.awesomeRating = function(options) {
         cssBaseUnselected   : "fa-star-o",
         cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
         cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
+        cssHover            : "rating-star-hover",
         targetSelector      : null,
         htmlBase            : "<i></i>",
         htmlSelector        : ":last-child",
-        htmlEvent           : "click"
+        htmlEvent           : "click",
+        useHover            : false
     };
 
     return this.each(function() {
@@ -43,7 +45,12 @@ $.fn.awesomeRating = function(options) {
                 values : {
                     selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
                     unselected  : options.cssValuesUnselected || defaultOptions.cssValuesUnselected || []
-                }
+                },
+                hover           : options.cssHover || defaultOptions.cssHover || null
+            },
+            settings : {
+                useHover        : options.useHover || defaultOptions.useHover || false,
+                readonly        : options.readonly || defaultOptions.readonly || false
             },
             external : {
                 $ : {
@@ -91,6 +98,11 @@ $.fn.awesomeRating = function(options) {
             },
             triggerEvent : function() {
                 _api.external.$.element.trigger('rated', [ _api.values.current ]);
+            },
+            updateCssHover : function(hoverRateIndex) {
+                _api.external.$.rates.each(function(rateIndex) {
+                    $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
+                });
             }
         };
 
@@ -102,23 +114,29 @@ $.fn.awesomeRating = function(options) {
             $rate.toggleClass(_api.css.base, true);
             $rate.toggleClass(_api.css.unselected, true);
 
-            $rate.on(_api.html.event, function() {
+            if (value == _api.values.initial) { _api.values.current = value; }
+
+            if (_api.settings.readonly) { return; }
+
+            $rate.on(_api.html.event, function () {
                 // Check if current value has changed
-                if (value == _api.values.current) { return };
+                if (value == _api.values.current) { return; }
 
                 _api.storeValue(value);
                 _api.updateCss($rate);
             });
 
-            // Check for initial value that will be selected at beginning
-            if (value == _api.values.initial) { _api.temp.$initial = $rate; }
+            // Handle hover functionality
+            if (_api.settings.useHover) {
+                $rate.hover(function() { _api.updateCssHover(valueIndex) }, function() { _api.updateCssHover(-1); });
+            }
         });
 
         //-- Store rates as external API's variable
         _api.external.$.rates = _api.external.$.element.children();
 
-        //-- Make initial selection
-        _api.temp.$initial && _api.temp.$initial.trigger(_api.html.event);
+        //-- Update initial styles
+        _api.updateCss();
 
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;

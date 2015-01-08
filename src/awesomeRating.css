@@ -9,3 +9,4 @@
 .rating-star.forth-unselected { color: lightgrey; }
 .rating-star.fifth-selected { color: #2CAF61; }
 .rating-star.fifth-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
