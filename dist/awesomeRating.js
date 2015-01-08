@@ -16,7 +16,7 @@ $.fn.awesomeRating = function(options) {
         htmlBase            : "<i></i>",
         htmlSelector        : ":last-child",
         htmlEvent           : "click",
-        useHover            : false
+        applyHoverCss       : false
     };
 
     return this.each(function() {
@@ -49,7 +49,7 @@ $.fn.awesomeRating = function(options) {
                 hover           : options.cssHover || defaultOptions.cssHover || null
             },
             settings : {
-                useHover        : options.useHover || defaultOptions.useHover || false,
+                applyHoverCss   : options.applyHoverCss || defaultOptions.applyHoverCss || false,
                 readonly        : options.readonly || defaultOptions.readonly || false
             },
             external : {
@@ -97,7 +97,7 @@ $.fn.awesomeRating = function(options) {
                 });
             },
             triggerEvent : function() {
-                _api.external.$.element.trigger('rated', [ _api.values.current ]);
+                _api.external.$.element.trigger("rated", [ _api.values.current ]);
             },
             updateCssHover : function(hoverRateIndex) {
                 _api.external.$.rates.each(function(rateIndex) {
@@ -127,7 +127,7 @@ $.fn.awesomeRating = function(options) {
             });
 
             // Handle hover functionality
-            if (_api.settings.useHover) {
+            if (_api.settings.applyHoverCss) {
                 $rate.hover(function() { _api.updateCssHover(valueIndex) }, function() { _api.updateCssHover(-1); });
             }
         });
