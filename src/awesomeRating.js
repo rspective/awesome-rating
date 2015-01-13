@@ -56,7 +56,7 @@ $.fn.awesomeRating = function(options) {
                 fractional      : options.cssFractional || defaultOptions.cssFractional || null
             },
             settings : {
-                applyHoverCss   : options.applyHoverCss || defaultOptions.applyHoverCss || false,
+                applyHoverCss   : options.applyHoverCss ? options.applyHoverCss : defaultOptions.applyHoverCss,
                 readonly        : options.readonly || defaultOptions.readonly || false,
                 allowFractional : options.allowFractional || defaultOptions.allowFractional || false,
                 eventName       : options.eventName || defaultOptions.eventName || "rated"
