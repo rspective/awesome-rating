@@ -10,4 +10,4 @@
 .rating-star.fifth-selected { color: #2CAF61; }
 .rating-star.fifth-unselected { color: lightgrey; }
 .rating-star-hover { opacity: 0.6; }
-.rating-star-fractional {  display: initial; position: absolute; color: red; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
