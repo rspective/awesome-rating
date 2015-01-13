@@ -1,8 +1,11 @@
 $.fn.awesomeRating = function(options) {
     //-- Normalize passed options
     options = options || {};
+    //-----------------------------------------------
+    //-- Options' Initialization can be done here.
+    //-----------------------------------------------
 
-    //-- Setup default initial values that can be overridden by passed options
+    //-- Setup default initial values that will be overridden by passed options
     var defaultOptions = {
         values              : [ 1, 2, 3, 4, 5 ],
         valueInitial        : null,
@@ -12,11 +15,15 @@ $.fn.awesomeRating = function(options) {
         cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
         cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
         cssHover            : "rating-star-hover",
+        cssFractional       : "rating-star-fractional",
         targetSelector      : null,
-        htmlBase            : "<i></i>",
-        htmlSelector        : ":last-child",
+        htmlBase            : "<div></div>",
         htmlEvent           : "click",
-        applyHoverCss       : false
+        applyHoverCss       : false,
+        readonly            : false,
+        allowFractional     : false,
+        calculateFractional : null,
+        eventName           : "rated"
     };
 
     return this.each(function() {
@@ -26,7 +33,7 @@ $.fn.awesomeRating = function(options) {
         //-- Select current element
         var $element = $(this);
 
-        //-- Merge passed options with default values
+        //-- Merge passed options with default values and define basic methods
         var _api = {
             values : {
                 list            : options.values || defaultOptions.values || [],
@@ -35,7 +42,6 @@ $.fn.awesomeRating = function(options) {
             },
             html : {
                 base            : options.htmlBase || defaultOptions.htmlBase,
-                selector        : options.htmlSelector || defaultOptions.htmlSelector,
                 event           : options.htmlEvent || defaultOptions.htmlEvent
             },
             css : {
@@ -46,87 +52,118 @@ $.fn.awesomeRating = function(options) {
                     selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
                     unselected  : options.cssValuesUnselected || defaultOptions.cssValuesUnselected || []
                 },
-                hover           : options.cssHover || defaultOptions.cssHover || null
+                hover           : options.cssHover || defaultOptions.cssHover || null,
+                fractional      : options.cssFractional || defaultOptions.cssFractional || null
             },
             settings : {
                 applyHoverCss   : options.applyHoverCss || defaultOptions.applyHoverCss || false,
-                readonly        : options.readonly || defaultOptions.readonly || false
+                readonly        : options.readonly || defaultOptions.readonly || false,
+                allowFractional : options.allowFractional || defaultOptions.allowFractional || false,
+                eventName       : options.eventName || defaultOptions.eventName || "rated"
             },
             external : {
                 $ : {
                     element     : $element,
                     target      : $(options.targetSelector || defaultOptions.targetSelector),
-                    rates       : null
+                    rates       : null,
+                    fractional  : null
                 },
                 val : function(value) {
                     if (value === undefined) { return _api.values.current; }
 
                     _api.storeValue(value);
-                    _api.updateCss();
                 }
             },
             temp : {
                 $initial        : null
             },
             storeValue : function(value) {
+                // Check if current value has changed
+                if (value === _api.values.current) { return; }
+
                 _api.values.current = value;
                 _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
                 _api.triggerEvent();
+                _api.updateCss();
+            },
+            triggerEvent : function() {
+                _api.external.$.element.trigger(_api.settings.eventName, [ _api.values.current ]);
             },
             updateCss : function() {
-                // Make sure that none of the rates will be marked as selected when null is passed
+                //-- Make sure that none of the rates will be marked as selected when null is passed
                 var isCurrentValueSet = false || (_api.values.current == null);
+                var selectedFractionalIndex = -1;
 
                 _api.external.$.rates.each(function(rateIndex) {
                     var $rate = $(this);
 
-                    // Apply base styles
+                    //-- Handle fractional values
+                    if (!isCurrentValueSet && _api.settings.allowFractional) {
+                        var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(rateIndex) : -1;
+                        var isFractional = fractionalValue > 0 && fractionalValue < 1;
+                        isCurrentValueSet = isFractional;
+                        if (isCurrentValueSet) { selectedFractionalIndex = rateIndex; }
+                    }
+
+                    //-- Apply base styles
                     $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
                     $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
-                    // Apply styles basing on value if css are defined per value
-                    if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.selected.length == _api.values.list.length) {
+                    //-- Apply styles basing on value if css are defined per value
+                    if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.unselected.length == _api.values.list.length) {
                         $.each(_api.values.list, function(valueIndex, value) {
+                            //-- Handle fractional values
+                            var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(valueIndex) : -1;
+                            var isFractional = fractionalValue > 0 && fractionalValue < 1;
+
                             //-- Toggle defined classes for selected and unselected state
-                            $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && value === _api.values.current);
-                            $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && value === _api.values.current);
+                            $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && (value === _api.values.current || isFractional));
+                            $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && (value === _api.values.current || isFractional));
                         });
                     }
 
                     if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValueSet = true; }
                 });
-            },
-            triggerEvent : function() {
-                _api.external.$.element.trigger("rated", [ _api.values.current ]);
+
+                //-- Toggle fractional rates
+                if (_api.settings.allowFractional) {
+                    _api.external.$.fractional.each(function(fractionalIndex) {
+                        var $fractionalRate = $(this);
+                        if (fractionalIndex !== selectedFractionalIndex) { $fractionalRate.hide(); }
+                        else {
+                            var fractionalValue = _api.calculateFractional(fractionalIndex);
+                            $fractionalRate.css("display", "initial");
+                            $fractionalRate.width(fractionalValue + "em");
+                        }
+                    });
+                }
             },
             updateCssHover : function(hoverRateIndex) {
                 _api.external.$.rates.each(function(rateIndex) {
                     $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
                 });
+                _api.external.$.fractional.each(function(rateIndex) {
+                    $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
+                });
+            },
+            calculateFractional : options.calculateFractional || defaultOptions.calculateFractional || function(rateIndex) {
+                return _api.values.current - _api.values.list[rateIndex];
             }
         };
 
         //-- Generate rates
         $.each(_api.values.list, function(valueIndex, value) {
             // Add requested html object
-            var $rate = _api.external.$.element.append(_api.html.base).find(_api.html.selector);
+            var $rate = _api.external.$.element.append(_api.html.base).find(":last-child");
             // Toggle base and unselected class
             $rate.toggleClass(_api.css.base, true);
             $rate.toggleClass(_api.css.unselected, true);
 
-            if (value == _api.values.initial) { _api.values.current = value; }
-
+            if (value === _api.values.initial) { _api.values.current = value; }
             if (_api.settings.readonly) { return; }
 
-            $rate.on(_api.html.event, function () {
-                // Check if current value has changed
-                if (value == _api.values.current) { return; }
+            $rate.on(_api.html.event, function () { _api.storeValue(value); });
 
-                _api.storeValue(value);
-                _api.updateCss($rate);
-            });
-
-            // Handle hover functionality
             if (_api.settings.applyHoverCss) {
                 $rate.hover(function() { _api.updateCssHover(valueIndex) }, function() { _api.updateCssHover(-1); });
             }
@@ -134,6 +171,32 @@ $.fn.awesomeRating = function(options) {
 
         //-- Store rates as external API's variable
         _api.external.$.rates = _api.external.$.element.children();
+
+        //-- Generate fractional rates
+        if (_api.settings.allowFractional) {
+            _api.external.$.rates.each(function(rateIndex) {
+                // Add requested html object
+                var $fractionalRate = $(this).before(_api.html.base).prev();
+                // Toggle base and unselected class
+                $fractionalRate.toggleClass(_api.css.base, true);
+                $fractionalRate.toggleClass(_api.css.fractional, true);
+                $fractionalRate.toggleClass(_api.css.selected, true);
+
+                //-- Apply styles basing on value if css are defined per value
+                if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.unselected.length == _api.values.list.length) {
+                    $fractionalRate.toggleClass(_api.css.values.selected[rateIndex]);
+                }
+
+                if (_api.settings.readonly) { return; }
+
+                $fractionalRate.on(_api.html.event, function () { _api.storeValue(_api.values.list[rateIndex]); });
+
+                if (_api.settings.applyHoverCss) {
+                    $fractionalRate.hover(function() { _api.updateCssHover(rateIndex) }, function() { _api.updateCssHover(-1); });
+                }
+            });
+            _api.external.$.fractional = _api.external.$.element.find('.' + _api.css.fractional);
+        }
 
         //-- Update initial styles
         _api.updateCss();
