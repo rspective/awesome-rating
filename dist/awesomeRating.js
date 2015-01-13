@@ -19,7 +19,7 @@ $.fn.awesomeRating = function(options) {
         targetSelector      : null,
         htmlBase            : "<div></div>",
         htmlEvent           : "click",
-        applyHoverCss       : false,
+        applyHoverCss       : true,
         readonly            : false,
         allowFractional     : false,
         calculateFractional : null,
