@@ -142,9 +142,11 @@ $.fn.awesomeRating = function(options) {
                 _api.external.$.rates.each(function(rateIndex) {
                     $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
                 });
-                _api.external.$.fractional.each(function(rateIndex) {
-                    $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
-                });
+                if (_api.settings.allowFractional) {
+                    _api.external.$.fractional.each(function (rateIndex) {
+                        $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
+                    });
+                }
             },
             calculateFractional : options.calculateFractional || defaultOptions.calculateFractional || function(rateIndex) {
                 return _api.values.current - _api.values.list[rateIndex];
@@ -195,8 +197,10 @@ $.fn.awesomeRating = function(options) {
                     $fractionalRate.hover(function() { _api.updateCssHover(rateIndex) }, function() { _api.updateCssHover(-1); });
                 }
             });
-            _api.external.$.fractional = _api.external.$.element.find('.' + _api.css.fractional);
         }
+
+        // Store fractional rates as external API's variable
+        _api.external.$.fractional = _api.external.$.element.find('.' + _api.css.fractional);
 
         //-- Update initial styles
         _api.updateCss();
