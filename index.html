@@ -42,7 +42,6 @@
                     cssValuesUnselected: [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected", "sixth-unselected", "seventh-unselected" ],
                     targetSelector: "span.jquery-example-css"
                 });
-
                 var jqueryExampleSingleCss = $("div.jquery-example-single-css").awesomeRating({
                     valueInitial: 9,
                     values: [1, 3, 5, 7, 9 , 11, 13],
@@ -51,6 +50,14 @@
                     cssValuesSelected : [],
                     cssValuesUnselected: [],
                     targetSelector: "span.jquery-example-single-css"
+                });
+                var jqueryExampleDisableHoverCss = $("div.jquery-example-disable-hover-css").awesomeRating({
+                    applyHoverCss : false,
+                    valueInitial: 4
+                });
+                var jqueryExampleAllowFractional = $("div.jquery-example-allow-fractional").awesomeRating({
+                    allowFractional : true,
+                    valueInitial: 3.6
                 });
             });
         </script>
@@ -188,6 +195,31 @@
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-single-css"></span>
                 </p>
+
+                <h3>
+                    <a id="jquery-example-disable-hover-css" class="anchor" href="#jquery-example-disable-hover-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Disable Hover Css
+                </h3>
+<pre><code>$("div.jquery-example-disable-hover-css").awesomeRating({
+    applyHoverCss : false,
+    valueInitial: 4
+});</code></pre>
+                <p>
+                <div class="jquery-example-disable-hover-css"></div>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-allow-fractional" class="anchor" href="#jquery-example-allow-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Fractional Rating
+                </h3>
+<pre><code>var jqueryExampleAllowFractional = $("div.jquery-example-allow-fractional").awesomeRating({
+    allowFractional : true,
+    valueInitial: 3.6
+});</code></pre>
+                <p>
+                <div class="jquery-example-allow-fractional"></div>
+                </p>
+
             </section>
             <footer>
                 <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>

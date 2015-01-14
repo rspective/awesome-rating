@@ -13,3 +13,5 @@
 .rating-star.sixth-unselected { color: lightgrey; }
 .rating-star.seventh-selected { color: #8286F2; }
 .rating-star.seventh-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
