@@ -78,11 +78,35 @@
                     valueInitial: 16.75,
                     cssBaseSelected     : "fa-star third-selected",
                     cssBaseUnselected   : "fa-star-o third-unselected",
-                    targetSelector      : "span.jquery-example-min-max",
+                    targetSelector      : "span.jquery-example-min-max-fractional",
                     allowFractional     : true,
                     calculateFractional : function(current, rate) {
                         console.log(1 - ((rate - current) / 1.5));
                         return 1 - ((rate - current) / 1.5);
+                    }
+                });
+                var jqueryExampleComplex = $("p.jquery-example-complex").awesomeRating({
+                    valueInitial: "CD",
+                    values: ["A", "B", "C", "D", "E"],
+                    cssBaseSelected     : " ",
+                    cssBaseUnselected   : " ",
+                    cssValuesSelected : [
+                        "fa-check-square first-selected",
+                        "fa-heart second-selected",
+                        "fa-envelope third-selected",
+                        "fa-comment forth-selected",
+                        "fa-circle fifth-selected" ],
+                    cssValuesUnselected: [
+                        "fa-check-square-o first-unselected",
+                        "fa-heart-o second-unselected",
+                        "fa-envelope-o third-unselected",
+                        "fa-comment-o forth-unselected",
+                        "fa-circle-o fifth-unselected" ],
+                    targetSelector: "span.jquery-example-complex",
+                    allowFractional: true,
+                    calculateFractional: function(current, rate) {
+                        if (current.indexOf(rate) === 1) { return 0.5 };
+                        return 1;
                     }
                 });
             });
@@ -106,13 +130,13 @@
             <section>
                 <h3>
                     <a id="jquery-example-initial" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Initial Value
+                    (jQuery) Specify Initial Value
                 </h3>
 <pre><code>$("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });</code></pre>
                 <p class="jquery-example-initial"></p>
                 <h3>
                     <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Icons
+                    (jQuery) Set Custom Icons
                 </h3>
 <pre><code>$("p.jquery-example-icons").awesomeRating({
     valueInitial: 2,
@@ -122,7 +146,7 @@
                 <p class="jquery-example-icons"></p>
                 <h3>
                     <a id="jquery-example-target" class="anchor" href="#jquery-example-target" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Target
+                    (jQuery) Specify Target Element
                 </h3>
 <pre><code>$("p.jquery-example-target").awesomeRating({
     valueInitial: 3,
@@ -134,7 +158,7 @@
                 </p>
                 <h3>
                     <a id="jquery-example-event-rated" class="anchor" href="#jquery-example-event-rated" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Event Rated
+                    (jQuery) Use 'Rated' Event
                 </h3>
 <pre><code>$("p.jquery-example-event-rated")
     .on("rated", function(event, rate) {
@@ -147,7 +171,7 @@
                 </p>
                 <h3>
                     <a id="jquery-example-event-mouse" class="anchor" href="#jquery-example-event-mouse" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Event Mouse Enter
+                    (jQuery) Change User Event
                 </h3>
 <pre><code>$("p.jquery-example-event-mouse").awesomeRating({
     valueInitial: 1,
@@ -160,10 +184,10 @@
                 </p>
                 <h3>
                     <a id="jquery-example-values" class="anchor" href="#jquery-example-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Values
+                    (jQuery) Specify Custom Values
                 </h3>
 <pre><code>$("p.jquery-example-values").awesomeRating({
-    valueInitial: 3,
+    valueInitial: "Third",
     values: ["First", "Second", "Third", "Forth", "Fifth"],
     targetSelector: "span.jquery-example-values"
 });</code></pre>
@@ -173,8 +197,26 @@
                 </p>
 
                 <h3>
+                    <a id="jquery-example-single-css" class="anchor" href="#jquery-example-single-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use Single Color
+                </h3>
+<pre><code>$("p.jquery-example-single-css").awesomeRating({
+    valueInitial: 9,
+    values: [1, 3, 5, 7, 9 , 11, 13],
+    cssBaseSelected     : "fa-star third-selected",
+    cssBaseUnselected   : "fa-star-o third-unselected",
+    cssValuesSelected : [],
+    cssValuesUnselected: [],
+    targetSelector: "span.jquery-example-single-css"
+    });</code></pre>
+                <p class="jquery-example-single-css"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-single-css"></span>
+                </p>
+
+                <h3>
                     <a id="jquery-example-css" class="anchor" href="#jquery-example-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Css
+                    (jQuery) Use complex styling
                 </h3>
 <pre><code>$("p.jquery-example-css").awesomeRating({
     valueInitial: 11,
@@ -186,24 +228,6 @@
                 <p class="jquery-example-css"></p>
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-css"></span>
-                </p>
-
-                <h3>
-                    <a id="jquery-example-single-css" class="anchor" href="#jquery-example-single-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Css Single Color
-                </h3>
-<pre><code>$("p.jquery-example-single-css").awesomeRating({
-    valueInitial: 9,
-    values: [1, 3, 5, 7, 9 , 11, 13],
-    cssBaseSelected     : "fa-star third-selected",
-    cssBaseUnselected   : "fa-star-o third-unselected",
-    cssValuesSelected : [],
-    cssValuesUnselected: [],
-    targetSelector: "span.jquery-example-single-css"
-});</code></pre>
-                <p class="jquery-example-single-css"></p>
-                <p>
-                    <span>Value:</span>&nbsp;<span class="jquery-example-single-css"></span>
                 </p>
 
                 <h3>
@@ -222,7 +246,7 @@
 
                 <h3>
                     <a id="jquery-example-allow-fractional" class="anchor" href="#jquery-example-allow-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Fractional Rating
+                    (jQuery) Allow fractional rating
                 </h3>
 <pre><code>var jqueryExampleAllowFractional = $("p.jquery-example-allow-fractional").awesomeRating({
     allowFractional : true,
@@ -236,7 +260,7 @@
 
                 <h3>
                     <a id="jquery-example-min-max" class="anchor" href="#jquery-example-min-max" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Min, Max, Step properties
+                    (jQuery) Use min & max & step to auto-generate values
                 </h3>
 <pre><code>var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
     valueMin: 10,
@@ -254,7 +278,7 @@
 
                 <h3>
                     <a id="jquery-example-min-max-fractional" class="anchor" href="#jquery-example-min-max-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Min, Max, Step properties with fractional values allowed
+                    (jQuery) Use min & max & step with fractional values
                 </h3>
 <pre><code>var jqueryExampleMinMaxFractional = $("p.jquery-example-min-max-fractional").awesomeRating({
     valueMin: 10,
@@ -263,7 +287,7 @@
     valueInitial: 17.5,
     cssBaseSelected     : "fa-star third-selected",
     cssBaseUnselected   : "fa-star-o third-unselected",
-    targetSelector      : "span.jquery-example-min-max",
+    targetSelector      : "span.jquery-example-min-max-fractional",
     allowFractional     : true,
     calculateFractional : function(current, rate) {
         return 1 - ((rate - current) / 1.5);
@@ -272,6 +296,38 @@
                 <p class="jquery-example-min-max-fractional"></p>
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-min-max-fractional"></span>
+                </p>
+
+                <h3>
+                    (jQuery) Use Custom Values with fractional values allowed and complex CSS, including custom icons
+                </h3>
+                <pre><code>var jqueryExampleComplex = $("p.jquery-example-complex").awesomeRating({
+    valueInitial: "CD",
+    values: ["A", "B", "C", "D", "E"],
+    cssBaseSelected     : " ",
+    cssBaseUnselected   : " ",
+    cssValuesSelected : [
+        "fa-check-square first-selected",
+        "fa-heart second-selected",
+        "fa-envelope third-selected",
+        "fa-comment forth-selected",
+        "fa-circle fifth-selected" ],
+    cssValuesUnselected: [
+        "fa-check-square-o first-unselected",
+        "fa-heart-o second-unselected",
+        "fa-envelope-o third-unselected",
+        "fa-comment-o forth-unselected",
+        "fa-circle-o fifth-unselected" ],
+    targetSelector: "span.jquery-example-complex",
+    allowFractional: true,
+    calculateFractional: function(current, rate) {
+        if (current.indexOf(rate) === 1) { return 0.5 };
+    return 1;
+    }
+    });</code></pre>
+                <p class="jquery-example-complex"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-complex"></span>
                 </p>
 
                 <h3>
