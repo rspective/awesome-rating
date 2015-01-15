@@ -6,7 +6,7 @@ $.fn.awesomeRating = function(options) {
     //-----------------------------------------------
     if (!options.values && options.valueMax) {
         options.values = [];
-        for (var i = options.valueMin || 1; i <= options.valueMax; i++) { options.values.push(i); }
+        for (var i = options.valueMin || 1; i <= options.valueMax; i += options.valueStep || 1) { options.values.push(i); }
     }
 
     //-- Setup default initial values that will be overridden by passed options
