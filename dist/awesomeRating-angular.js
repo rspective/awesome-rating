@@ -153,7 +153,7 @@ $.fn.awesomeRating = function(options) {
                 }
             },
             calculateFractional : options.calculateFractional || defaultOptions.calculateFractional || function(current, rateValue) {
-                return rateValue - current;
+                return 1 - (rateValue - current);
             }
         };
 
