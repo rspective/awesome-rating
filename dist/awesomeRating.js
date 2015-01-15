@@ -91,7 +91,7 @@ $.fn.awesomeRating = function(options) {
                 _api.updateCss();
             },
             updateTarget : function() {
-                _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
+                _api.external.$.target && _api.external.$.target.text(_api.values.current) && _api.external.$.target.val(_api.values.current);
             },
             triggerEvent : function() {
                 _api.external.$.element.trigger(_api.settings.eventName, [ _api.values.current ]);
