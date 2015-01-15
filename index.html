@@ -21,10 +21,11 @@
                 var jqueryExampleInitial = $("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });
                 var jqueryExampleIcons = $("p.jquery-example-icons").awesomeRating({ valueInitial: 2, cssBaseSelected: "fa-arrow-circle-o-right", cssBaseUnselected : "fa-arrow-circle-o-left" });
                 var jqueryExampleTarget = $("p.jquery-example-target").awesomeRating({ valueInitial: 3, targetSelector: "span.jquery-example-target" });
-                var jqueryExampleEventRated = $("p.jquery-example-event-rated").awesomeRating({ valueInitial: 5 })
+                var jqueryExampleEventRated = $("p.jquery-example-event-rated")
                     .on("rated", function(event, rate) {
                         $("span.jquery-example-event-rated").text(rate);
-                    });
+                    })
+                    .awesomeRating({ valueInitial: 5 });
                 var jqueryExampleEventMouse = $("p.jquery-example-event-mouse").awesomeRating({
                     valueInitial: 1,
                     htmlEvent : "mouseenter",
@@ -53,11 +54,13 @@
                 });
                 var jqueryExampleDisableHoverCss = $("p.jquery-example-disable-hover-css").awesomeRating({
                     applyHoverCss : false,
-                    valueInitial: 4
+                    valueInitial: 4,
+                    targetSelector: "span.jquery-example-disable-hover-css"
                 });
                 var jqueryExampleAllowFractional = $("p.jquery-example-allow-fractional").awesomeRating({
                     allowFractional : true,
-                    valueInitial: 2.6
+                    valueInitial: 2.6,
+                    targetSelector: "span.jquery-example-allow-fractional"
                 });
                 var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
                     valueMin: 10,
@@ -91,7 +94,7 @@
                     (jQuery) Initial Value
                 </h3>
 <pre><code>$("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });</code></pre>
-                <div class="jquery-example-initial"></div>
+                <p class="jquery-example-initial"></p>
                 <h3>
                     <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     (jQuery) Icons
@@ -101,7 +104,7 @@
     cssBaseSelected: "fa-arrow-circle-o-right",
     cssBaseUnselected : "fa-arrow-circle-o-left"
 });</code></pre>
-                <div class="jquery-example-icons"></div>
+                <p class="jquery-example-icons"></p>
                 <h3>
                     <a id="jquery-example-target" class="anchor" href="#jquery-example-target" aria-hidden="true"><span class="octicon octicon-link"></span></a>
                     (jQuery) Target
@@ -119,10 +122,10 @@
                     (jQuery) Event Rated
                 </h3>
 <pre><code>$("p.jquery-example-event-rated")
-    .awesomeRating({ valueInitial: 5 })
     .on("rated", function(event, rate) {
         $("span.jquery-example-event-rated").text(rate);
-    });</code></pre>
+    })
+    .awesomeRating({ valueInitial: 5 });</code></pre>
                 <p class="jquery-example-event-rated"></p>
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-event-rated"></span>
@@ -194,9 +197,13 @@
                 </h3>
 <pre><code>$("p.jquery-example-disable-hover-css").awesomeRating({
     applyHoverCss : false,
-    valueInitial: 4
+    valueInitial: 4,
+    targetSelector: "span.jquery-example-disable-hover-css"
 });</code></pre>
                 <p class="jquery-example-disable-hover-css"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-disable-hover-css"></span>
+                </p>
 
                 <h3>
                     <a id="jquery-example-allow-fractional" class="anchor" href="#jquery-example-allow-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
@@ -204,9 +211,13 @@
                 </h3>
 <pre><code>var jqueryExampleAllowFractional = $("p.jquery-example-allow-fractional").awesomeRating({
     allowFractional : true,
-    valueInitial: 2.6
+    valueInitial: 2.6,
+    targetSelector: "span.jquery-example-allow-fractional"
 });</code></pre>
                 <p class="jquery-example-allow-fractional"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-allow-fractional"></span>
+                </p>
 
                 <h3>
                     <a id="jquery-example-min-max" class="anchor" href="#jquery-example-min-max" aria-hidden="true"><span class="octicon octicon-link"></span></a>
@@ -224,6 +235,28 @@
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-min-max"></span>
                 </p>
+
+                <h3>
+                    (Configuration) CSS
+                </h3>
+<pre><code>.rating-star { color: lightgrey; cursor: pointer; }
+.rating-star.first-selected { color: #CA5252; }
+.rating-star.first-unselected { color: lightgrey; }
+.rating-star.second-selected { color: #E59257; }
+.rating-star.second-unselected { color: lightgrey; }
+.rating-star.third-selected { color: #FDD05B; }
+.rating-star.third-unselected { color: lightgrey; }
+.rating-star.forth-selected { color: #8DBE5E; }
+.rating-star.forth-unselected { color: lightgrey; }
+.rating-star.fifth-selected { color: #2CAF61; }
+.rating-star.fifth-unselected { color: lightgrey; }
+.rating-star.sixth-selected { color: #5E97B6; }
+.rating-star.sixth-unselected { color: lightgrey; }
+.rating-star.seventh-selected { color: #8286F2; }
+.rating-star.seventh-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+</code></pre>
             </section>
             <footer>
                 <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>
