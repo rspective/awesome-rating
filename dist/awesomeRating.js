@@ -86,9 +86,12 @@ $.fn.awesomeRating = function(options) {
                 if (value === _api.values.current) { return; }
 
                 _api.values.current = value;
-                _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
+                _api.updateTarget();
                 _api.triggerEvent();
                 _api.updateCss();
+            },
+            updateTarget : function() {
+                _api.external.$.target && _api.external.$.target.text(value) && _api.external.$.target.val(value);
             },
             triggerEvent : function() {
                 _api.external.$.element.trigger(_api.settings.eventName, [ _api.values.current ]);
@@ -209,8 +212,9 @@ $.fn.awesomeRating = function(options) {
         //-- Update initial styles
         _api.updateCss();
 
-        //-- Trigger event when current value is setup
-        if (_api.values.current) { _api.triggerEvent(); }
+        //-- Update target control with initial value and trigger "rated" event
+        _api.updateTarget();
+        _api.triggerEvent();
 
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;
