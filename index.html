@@ -64,11 +64,26 @@
                 });
                 var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
                     valueMin: 10,
-                    valueMax: 17,
-                    valueInitial: 16,
+                    valueStep: 1.5,
+                    valueMax: 20.5,
+                    valueInitial: 17.5,
                     cssBaseSelected     : "fa-star third-selected",
                     cssBaseUnselected   : "fa-star-o third-unselected",
                     targetSelector      : "span.jquery-example-min-max"
+                });
+                var jqueryExampleMinMaxFractional = $("p.jquery-example-min-max-fractional").awesomeRating({
+                    valueMin: 10,
+                    valueStep: 1.5,
+                    valueMax: 20.5,
+                    valueInitial: 16.75,
+                    cssBaseSelected     : "fa-star third-selected",
+                    cssBaseUnselected   : "fa-star-o third-unselected",
+                    targetSelector      : "span.jquery-example-min-max",
+                    allowFractional     : true,
+                    calculateFractional : function(current, rate) {
+                        console.log(1 - ((rate - current) / 1.5));
+                        return 1 - ((rate - current) / 1.5);
+                    }
                 });
             });
         </script>
@@ -221,12 +236,13 @@
 
                 <h3>
                     <a id="jquery-example-min-max" class="anchor" href="#jquery-example-min-max" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-                    (jQuery) Fractional Rating
+                    (jQuery) Min, Max, Step properties
                 </h3>
 <pre><code>var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
     valueMin: 10,
-    valueMax: 17,
-    valueInitial: 16,
+    valueStep: 1.5,
+    valueMax: 20.5,
+    valueInitial: 17.5,
     cssBaseSelected     : "fa-star third-selected",
     cssBaseUnselected   : "fa-star-o third-unselected",
     targetSelector      : "span.jquery-example-min-max"
@@ -234,6 +250,28 @@
                 <p class="jquery-example-min-max"></p>
                 <p>
                     <span>Value:</span>&nbsp;<span class="jquery-example-min-max"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-min-max-fractional" class="anchor" href="#jquery-example-min-max-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Min, Max, Step properties with fractional values allowed
+                </h3>
+<pre><code>var jqueryExampleMinMaxFractional = $("p.jquery-example-min-max-fractional").awesomeRating({
+    valueMin: 10,
+    valueStep: 1.5,
+    valueMax: 20.5,
+    valueInitial: 17.5,
+    cssBaseSelected     : "fa-star third-selected",
+    cssBaseUnselected   : "fa-star-o third-unselected",
+    targetSelector      : "span.jquery-example-min-max",
+    allowFractional     : true,
+    calculateFractional : function(current, rate) {
+        return 1 - ((rate - current) / 1.5);
+    }
+    });</code></pre>
+                <p class="jquery-example-min-max-fractional"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-min-max-fractional"></span>
                 </p>
 
                 <h3>
