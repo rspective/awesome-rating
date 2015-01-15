@@ -209,6 +209,9 @@ $.fn.awesomeRating = function(options) {
         //-- Update initial styles
         _api.updateCss();
 
+        //-- Trigger event when current value is setup
+        if (_api.values.current) { _api.triggerEvent(); }
+
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;
     });
