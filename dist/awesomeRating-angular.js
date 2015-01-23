@@ -1,9 +1,8 @@
 $.fn.awesomeRating = function(options) {
     //-- Normalize passed options
     options = options || {};
-    //-----------------------------------------------
-    //-- Options' Initialization can be done here.
-    //-----------------------------------------------
+
+    //-- Options' Initialization
     if (!options.values && options.valueMax) {
         options.values = [];
         for (var i = options.valueMin || 1; i <= options.valueMax; i += options.valueStep || 1) { options.values.push(i); }
@@ -79,7 +78,8 @@ $.fn.awesomeRating = function(options) {
                 }
             },
             temp : {
-                $initial        : null
+                $initial        : null,
+                fractionalIndex : -1
             },
             storeValue : function(value) {
                 // Check if current value has changed
@@ -88,6 +88,7 @@ $.fn.awesomeRating = function(options) {
                 _api.values.current = value;
                 _api.updateTarget();
                 _api.triggerEvent();
+                _api.updateFractionalIndex();
                 _api.updateCss();
             },
             updateTarget : function() {
@@ -96,30 +97,26 @@ $.fn.awesomeRating = function(options) {
             triggerEvent : function() {
                 _api.external.$.element.trigger(_api.settings.eventName, [ _api.values.current ]);
             },
-            updateCss : function() {
+            toggleBaseCss : function() {
                 //-- Make sure that none of the rates will be marked as selected when null is passed
-                var isCurrentValueSet = false || (_api.values.current == null);
-                var selectedFractionalIndex = -1;
+                var isCurrentValueSet = _api.values.current == null;
 
                 _api.external.$.rates.each(function(rateIndex) {
                     var $rate = $(this);
 
                     //-- Handle fractional values
                     if (!isCurrentValueSet && _api.settings.allowFractional) {
-                        var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[rateIndex]) : -1;
-                        var isFractional = fractionalValue > 0 && fractionalValue < 1;
-                        isCurrentValueSet = isFractional;
-                        if (isCurrentValueSet) { selectedFractionalIndex = rateIndex; }
+                        isCurrentValueSet = _api.temp.fractionalIndex === rateIndex;
                     }
 
                     //-- Apply base styles
                     $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
                     $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
 
-                    //-- Apply styles basing on value if css are defined per value
+                    //-- Apply styles basing on value if css are defined per value in context of current rate
                     if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.unselected.length == _api.values.list.length) {
                         $.each(_api.values.list, function(valueIndex, value) {
-                            //-- Handle fractional values
+                            //-- Handle fractional values fo particular rate
                             var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[valueIndex]) : -1;
                             var isFractional = fractionalValue > 0 && fractionalValue < 1;
 
@@ -131,24 +128,27 @@ $.fn.awesomeRating = function(options) {
 
                     if (_api.values.list[rateIndex] === _api.values.current) { isCurrentValueSet = true; }
                 });
-
-                //-- Toggle fractional rates
-                if (_api.settings.allowFractional) {
-                    _api.external.$.fractional.each(function(fractionalIndex) {
-                        var $fractionalRate = $(this);
-                        if (fractionalIndex !== selectedFractionalIndex) { $fractionalRate.hide(); }
-                        else {
-                            var fractionalValue = _api.calculateFractional(_api.values.current, _api.values.list[fractionalIndex]);
-                            $fractionalRate.css("display", "initial");
-                            $fractionalRate.width(fractionalValue + "em");
-                        }
-                    });
-                }
+            },
+            toggleFractionalCss : function() {
+                _api.external.$.fractional.each(function(fractionalIndex) {
+                    var $fractionalRate = $(this);
+                    if (fractionalIndex !== _api.temp.fractionalIndex) { $fractionalRate.hide(); }
+                    else {
+                        var fractionalValue = _api.calculateFractional(_api.values.current, _api.values.list[fractionalIndex]);
+                        $fractionalRate.css("display", "initial");
+                        $fractionalRate.width(fractionalValue + "em");
+                    }
+                });
+            },
+            updateCss : function() {
+                _api.toggleBaseCss();
+                if (_api.settings.allowFractional) { _api.toggleFractionalCss(); }
             },
             updateCssHover : function(hoverRateIndex) {
                 _api.external.$.rates.each(function(rateIndex) {
                     $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
                 });
+
                 if (_api.settings.allowFractional) {
                     _api.external.$.fractional.each(function (rateIndex) {
                         $(this).toggleClass(_api.css.hover, rateIndex <= hoverRateIndex);
@@ -157,6 +157,16 @@ $.fn.awesomeRating = function(options) {
             },
             calculateFractional : options.calculateFractional || defaultOptions.calculateFractional || function(current, rateValue) {
                 return 1 - (rateValue - current);
+            },
+            updateFractionalIndex : function() {
+                _api.temp.fractionalIndex = -1;
+
+                _api.external.$.rates.each(function(rateIndex) {
+                    if (_api.temp.fractionalIndex === -1 && _api.settings.allowFractional) {
+                        var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[rateIndex]) : -1;
+                        if (fractionalValue > 0 && fractionalValue < 1) { _api.temp.fractionalIndex = rateIndex; }
+                    }
+                });
             }
         };
 
@@ -209,12 +219,15 @@ $.fn.awesomeRating = function(options) {
         // Store fractional rates as external API's variable
         _api.external.$.fractional = _api.external.$.element.find("." + _api.css.fractional);
 
-        //-- Update initial styles
-        _api.updateCss();
-
         //-- Update target control with initial value and trigger "rated" event
         _api.updateTarget();
         _api.triggerEvent();
+
+        _api.updateFractionalIndex();
+
+        //-- Update initial styles
+        _api.updateCss();
+
 
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;
