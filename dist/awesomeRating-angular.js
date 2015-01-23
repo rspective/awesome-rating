@@ -41,7 +41,7 @@ $.fn.awesomeRating = function(options) {
             values : {
                 list            : options.values || defaultOptions.values || [],
                 initial         : options.valueInitial || defaultOptions.valueInitial || null,
-                current         : options.valueInitial || defaultOptions.valueInitial || null
+                current         : null
             },
             html : {
                 base            : options.htmlBase || defaultOptions.htmlBase,
