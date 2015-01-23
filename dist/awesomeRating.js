@@ -160,7 +160,6 @@ $.fn.awesomeRating = function(options) {
             },
             updateFractionalIndex : function() {
                 _api.temp.fractionalIndex = -1;
-
                 _api.external.$.rates.each(function(rateIndex) {
                     if (_api.temp.fractionalIndex === -1 && _api.settings.allowFractional) {
                         var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[rateIndex]) : -1;
@@ -178,7 +177,6 @@ $.fn.awesomeRating = function(options) {
             $rate.toggleClass(_api.css.base, true);
             $rate.toggleClass(_api.css.unselected, true);
 
-            if (value === _api.values.initial) { _api.values.current = value; }
             if (_api.settings.readonly) { return; }
 
             $rate.on(_api.html.event, function () { _api.storeValue(value); });
@@ -219,15 +217,8 @@ $.fn.awesomeRating = function(options) {
         // Store fractional rates as external API's variable
         _api.external.$.fractional = _api.external.$.element.find("." + _api.css.fractional);
 
-        //-- Update target control with initial value and trigger "rated" event
-        _api.updateTarget();
-        _api.triggerEvent();
-
-        _api.updateFractionalIndex();
-
-        //-- Update initial styles
-        _api.updateCss();
-
+        // Store initial value as current
+        _api.storeValue(_api.values.initial);
 
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;
