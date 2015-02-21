@@ -2,9 +2,9 @@
 [Awesome Rating v1.0.0](http://bandraszyk.github.io/awesome-rating/)
 ==============
 
-Awesome-rating is a jQuery plugi that allows you to use simple, but flexible rating. The basic configuration uses [Font Awesome](https://github.com/FortAwesome/Font-Awesome), but you are able to use your own classes or even a content.
+Awesome-rating is a jQuery plugin that allows you to use simple, but flexible rating mechanism. The basic configuration uses [Font Awesome](https://github.com/FortAwesome/Font-Awesome), but it's not a problem to replace it with any library you like.
 
-The plugin requires any version of **jQuery** (see Advanced Usage for more details what specific methods were used), but it's recommended to use the latest one. In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
+The plugin requires a **jQuery**  and it's recommended to use the latest one, although only basic methods were used (see Advanced Usage for more details). In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
 
 Installation
 --------------
