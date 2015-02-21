@@ -9,48 +9,52 @@ The plugin requires any version of **jQuery** (see Advanced Usage for more detai
 Installation
 --------------
 
-    bower install awesome-rating
+TODO: Register package
 
 Basic usage
 --------------
 
 ###jQuery:
 
-<div class="awesome-rating"></div>
-<script>
-    $(".awesome-rating").awesomeRating({ valueInitial: 4 });
-</script>
-
-###Angular:
-
-
-<div class="awesome-rating"></div>
-
-<script>
-    angular.module("awesomeRating").controller(["$scope", function($scope) {
-
-    }]);
-</script>
-
-
-###Knockout:
+    <div class="awesome-rating"></div>
+    <script>
+        $(".awesome-rating").awesomeRating({ valueInitial: 4 });
+    </script>
 
 
 ###CSS
 
+    .rating-star { color: lightgrey; cursor: pointer; }
+    .rating-star.first-selected { color: #CA5252; }
+    .rating-star.first-unselected { color: lightgrey; }
+    .rating-star.second-selected { color: #E59257; }
+    .rating-star.second-unselected { color: lightgrey; }
+    .rating-star.third-selected { color: #FDD05B; }
+    .rating-star.third-unselected { color: lightgrey; }
+    .rating-star.forth-selected { color: #8DBE5E; }
+    .rating-star.forth-unselected { color: lightgrey; }
+    .rating-star.fifth-selected { color: #2CAF61; }
+    .rating-star.fifth-unselected { color: lightgrey; }
+    .rating-star-hover { opacity: 0.6; }
+    .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+
+###AngularJS:
+
+TODO: Describe
+
+###KnockoutJS:
+
+TODO: Describe
+
 Advanced usage
 --------------
 
-[Annotated source](http://www.onet.pl)
+TODO: Add correct link here.
+
+[Annotated source](https://github.com/bandraszyk/awesome-rating)
 
 
 Demo page
 --------------
 
 Please, feel free to visit [Demo Page](http://bandraszyk.github.io/awesome-rating/) to check how the library can be useful for you.
-
-
-Feedback
---------------
-
-If you have any comments, ideas or just want to share your opinion just visit [Feedback Page](http://www.bandrosolutions.pl/?action=feedback&param=awesome-rating)

@@ -9,7 +9,8 @@ module.exports = function (grunt) {
             library : {
                 files: {
                     'dist/awesomeRating.js': ['src/awesomeRating.js'],
-                    'dist/awesomeRating-angular.js': ['src/awesomeRating.js', 'src/awesomeRating-angular.js']
+                    'dist/awesomeRating.angular.js': ['src/awesomeRating.js', 'src/awesomeRating.angular.directive.js'],
+                    'dist/awesomeRating.knockout.js': ['src/awesomeRating.js', 'src/awesomeRating.knockout.binding.js']
                 }
             }
         },
@@ -17,7 +18,8 @@ module.exports = function (grunt) {
             library: {
                 files: {
                     'dist/awesomeRating.min.js': ['dist/awesomeRating.js'],
-                    'dist/awesomeRating-angular.min.js': ['dist/awesomeRating-angular.js']
+                    'dist/awesomeRating.angular.min.js': ['dist/awesomeRating.angular.js'],
+                    'dist/awesomeRating.knockout.min.js': ['dist/awesomeRating.knockout.js']
                 }
             }
         },
