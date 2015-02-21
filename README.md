@@ -6,7 +6,7 @@ Awesome-rating is a jQuery plugin that allows you to use simple, but flexible ra
 
 The plugin requires a **jQuery**  and it's recommended to use the latest one, although only basic methods were used (see Advanced Usage for more details). In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
 
-**The requirements**:
+Required dependencies:
 
 - jQuery
 - *AngularJS (when using AngularJS)
@@ -65,7 +65,7 @@ The default configuration is provided as global settings for the plugin. You can
 
 Options meaning is as follows:
 
-- **values**: values that is set after user makes selection; The type doesn't matter, you easily pass here a string array
+- **values**: array of values that are set after user makes selection; The type doesn't matter, you easily pass here a string array
 - **valueInitial**: a value that is selected initially, should correspond to the values in above array; Can be different when fractional values are allowed
 - **cssBase**: a base CSS class that is applied to every html element
 - **cssBaseSelected**: a CSS class that is be applied to selected element
@@ -80,22 +80,14 @@ Options meaning is as follows:
 - **applyHoverCss**: indicates whether hover CSS should be applied on hover or not
 - **readonly**: indicates whether htmlEvent should be attached to rating objects
 - **allowFractional**: indicates whether fractional values can be displayed with the use of the plugin
-- **calculateFractional**: a special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue form values array as second one.
-- **eventName**: a event name that is fired when user changes rating value
+- **calculateFractional**: a special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue from values array as second one.
+- **eventName**: an event name that is fired when user changes rating value
 
 ###CSS
 
     .rating-star { color: lightgrey; cursor: pointer; }
     .rating-star.first-selected { color: #CA5252; }
     .rating-star.first-unselected { color: lightgrey; }
-    .rating-star.second-selected { color: #E59257; }
-    .rating-star.second-unselected { color: lightgrey; }
-    .rating-star.third-selected { color: #FDD05B; }
-    .rating-star.third-unselected { color: lightgrey; }
-    .rating-star.forth-selected { color: #8DBE5E; }
-    .rating-star.forth-unselected { color: lightgrey; }
-    .rating-star.fifth-selected { color: #2CAF61; }
-    .rating-star.fifth-unselected { color: lightgrey; }
     .rating-star-hover { opacity: 0.6; }
     .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
 

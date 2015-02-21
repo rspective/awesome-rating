@@ -1,8 +1,8 @@
 {
   "name": "awesome-rating",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/bandraszyk/awesome-rating",
-  "main": "dist/awesomeRating.js",
+  "main": "dist/awesomeRating.min.js",
   "authors": [
     "bandro"
   ],

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>awesomeRating.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>awesomeRating.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <pre><code>awesomeRating.js <span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
+http:<span class="hljs-comment">//bandraszyk.github.io/awesome-rating/</span>
+(c) <span class="hljs-number">2015</span> Bandro
+Awesome Rating may be freely distributed under the MIT license.
+</code></pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($)</span> </span>{
+    $.fn.awesomeRating = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="basic-operations">Basic operations</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This section contains specific methods used to set initial options before plugin code runs</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options = options || {};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p><em>options.valueMax</em>, <em>options.valieMin</em> and <em>options.valueStep</em> are used to populate values array when it’s not specified.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> (!options.values &amp;&amp; options.valueMax) {
+            options.values = [];
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = options.valueMin || <span class="hljs-number">1</span>; i &lt;= options.valueMax; i += options.valueStep || <span class="hljs-number">1</span>) { options.values.push(i); }
+        }
+
+        <span class="hljs-keyword">var</span> defaultOptions = $.fn.awesomeRating.defaults;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._awesomeRatingApi) { <span class="hljs-keyword">return</span>; }
+
+            <span class="hljs-keyword">var</span> $element = $(<span class="hljs-keyword">this</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2 id="api-definition">API definition</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Merge passed options with default values and define basic methods</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> _api = {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Contains values used within plugin, including: list, initial and currently selected</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                values : {
+                    list            : options.values || defaultOptions.values || [],
+                    initial         : options.valueInitial || defaultOptions.valueInitial || <span class="hljs-literal">null</span>,
+                    current         : <span class="hljs-literal">null</span>
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Contains settings from the HTML point of view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                html : {
+                    base            : options.htmlBase || defaultOptions.htmlBase,
+                    event           : options.htmlEvent || defaultOptions.htmlEvent
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Contains settings from the CSS point of view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                css : {
+                    base            : options.cssBase || defaultOptions.cssBase,
+                    selected        : options.cssBaseSelected || defaultOptions.cssBaseSelected,
+                    unselected      : options.cssBaseUnselected || defaultOptions.cssBaseUnselected,
+                    values : {
+                        selected    : options.cssValuesSelected || defaultOptions.cssValuesSelected || [],
+                        unselected  : options.cssValuesUnselected || defaultOptions.cssValuesUnselected || []
+                    },
+                    hover           : options.cssHover || defaultOptions.cssHover || <span class="hljs-literal">null</span>,
+                    fractional      : options.cssFractional || defaultOptions.cssFractional || <span class="hljs-literal">null</span>
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Contains additional settings used withing plugin</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                settings : {
+                    applyHoverCss   : options.applyHoverCss !== <span class="hljs-literal">false</span> &amp;&amp; defaultOptions.applyHoverCss,
+                    readonly        : options.readonly || defaultOptions.readonly || <span class="hljs-literal">false</span>,
+                    allowFractional : options.allowFractional || defaultOptions.allowFractional || <span class="hljs-literal">false</span>,
+                    eventName       : options.eventName || defaultOptions.eventName || <span class="hljs-string">"rated"</span>
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Defines external API that should be used by other scripts to interact with the plugin</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                external : {
+                    $ : {
+                        element     : $element,
+                        target      : $(options.targetSelector || defaultOptions.targetSelector),
+                        rates       : <span class="hljs-literal">null</span>,
+                        fractional  : <span class="hljs-literal">null</span>
+                    },
+                    val : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(value)</span> </span>{
+                        <span class="hljs-keyword">if</span> (value === <span class="hljs-literal">undefined</span>) { <span class="hljs-keyword">return</span> _api.values.current; }
+
+                        _api.storeValue(value);
+                    }
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Contains temp variables used by plugin to work more effectively</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                temp : {
+                    fractionalIndex : -<span class="hljs-number">1</span>
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Stores passed value as current one and fire DOM updates and events</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                storeValue : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(value)</span> </span>{
+                    <span class="hljs-keyword">if</span> (value === _api.values.current) { <span class="hljs-keyword">return</span>; }
+
+                    _api.values.current = value;
+                    _api.updateTarget();
+                    _api.triggerEvent();
+                    _api.updateFractionalIndex();
+                    _api.updateCss();
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Updates the target element’s value with the use of <em>val()</em> and <em>text()</em> methods</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                updateTarget : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    _api.external.$.target &amp;&amp; _api.external.$.target.text(_api.values.current) &amp;&amp; _api.external.$.target.val(_api.values.current);
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Triggers an event to notify attached handlers that value has been changed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                triggerEvent : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    _api.external.$.element.trigger(_api.settings.eventName, [ _api.values.current ]);
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Toggles base CSS classes and refresh the DOM so it corresponds to current state; This Method applies base CSS classes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                toggleBaseCss : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    <span class="hljs-keyword">var</span> isCurrentValueSet = _api.values.current == <span class="hljs-literal">null</span>;
+
+                    _api.external.$.rates.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(rateIndex)</span> </span>{
+                        <span class="hljs-keyword">var</span> $rate = $(<span class="hljs-keyword">this</span>);
+
+                        <span class="hljs-keyword">if</span> (!isCurrentValueSet &amp;&amp; _api.settings.allowFractional) {
+                            isCurrentValueSet = _api.temp.fractionalIndex === rateIndex;
+                        }
+
+                        $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
+                        $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
+
+                        <span class="hljs-keyword">if</span> (_api.css.values.selected.length == _api.values.list.length &amp;&amp; _api.css.values.unselected.length == _api.values.list.length) {
+                            $.each(_api.values.list, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(valueIndex, value)</span> </span>{
+                                <span class="hljs-keyword">var</span> fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[valueIndex]) : -<span class="hljs-number">1</span>;
+                                <span class="hljs-keyword">var</span> isFractional = fractionalValue &gt; <span class="hljs-number">0</span> &amp;&amp; fractionalValue &lt; <span class="hljs-number">1</span>;
+
+                                $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet &amp;&amp; (value === _api.values.current || isFractional));
+                                $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet &amp;&amp; (value === _api.values.current || isFractional));
+                            });
+                        }
+
+                        <span class="hljs-keyword">if</span> (_api.values.list[rateIndex] === _api.values.current) { isCurrentValueSet = <span class="hljs-literal">true</span>; }
+                    });
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Toggles CSS classes dedicated for fractional purposes basing on current fractionalIndex</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                toggleFractionalCss : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    _api.external.$.fractional.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(fractionalIndex)</span> </span>{
+                        <span class="hljs-keyword">var</span> $fractionalRate = $(<span class="hljs-keyword">this</span>);
+                        <span class="hljs-keyword">if</span> (fractionalIndex !== _api.temp.fractionalIndex) { $fractionalRate.hide(); }
+                        <span class="hljs-keyword">else</span> {
+                            <span class="hljs-keyword">var</span> fractionalValue = _api.calculateFractional(_api.values.current, _api.values.list[fractionalIndex]);
+                            $fractionalRate.css(<span class="hljs-string">"display"</span>, <span class="hljs-string">"initial"</span>);
+                            $fractionalRate.width(fractionalValue + <span class="hljs-string">"em"</span>);
+                        }
+                    });
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Updates CSS classes for both: base and fractional values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                updateCss : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    _api.toggleBaseCss();
+                    <span class="hljs-keyword">if</span> (_api.settings.allowFractional) { _api.toggleFractionalCss(); }
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Updates CSS classes for hover event</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                updateCssHover : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(hoverRateIndex)</span> </span>{
+                    _api.external.$.rates.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(rateIndex)</span> </span>{
+                        $(<span class="hljs-keyword">this</span>).toggleClass(_api.css.hover, rateIndex &lt;= hoverRateIndex);
+                    });
+
+                    <span class="hljs-keyword">if</span> (_api.settings.allowFractional) {
+                        _api.external.$.fractional.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(rateIndex)</span> </span>{
+                            $(<span class="hljs-keyword">this</span>).toggleClass(_api.css.hover, rateIndex &lt;= hoverRateIndex);
+                        });
+                    }
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Calculates fractional value for given pari: current and rate value. To indicate currently selected value it should return value between 0 and 1 that will be used to make final calculation of item’s width</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                calculateFractional : options.calculateFractional || defaultOptions.calculateFractional || <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(current, rateValue)</span> </span>{
+                    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> - (rateValue - current);
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Updates fractional index by getting</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                updateFractionalIndex : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+                    _api.temp.fractionalIndex = -<span class="hljs-number">1</span>;
+                    _api.external.$.rates.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(rateIndex)</span> </span>{
+                        <span class="hljs-keyword">if</span> (_api.temp.fractionalIndex === -<span class="hljs-number">1</span> &amp;&amp; _api.settings.allowFractional) {
+                            <span class="hljs-keyword">var</span> fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[rateIndex]) : -<span class="hljs-number">1</span>;
+                            <span class="hljs-keyword">if</span> (fractionalValue &gt; <span class="hljs-number">0</span> &amp;&amp; fractionalValue &lt; <span class="hljs-number">1</span>) { _api.temp.fractionalIndex = rateIndex; }
+                        }
+                    });
+                }
+            };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <h2 id="plugin-initialization">Plugin initialization</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Iterate over collection of values to generate HTML objects that directly represent rating values and attach requested events</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            $.each(_api.values.list, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(valueIndex, value)</span> </span>{
+                <span class="hljs-keyword">var</span> $rate = _api.external.$.element.append(_api.html.base).find(<span class="hljs-string">":last-child"</span>);
+
+                $rate.toggleClass(_api.css.base, <span class="hljs-literal">true</span>);
+                $rate.toggleClass(_api.css.unselected, <span class="hljs-literal">true</span>);
+
+                <span class="hljs-keyword">if</span> (_api.settings.readonly) { <span class="hljs-keyword">return</span>; }
+
+                $rate.on(_api.html.event, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ _api.storeValue(value); });
+
+                <span class="hljs-keyword">if</span> (_api.settings.applyHoverCss) {
+                    $rate.hover(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ _api.updateCssHover(valueIndex) }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ _api.updateCssHover(-<span class="hljs-number">1</span>); });
+                }
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Store rates as external API’s variable so it can be use by external scripts</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            _api.external.$.rates = _api.external.$.element.children();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Iterates over created rates objects to generate HTML objects that directly represents fractional rating values and attach requested events</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (_api.settings.allowFractional) {
+                _api.external.$.rates.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(rateIndex)</span> </span>{
+                    <span class="hljs-keyword">var</span> $fractionalRate = $(<span class="hljs-keyword">this</span>).before(_api.html.base).prev();
+
+                    $fractionalRate.toggleClass(_api.css.base, <span class="hljs-literal">true</span>);
+                    $fractionalRate.toggleClass(_api.css.fractional, <span class="hljs-literal">true</span>);
+                    $fractionalRate.toggleClass(_api.css.selected, <span class="hljs-literal">true</span>);
+
+                    <span class="hljs-keyword">if</span> (_api.css.values.selected.length == _api.values.list.length &amp;&amp; _api.css.values.unselected.length == _api.values.list.length) {
+                        $fractionalRate.toggleClass(_api.css.values.selected[rateIndex]);
+                    }
+
+                    <span class="hljs-keyword">if</span> (_api.settings.readonly) { <span class="hljs-keyword">return</span>; }
+
+                    $fractionalRate.on(_api.html.event, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{ _api.storeValue(_api.values.list[rateIndex]); });
+
+                    <span class="hljs-keyword">if</span> (_api.settings.applyHoverCss) {
+                        $fractionalRate.hover(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ _api.updateCssHover(rateIndex) }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ _api.updateCssHover(-<span class="hljs-number">1</span>); });
+                    }
+                });
+            }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Store fractional rates as external API’s variable so it can be use by external scripts</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            _api.external.$.fractional = _api.external.$.element.find(<span class="hljs-string">"."</span> + _api.css.fractional);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Set initial values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            _api.storeValue(_api.values.initial);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Expose plugin’s external interface</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._awesomeRatingApi = _api.external;
+        });
+    };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <h2 id="default-options">Default Options</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>The default configuration is provided as global settings for the plugin. You can easily change it globally for every usage on your page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    $.fn.awesomeRating.defaults = {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>An array of values that are set after user makes selection; The type doesn’t matter, you easily pass here a string array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        values              : [ <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span> ],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>A value that is selected initially, should correspond to the values in above array; Can be different when fractional values are allowed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        valueInitial        : <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>A base CSS class that is applied to every html element</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssBase             : <span class="hljs-string">"rating-star fa"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>A CSS class that is be applied to selected element</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssBaseSelected     : <span class="hljs-string">"fa-star"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>A CSS class that is applied to unselected element</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssBaseUnselected   : <span class="hljs-string">"fa-star-o"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>A CSS class that is applied to all selected element when corresponding value is selected</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssValuesSelected   : <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>A CSS class that is applied to all unselected element when corresponding value is selected</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssValuesUnselected : <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>A CSS class that is applied on hover</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssHover            : <span class="hljs-string">"rating-star-hover"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>A CSS class applied for fractional values (it’s used only when value is set programmatically and plugin allows fractional values)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cssFractional       : <span class="hljs-string">"rating-star-fractional"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>A jQuery selector that identify the control when selected values should be applied with the use of text() and val() methods</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        targetSelector      : <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>A base HTML element that is used to populate a single rating object for each value; All CSS classes will be applied to it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        htmlBase            : <span class="hljs-string">"&lt;div&gt;&lt;/div&gt;"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>A HTML event that is used to change the rating value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        htmlEvent           : <span class="hljs-string">"click"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>Indicates whether hover CSS should be applied on hover or not</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        applyHoverCss       : <span class="hljs-literal">true</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Indicates whether htmlEvent should be attached to rating objects</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        readonly            : <span class="hljs-literal">false</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Indicates whether fractional values can be displayed with the use of the plugin</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        allowFractional     : <span class="hljs-literal">false</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>A special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue from values array as second one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        calculateFractional : <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>An event name that is fired when user changes rating value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        eventName           : <span class="hljs-string">"rated"</span>
+    };
+}(jQuery));</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
