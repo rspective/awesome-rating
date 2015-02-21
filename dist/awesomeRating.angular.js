@@ -9,25 +9,7 @@ $.fn.awesomeRating = function(options) {
     }
 
     //-- Setup default initial values that will be overridden by passed options
-    var defaultOptions = {
-        values              : [ 1, 2, 3, 4, 5 ],
-        valueInitial        : null,
-        cssBase             : "rating-star fa",
-        cssBaseSelected     : "fa-star",
-        cssBaseUnselected   : "fa-star-o",
-        cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
-        cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
-        cssHover            : "rating-star-hover",
-        cssFractional       : "rating-star-fractional",
-        targetSelector      : null,
-        htmlBase            : "<div></div>",
-        htmlEvent           : "click",
-        applyHoverCss       : true,
-        readonly            : false,
-        allowFractional     : false,
-        calculateFractional : null,
-        eventName           : "rated"
-    };
+    var defaultOptions = $.fn.awesomeRating.defaults;
 
     return this.each(function() {
         //-- Check if plugin is already initialized
@@ -223,6 +205,26 @@ $.fn.awesomeRating = function(options) {
         //-- Expose the external part of API
         this._awesomeRatingApi = _api.external;
     });
+};
+
+$.fn.awesomeRating.defaults = {
+    values              : [ 1, 2, 3, 4, 5 ],
+    valueInitial        : null,
+    cssBase             : "rating-star fa",
+    cssBaseSelected     : "fa-star",
+    cssBaseUnselected   : "fa-star-o",
+    cssValuesSelected   : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ],
+    cssValuesUnselected : [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ],
+    cssHover            : "rating-star-hover",
+    cssFractional       : "rating-star-fractional",
+    targetSelector      : null,
+    htmlBase            : "<div></div>",
+    htmlEvent           : "click",
+    applyHoverCss       : true,
+    readonly            : false,
+    allowFractional     : false,
+    calculateFractional : null,
+    eventName           : "rated"
 };
 angular.module('awesome-rating', []).directive('awesomeRating', ['$timeout', function($timeout) {
     return {
