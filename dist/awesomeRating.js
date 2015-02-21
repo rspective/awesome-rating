@@ -6,6 +6,7 @@
             options.values = [];
             for (var i = options.valueMin || 1; i <= options.valueMax; i += options.valueStep || 1) { options.values.push(i); }
         }
+
         var defaultOptions = $.fn.awesomeRating.defaults;
 
         return this.each(function() {
@@ -54,7 +55,6 @@
                     }
                 },
                 temp : {
-                    $initial        : null,
                     fractionalIndex : -1
                 },
                 storeValue : function(value) {
@@ -77,15 +77,19 @@
 
                     _api.external.$.rates.each(function(rateIndex) {
                         var $rate = $(this);
+
                         if (!isCurrentValueSet && _api.settings.allowFractional) {
                             isCurrentValueSet = _api.temp.fractionalIndex === rateIndex;
                         }
+
                         $rate.toggleClass(_api.css.selected, !isCurrentValueSet);
                         $rate.toggleClass(_api.css.unselected, isCurrentValueSet);
+
                         if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.unselected.length == _api.values.list.length) {
                             $.each(_api.values.list, function(valueIndex, value) {
                                 var fractionalValue = _api.settings.allowFractional ? _api.calculateFractional(_api.values.current, _api.values.list[valueIndex]) : -1;
                                 var isFractional = fractionalValue > 0 && fractionalValue < 1;
+
                                 $rate.toggleClass(_api.css.values.selected[valueIndex], !isCurrentValueSet && (value === _api.values.current || isFractional));
                                 $rate.toggleClass(_api.css.values.unselected[valueIndex], isCurrentValueSet && (value === _api.values.current || isFractional));
                             });
@@ -135,6 +139,7 @@
             };
             $.each(_api.values.list, function(valueIndex, value) {
                 var $rate = _api.external.$.element.append(_api.html.base).find(":last-child");
+
                 $rate.toggleClass(_api.css.base, true);
                 $rate.toggleClass(_api.css.unselected, true);
 
@@ -150,9 +155,11 @@
             if (_api.settings.allowFractional) {
                 _api.external.$.rates.each(function(rateIndex) {
                     var $fractionalRate = $(this).before(_api.html.base).prev();
+
                     $fractionalRate.toggleClass(_api.css.base, true);
                     $fractionalRate.toggleClass(_api.css.fractional, true);
                     $fractionalRate.toggleClass(_api.css.selected, true);
+
                     if (_api.css.values.selected.length == _api.values.list.length && _api.css.values.unselected.length == _api.values.list.length) {
                         $fractionalRate.toggleClass(_api.css.values.selected[rateIndex]);
                     }
@@ -166,9 +173,7 @@
                     }
                 });
             }
-
             _api.external.$.fractional = _api.external.$.element.find("." + _api.css.fractional);
-
             _api.storeValue(_api.values.initial);
             this._awesomeRatingApi = _api.external;
         });
