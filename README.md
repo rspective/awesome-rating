@@ -9,9 +9,9 @@ The plugin requires a **jQuery**  and it's recommended to use the latest one, al
 **The requirements**:
 
 - jQuery
-- AngularJS (* when using AngularJS)
-- KnockoutJS (* when using KnockoutJS)
-- FontAwesome (* when using standard configuration)
+- *AngularJS (when using AngularJS)
+- *KnockoutJS (when using KnockoutJS)
+- *FontAwesome (when using standard configuration)
 
 Installation
 --------------

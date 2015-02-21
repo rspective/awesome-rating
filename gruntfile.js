@@ -8,6 +8,7 @@ module.exports = function (grunt) {
             },
             library : {
                 files: {
+                    'dist/awesomeRating.css': ['src/awesomeRating.css'],
                     'dist/awesomeRating.js': ['src/awesomeRating.js'],
                     'dist/awesomeRating.angular.js': ['src/awesomeRating.js', 'src/awesomeRating.angular.directive.js'],
                     'dist/awesomeRating.knockout.js': ['src/awesomeRating.js', 'src/awesomeRating.knockout.binding.js']
