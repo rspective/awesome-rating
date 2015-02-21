@@ -6,6 +6,13 @@ Awesome-rating is a jQuery plugin that allows you to use simple, but flexible ra
 
 The plugin requires a **jQuery**  and it's recommended to use the latest one, although only basic methods were used (see Advanced Usage for more details). In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
 
+**The requirements**:
+
+- jQuery
+- AngularJS (* when using AngularJS)
+- KnockoutJS (* when using KnockoutJS)
+- FontAwesome (* when using standard configuration)
+
 Installation
 --------------
 
