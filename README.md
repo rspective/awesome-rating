@@ -32,7 +32,7 @@ TODO: Describe
 Default Configuration
 --------------
 
-The default configuration is provided as global settings for the plugin. You can easily change them globally (for every usege on your page) or pass an object (with same properties' names) to awesomeRating method to change them locally for single usage.
+The default configuration is provided as global settings for the plugin. You can easily change it globally (for every usage on your page) or pass as an object (with same properties' names) to awesomeRating method to change it locally for single usage.
 
 ###Options
 
