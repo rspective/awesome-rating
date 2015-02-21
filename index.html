@@ -17,7 +17,12 @@
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
         <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
-
+        <script type="text/javascript" >
+            (function($) {
+                $.fn.awesomeRating.defaults.cssValuesSelected = [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ];
+                $.fn.awesomeRating.defaults.cssValuesUnselected = [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ];
+            })(jQuery);
+        </script>
         <script type="text/javascript">
             $(function() {
                 var jqueryExampleInitial = $("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });
