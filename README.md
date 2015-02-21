@@ -59,7 +59,7 @@ The default configuration is provided as global settings for the plugin. You can
 Options meaning is as follows:
 
 - **values**: values that is set after user makes selection; The type doesn't matter, you easily pass here a string array
-- **valueInitial**: a value that is selected initialy, should correspond to the values in above array
+- **valueInitial**: a value that is selected initially, should correspond to the values in above array; Can be different when fractional values are allowed
 - **cssBase**: a base CSS class that is applied to every html element
 - **cssBaseSelected**: a CSS class that is be applied to selected element
 - **cssBaseUnselected**: a CSS class that is applied to unselected element
