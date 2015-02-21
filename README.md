@@ -86,8 +86,6 @@ Options meaning is as follows:
 ###CSS
 
     .rating-star { color: lightgrey; cursor: pointer; }
-    .rating-star.first-selected { color: #CA5252; }
-    .rating-star.first-unselected { color: lightgrey; }
     .rating-star-hover { opacity: 0.6; }
     .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
 
