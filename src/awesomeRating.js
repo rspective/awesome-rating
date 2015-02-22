@@ -2,7 +2,6 @@
 //     http://bandraszyk.github.io/awesome-rating/
 //     (c) 2015 Bandro
 //     Awesome Rating may be freely distributed under the MIT license.
-
 (function($) {
     $.fn.awesomeRating = function(options) {
         // Basic operations

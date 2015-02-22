@@ -204,17 +204,17 @@
 			var value = valueAccessor();
 
 			if (!ko.isObservable(value)) { throw new Error("The value must be an observable."); }
-			
+
 			var valueUnwrapped = ko.unwrap(value);
 			var options = allBindings.get("awesomeRatingOptions") || {};
 			options.valueInitial = valueUnwrapped;
-			
+
 			$(element).awesomeRating(options)
 				.on("rated", function(event, rate) {
 					value(rate);
 				});
 		},
-		
+
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 			var value = valueAccessor();
 			var valueUnwrapped = ko.unwrap(value);

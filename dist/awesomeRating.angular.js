@@ -198,25 +198,27 @@
         eventName           : "rated"
     };
 }(jQuery));
-angular.module('awesome-rating', []).directive('awesomeRating', ['$timeout', function($timeout) {
-    return {
-        restrict: 'A',
-        scope: {
-            awesomeRating: '=',
-            awesomeRatingOptions: '@'
-        },
-        link: function($scope, element) {
-            var options = ($scope.awesomeRatingOptions && JSON.parse($scope.awesomeRatingOptions)) || { };
-            options.valueInitial = $scope.awesomeRating;
-            $element = $(element).awesomeRating(options)
-                .on('rated', function(event, rate){
-                    $timeout(function() {
-                        $scope.awesomeRating = rate;
+(function($) {
+    angular.module('awesome-rating', []).directive('awesomeRating', ['$timeout', function($timeout) {
+        return {
+            restrict: 'A',
+            scope: {
+                awesomeRating: '=',
+                awesomeRatingOptions: '@'
+            },
+            link: function($scope, element) {
+                var options = ($scope.awesomeRatingOptions && JSON.parse($scope.awesomeRatingOptions)) || { };
+                options.valueInitial = $scope.awesomeRating;
+                $element = $(element).awesomeRating(options)
+                    .on('rated', function(event, rate){
+                        $timeout(function() {
+                            $scope.awesomeRating = rate;
+                        });
                     });
-                });
-            $scope.$watch('awesomeRating', function(value){
-                $element.each(function() { this._awesomeRatingApi.val(value); });
-            })
-        }
-    };
-}]);
+                $scope.$watch('awesomeRating', function(value){
+                    $element.each(function() { this._awesomeRatingApi.val(value); });
+                })
+            }
+        };
+    }]);
+})(jQuery);

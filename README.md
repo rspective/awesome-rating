@@ -97,7 +97,7 @@ TODO: Add correct link here.
 [Annotated source](https://github.com/bandraszyk/awesome-rating)
 
 
-Demo page
+Live Demo
 --------------
 
 Please, feel free to visit [Demo Page](http://bandraszyk.github.io/awesome-rating/) to check how the library can be useful for you.

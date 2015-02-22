@@ -6,17 +6,17 @@
 			var value = valueAccessor();
 
 			if (!ko.isObservable(value)) { throw new Error("The value must be an observable."); }
-			
+
 			var valueUnwrapped = ko.unwrap(value);
 			var options = allBindings.get("awesomeRatingOptions") || {};
 			options.valueInitial = valueUnwrapped;
-			
+
 			$(element).awesomeRating(options)
 				.on("rated", function(event, rate) {
 					value(rate);
 				});
 		},
-		
+
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 			// This will be called once when the binding is first applied to an element,
 			// and again whenever any observables/computeds that are accessed change
