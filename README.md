@@ -92,9 +92,7 @@ Options meaning is as follows:
 Advanced usage
 --------------
 
-TODO: Add correct link here.
-
-[Annotated source](https://github.com/bandraszyk/awesome-rating)
+[Annotated source](http://bandraszyk.github.io/awesome-rating/docs/awesomeRating.html)
 
 
 Live Demo
