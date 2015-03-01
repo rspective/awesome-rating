@@ -98,18 +98,6 @@ Always remember to place scripts tags before calling plugin:
 		});
 	</script>
 
-
-###CSS
-
-The base CSS is as follows:
-
-    .rating-star { color: lightgrey; cursor: pointer; }
-    .rating-star.fa-star { color: #FDD05B; }
-    .rating-star-hover { opacity: 0.6; }
-    .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
-
-It's included in the package, but as you can see the content is pretty simple so making adjustments is a piece of cake. Please remember to and links to Font Awesome if you decided to use the default configuration.
-
 Default Configuration
 --------------
 
@@ -156,6 +144,17 @@ Options meaning is as follows:
 - **allowFractional**: indicates whether fractional values can be displayed with the use of the plugin
 - **calculateFractional**: a special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue from values array as second one.
 - **eventName**: an event name that is fired when user changes rating value
+
+###CSS
+
+The base CSS is as follows:
+
+    .rating-star { color: lightgrey; cursor: pointer; }
+    .rating-star.fa-star { color: #FDD05B; }
+    .rating-star-hover { opacity: 0.6; }
+    .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+
+It's included in the package, but as you can see the content is pretty simple so making adjustments is a piece of cake. Please remember to and links to Font Awesome if you decided to use the default configuration.
 
 Advanced usage
 --------------
