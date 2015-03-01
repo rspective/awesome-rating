@@ -17,7 +17,7 @@
                         });
                     });
                 // Apply external changes
-                $scope.$watch('awesomeRating', function(value){
+                $scope.$watch($scope.awesomeRating, function(value){
                     $element.each(function() { this._awesomeRatingApi.val(value); });
                 })
             }
