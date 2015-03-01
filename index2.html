@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <title>Awesome-rating by bandraszyk</title>
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/awesomeRating.css">
+        <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="javascripts/scale.fix.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <script type="text/javascript" src="javascripts/awesomeRating-angular.min.js"></script>
+        <script type="text/javascript" >
+            (function($) {
+                $.fn.awesomeRating.defaults.cssValuesSelected = [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected" ];
+                $.fn.awesomeRating.defaults.cssValuesUnselected = [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected" ];
+            })(jQuery);
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                var jqueryExampleInitial = $("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });
+                var jqueryExampleIcons = $("p.jquery-example-icons").awesomeRating({ valueInitial: 2, cssBaseSelected: "fa-arrow-circle-o-right", cssBaseUnselected : "fa-arrow-circle-o-left" });
+                var jqueryExampleTarget = $("p.jquery-example-target").awesomeRating({ valueInitial: 3, targetSelector: "span.jquery-example-target" });
+                var jqueryExampleEventRated = $("p.jquery-example-event-rated")
+                    .on("rated", function(event, rate) {
+                        $("span.jquery-example-event-rated").text(rate);
+                    })
+                    .awesomeRating({ valueInitial: 5 });
+                var jqueryExampleEventMouse = $("p.jquery-example-event-mouse").awesomeRating({
+                    valueInitial: 1,
+                    htmlEvent : "mouseenter",
+                    targetSelector: "span.jquery-example-event-mouse"
+                });
+                var jqueryExampleValues = $("p.jquery-example-values").awesomeRating({
+                    valueInitial: "Third",
+                    values: [ "First", "Second", "Third", "Forth", "Fifth" ],
+                    targetSelector: "span.jquery-example-values"
+                });
+                var jqueryExampleCss = $("p.jquery-example-css").awesomeRating({
+                    valueInitial: 11,
+                    values: [1, 3, 5, 7, 9 , 11, 13],
+                    cssValuesSelected : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected", "sixth-selected", "seventh-selected" ],
+                    cssValuesUnselected: [ "first-unselected", "second-unselected", "third-unselected", "forth-unselected", "fifth-unselected", "sixth-unselected", "seventh-unselected" ],
+                    targetSelector: "span.jquery-example-css"
+                });
+                var jqueryExampleSingleCss = $("p.jquery-example-single-css").awesomeRating({
+                    valueInitial: 9,
+                    values: [1, 3, 5, 7, 9 , 11, 13],
+                    cssBaseSelected     : "fa-star third-selected",
+                    cssBaseUnselected   : "fa-star-o third-unselected",
+                    cssValuesSelected : [],
+                    cssValuesUnselected: [],
+                    targetSelector: "span.jquery-example-single-css"
+                });
+                var jqueryExampleDisableHoverCss = $("p.jquery-example-disable-hover-css").awesomeRating({
+                    applyHoverCss : false,
+                    valueInitial: 4,
+                    targetSelector: "span.jquery-example-disable-hover-css"
+                });
+                var jqueryExampleAllowFractional = $("p.jquery-example-allow-fractional").awesomeRating({
+                    allowFractional : true,
+                    valueInitial: 2.6,
+                    targetSelector: "span.jquery-example-allow-fractional"
+                });
+                var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
+                    valueMin: 10,
+                    valueStep: 1.5,
+                    valueMax: 20.5,
+                    valueInitial: 17.5,
+                    cssBaseSelected     : "fa-star third-selected",
+                    cssBaseUnselected   : "fa-star-o third-unselected",
+                    targetSelector      : "span.jquery-example-min-max"
+                });
+                var jqueryExampleMinMaxFractional = $("p.jquery-example-min-max-fractional").awesomeRating({
+                    valueMin: 10,
+                    valueStep: 1.5,
+                    valueMax: 20.5,
+                    valueInitial: 16.75,
+                    cssBaseSelected     : "fa-star third-selected",
+                    cssBaseUnselected   : "fa-star-o third-unselected",
+                    targetSelector      : "span.jquery-example-min-max-fractional",
+                    allowFractional     : true,
+                    calculateFractional : function(current, rate) {
+                        return 1 - ((rate - current) / 1.5);
+                    }
+                });
+                var jqueryExampleComplex = $("p.jquery-example-complex").awesomeRating({
+                    valueInitial: "CD",
+                    values: ["A", "B", "C", "D", "E"],
+                    cssBaseSelected     : " ",
+                    cssBaseUnselected   : " ",
+                    cssValuesSelected : [
+                        "fa-check-square first-selected",
+                        "fa-heart second-selected",
+                        "fa-envelope third-selected",
+                        "fa-comment forth-selected",
+                        "fa-circle fifth-selected" ],
+                    cssValuesUnselected: [
+                        "fa-check-square-o first-unselected",
+                        "fa-heart-o second-unselected",
+                        "fa-envelope-o third-unselected",
+                        "fa-comment-o forth-unselected",
+                        "fa-circle-o fifth-unselected" ],
+                    targetSelector: "span.jquery-example-complex",
+                    allowFractional: true,
+                    calculateFractional: function(current, rate) {
+                        if (current.indexOf(rate) === 1) { return 0.5 };
+                        return 1;
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>Awesome-rating</h1>
+                <p></p>
+                <p class="view">
+                    <a href="https://github.com/bandraszyk/awesome-rating">View the Project on GitHub <small>bandraszyk/awesome-rating</small></a>
+                </p>
+
+                <ul>
+                    <li><a href="https://github.com/bandraszyk/awesome-rating/zipball/master">Download <strong>ZIP File</strong></a></li>
+                    <li><a href="https://github.com/bandraszyk/awesome-rating/tarball/master">Download <strong>TAR Ball</strong></a></li>
+                    <li><a href="https://github.com/bandraszyk/awesome-rating">View On <strong>GitHub</strong></a></li>
+                </ul>
+            </header>
+            <section>
+                <h3>
+                    <a id="jquery-example-initial" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Specify Initial Value
+                </h3>
+<pre><code>$("p.jquery-example-initial").awesomeRating({ valueInitial: 4 });</code></pre>
+                <p class="jquery-example-initial"></p>
+                <h3>
+                    <a id="jquery-example-simple" class="anchor" href="#jquery-example-simple" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Set Custom Icons
+                </h3>
+<pre><code>$("p.jquery-example-icons").awesomeRating({
+    valueInitial: 2,
+    cssBaseSelected: "fa-arrow-circle-o-right",
+    cssBaseUnselected : "fa-arrow-circle-o-left"
+});</code></pre>
+                <p class="jquery-example-icons"></p>
+                <h3>
+                    <a id="jquery-example-target" class="anchor" href="#jquery-example-target" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Specify Target Element
+                </h3>
+<pre><code>$("p.jquery-example-target").awesomeRating({
+    valueInitial: 3,
+    targetSelector: "span.jquery-example-target"
+});</code></pre>
+                <p class="jquery-example-target"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-target"></span>
+                </p>
+                <h3>
+                    <a id="jquery-example-event-rated" class="anchor" href="#jquery-example-event-rated" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use 'Rated' Event
+                </h3>
+<pre><code>$("p.jquery-example-event-rated")
+    .on("rated", function(event, rate) {
+        $("span.jquery-example-event-rated").text(rate);
+    })
+    .awesomeRating({ valueInitial: 5 });</code></pre>
+                <p class="jquery-example-event-rated"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-event-rated"></span>
+                </p>
+                <h3>
+                    <a id="jquery-example-event-mouse" class="anchor" href="#jquery-example-event-mouse" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Change User Event
+                </h3>
+<pre><code>$("p.jquery-example-event-mouse").awesomeRating({
+    valueInitial: 1,
+    htmlEvent : "mouseenter",
+    targetSelector: "span.jquery-example-event-mouse"
+});</code></pre>
+                <p class="jquery-example-event-mouse"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-event-mouse"></span>
+                </p>
+                <h3>
+                    <a id="jquery-example-values" class="anchor" href="#jquery-example-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Specify Custom Values
+                </h3>
+<pre><code>$("p.jquery-example-values").awesomeRating({
+    valueInitial: "Third",
+    values: ["First", "Second", "Third", "Forth", "Fifth"],
+    targetSelector: "span.jquery-example-values"
+});</code></pre>
+                <p class="jquery-example-values"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-values"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-single-css" class="anchor" href="#jquery-example-single-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use Single Color
+                </h3>
+<pre><code>$("p.jquery-example-single-css").awesomeRating({
+    valueInitial: 9,
+    values: [1, 3, 5, 7, 9 , 11, 13],
+    cssBaseSelected     : "fa-star third-selected",
+    cssBaseUnselected   : "fa-star-o third-unselected",
+    cssValuesSelected : [],
+    cssValuesUnselected: [],
+    targetSelector: "span.jquery-example-single-css"
+    });</code></pre>
+                <p class="jquery-example-single-css"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-single-css"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-css" class="anchor" href="#jquery-example-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use complex styling
+                </h3>
+<pre><code>$("p.jquery-example-css").awesomeRating({
+    valueInitial: 11,
+    values: [1, 3, 5, 7, 9 , 11, 13],
+    cssValuesSelected : [ "first-selected", "second-selected", "third-selected", "forth-selected", "fifth-selected", "sixth-selected", "seventh-selected" ],
+    cssValuesUnselected: [ "first-unselected", "second-unselected", 'third-unselected', "forth-unselected", "fifth-unselected", "sixth-unselected", "seventh-unselected" ],
+    targetSelector: "span.jquery-example-css"
+});</code></pre>
+                <p class="jquery-example-css"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-css"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-disable-hover-css" class="anchor" href="#jquery-example-disable-hover-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Disable Hover Css
+                </h3>
+<pre><code>$("p.jquery-example-disable-hover-css").awesomeRating({
+    applyHoverCss : false,
+    valueInitial: 4,
+    targetSelector: "span.jquery-example-disable-hover-css"
+});</code></pre>
+                <p class="jquery-example-disable-hover-css"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-disable-hover-css"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-allow-fractional" class="anchor" href="#jquery-example-allow-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Allow fractional rating
+                </h3>
+<pre><code>var jqueryExampleAllowFractional = $("p.jquery-example-allow-fractional").awesomeRating({
+    allowFractional : true,
+    valueInitial: 2.6,
+    targetSelector: "span.jquery-example-allow-fractional"
+});</code></pre>
+                <p class="jquery-example-allow-fractional"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-allow-fractional"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-min-max" class="anchor" href="#jquery-example-min-max" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use min & max & step to auto-generate values
+                </h3>
+<pre><code>var jqueryExampleMinMax = $("p.jquery-example-min-max").awesomeRating({
+    valueMin: 10,
+    valueStep: 1.5,
+    valueMax: 20.5,
+    valueInitial: 17.5,
+    cssBaseSelected     : "fa-star third-selected",
+    cssBaseUnselected   : "fa-star-o third-unselected",
+    targetSelector      : "span.jquery-example-min-max"
+});</code></pre>
+                <p class="jquery-example-min-max"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-min-max"></span>
+                </p>
+
+                <h3>
+                    <a id="jquery-example-min-max-fractional" class="anchor" href="#jquery-example-min-max-fractional" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+                    (jQuery) Use min & max & step with fractional values
+                </h3>
+<pre><code>var jqueryExampleMinMaxFractional = $("p.jquery-example-min-max-fractional").awesomeRating({
+    valueMin: 10,
+    valueStep: 1.5,
+    valueMax: 20.5,
+    valueInitial: 17.5,
+    cssBaseSelected     : "fa-star third-selected",
+    cssBaseUnselected   : "fa-star-o third-unselected",
+    targetSelector      : "span.jquery-example-min-max-fractional",
+    allowFractional     : true,
+    calculateFractional : function(current, rate) {
+        return 1 - ((rate - current) / 1.5);
+    }
+    });</code></pre>
+                <p class="jquery-example-min-max-fractional"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-min-max-fractional"></span>
+                </p>
+
+                <h3>
+                    (jQuery) Use Custom Values with fractional values allowed and complex CSS, including custom icons
+                </h3>
+                <pre><code>var jqueryExampleComplex = $("p.jquery-example-complex").awesomeRating({
+    valueInitial: "CD",
+    values: ["A", "B", "C", "D", "E"],
+    cssBaseSelected     : " ",
+    cssBaseUnselected   : " ",
+    cssValuesSelected : [
+        "fa-check-square first-selected",
+        "fa-heart second-selected",
+        "fa-envelope third-selected",
+        "fa-comment forth-selected",
+        "fa-circle fifth-selected" ],
+    cssValuesUnselected: [
+        "fa-check-square-o first-unselected",
+        "fa-heart-o second-unselected",
+        "fa-envelope-o third-unselected",
+        "fa-comment-o forth-unselected",
+        "fa-circle-o fifth-unselected" ],
+    targetSelector: "span.jquery-example-complex",
+    allowFractional: true,
+    calculateFractional: function(current, rate) {
+        if (current.indexOf(rate) === 1) { return 0.5 };
+    return 1;
+    }
+    });</code></pre>
+                <p class="jquery-example-complex"></p>
+                <p>
+                    <span>Value:</span>&nbsp;<span class="jquery-example-complex"></span>
+                </p>
+
+                <h3>
+                    (Configuration) CSS
+                </h3>
+<pre><code>.rating-star { color: lightgrey; cursor: pointer; }
+.rating-star.first-selected { color: #CA5252; }
+.rating-star.first-unselected { color: lightgrey; }
+.rating-star.second-selected { color: #E59257; }
+.rating-star.second-unselected { color: lightgrey; }
+.rating-star.third-selected { color: #FDD05B; }
+.rating-star.third-unselected { color: lightgrey; }
+.rating-star.forth-selected { color: #8DBE5E; }
+.rating-star.forth-unselected { color: lightgrey; }
+.rating-star.fifth-selected { color: #2CAF61; }
+.rating-star.fifth-unselected { color: lightgrey; }
+.rating-star.sixth-selected { color: #5E97B6; }
+.rating-star.sixth-unselected { color: lightgrey; }
+.rating-star.seventh-selected { color: #8286F2; }
+.rating-star.seventh-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+</code></pre>
+            </section>
+            <footer>
+                <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>
+                <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+            </footer>
+        </div>
+    </body>
+</html>
