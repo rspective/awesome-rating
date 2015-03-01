@@ -70,6 +70,9 @@
                     <li>
                         <a href="#knockoutjs">KnockoutJS</a>
                     </li>
+                    <li>
+                        <a href="#cssconfiguration">CSS configuration</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -588,6 +591,43 @@ ko.applyBindings(model, $(".knockoutjsFractional")[0]);
                                 ko.applyBindings(model, $(".knockoutjsFractional")[0]);
                             });
                         </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr id="cssconfiguration" />
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>CSS configuration</h2>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+<pre class="text-left">
+.rating-star { color: lightgrey; cursor: pointer; }
+.rating-star.fa.fa-star { color: #FDD05B; }
+.rating-star.first-selected { color: #CA5252; }
+.rating-star.first-unselected { color: lightgrey; }
+.rating-star.second-selected { color: #E59257; }
+.rating-star.second-unselected { color: lightgrey; }
+.rating-star.third-selected { color: #FDD05B; }
+.rating-star.third-unselected { color: lightgrey; }
+.rating-star.forth-selected { color: #8DBE5E; }
+.rating-star.forth-unselected { color: lightgrey; }
+.rating-star.fifth-selected { color: #2CAF61; }
+.rating-star.fifth-unselected { color: lightgrey; }
+.rating-star.sixth-selected { color: #5E97B6; }
+.rating-star.sixth-unselected { color: lightgrey; }
+.rating-star.seventh-selected { color: #8286F2; }
+.rating-star.seventh-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
+.rating-star-hover-transparent { opacity: 0.2; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+</pre>
                     </div>
                 </div>
             </div>
