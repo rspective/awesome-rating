@@ -1,0 +1,17 @@
+html, body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+div.awesomeRating {
+	font-size: 4em;
+	padding: 1em 0em;
+	text-align: center;
+}
+
+div.awesomeRatingValue {
+	font-size: 2em;
+	padding: 1em 0em;
+	text-align: center;
+}

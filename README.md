@@ -1,4 +1,3 @@
-
 [Awesome Rating v1.0.0](http://bandraszyk.github.io/awesome-rating/)
 ==============
 
@@ -6,12 +5,16 @@ Awesome-rating is a jQuery plugin that allows you to use simple, but flexible ra
 
 The plugin requires a **jQuery**  and it's recommended to use the latest one, although only basic methods were used (see Advanced Usage for more details). In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
 
-Required dependencies:
+###Required dependencies:
 
 - jQuery
 - *AngularJS (when using AngularJS)
 - *KnockoutJS (when using KnockoutJS)
 - *FontAwesome (when using standard configuration)
+
+###In action:
+
+![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating.png)
 
 Installation
 --------------
@@ -21,20 +24,81 @@ TODO: Register package
 Basic usage
 --------------
 
+###Scripts:
+
+Always remember to place scripts tags before calling plugin:
+
+    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+
+	<!-- JQuery --> <script type="text/javascript" src="dist/awesomeRating.min.js"></script>
+
+	<!-- KnockouJS --><script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+	<!-- KnockouJS --><script type="text/javascript" src="dist/awesomerating.knockout.min.js"></script>
+
+	<!-- AngularJS --><script type="text/javascript" src="js/angular.min.js"></script>
+	<!-- AngularJS --><script type="text/javascript" src="dist/awesomerating.angular.min.js"></script>
+
+
 ###jQuery:
 
-    <div class="awesome-rating"></div>
-    <script>
-        $(".awesome-rating").awesomeRating({ valueInitial: 4 });
+    <div class="awesomeRating"></div>
+    <div class="awesomeRatingValue">
+        <span>Rating value:</span>&nbsp;<span class="awesomeRatingValue"></span>
+    </div>
+    <script type="text/javascript">
+        $('.awesomeRating').awesomeRating({
+            valueInitial: "D",
+            values: ["A", "B", "C", "D", "E"],
+            targetSelector: "span.awesomeRatingValue"
+        });
     </script>
 
 ###AngularJS:
 
-TODO: Describe
+    <div class="awesomeRating" awesome-rating="rating" awesome-rating-options="options"></div>
+	<div class="awesomeRatingValue">
+		<span class="awesomeRatingValue" ng-bind="'Rating value: ' + rating"></span>
+	</div>
+	<script type="text/javascript">
+		angular.module("ratingApp", ["awesome-rating"])
+			.controller("RatingController", function($scope) {
+				$scope.rating = "D";
+				$scope.options = {
+					values : [ "A", "B", "C", "D", "E"]
+				};
+			});
+	</script>
 
 ###KnockoutJS:
 
-TODO: Describe
+    <div class="awesomeRating" data-bind=" awesomeRating: rating, awesomeRatingOptions: options"></div>
+	<div class="awesomeRatingValue">
+		<span class="awesomeRatingValue" data-bind="text: 'Rating value: ' + rating()"></span>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			var model = {
+				rating : ko.observable("D"),
+				options : {
+					values: ["A", "B", "C", "D", "E"]
+				}
+			};
+
+			ko.applyBindings(model);
+		});
+	</script>
+
+
+###CSS
+
+The base CSS is as follows:
+
+    .rating-star { color: lightgrey; cursor: pointer; }
+    .rating-star.fa-star { color: #FDD05B; }
+    .rating-star-hover { opacity: 0.6; }
+    .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
+
+It's included in the package, but as you can see the content is pretty simple so making adjustments is a piece of cake. Please remember to and links to Font Awesome if you decided to use the default configuration.
 
 Default Configuration
 --------------
@@ -82,12 +146,6 @@ Options meaning is as follows:
 - **allowFractional**: indicates whether fractional values can be displayed with the use of the plugin
 - **calculateFractional**: a special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue from values array as second one.
 - **eventName**: an event name that is fired when user changes rating value
-
-###CSS
-
-    .rating-star { color: lightgrey; cursor: pointer; }
-    .rating-star-hover { opacity: 0.6; }
-    .rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
 
 Advanced usage
 --------------

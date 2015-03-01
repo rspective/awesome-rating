@@ -4,11 +4,10 @@
             restrict: 'A',
             scope: {
                 awesomeRating: '=',
-                awesomeRatingOptions: '@'
+                awesomeRatingOptions: '='
             },
             link: function($scope, element) {
-                // Initialize the options
-                var options = ($scope.awesomeRatingOptions && JSON.parse($scope.awesomeRatingOptions)) || { };
+                var options = $scope.awesomeRatingOptions || {};
                 options.valueInitial = $scope.awesomeRating;
                 // Apply jquery plugin
                 $element = $(element).awesomeRating(options)

@@ -1,0 +1,31 @@
+
+<!-- saved from url=(0048)file:///Users/Bandro/Desktop/tests/knockout.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Awesome Rating - KnockoutJS Sample</title>
+    <link href="./Awesome Rating - KnockoutJS Sample_files/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="./Awesome Rating - KnockoutJS Sample_files/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="./Awesome Rating - KnockoutJS Sample_files/awesomerating.min.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+	<div class="awesomeRating" data-bind=" awesomeRating: rating, awesomeRatingOptions: options"><div class="rating-star fa fa-star"></div><div class="rating-star fa fa-star"></div><div class="rating-star fa fa-star"></div><div class="rating-star fa fa-star"></div><div class="rating-star fa fa-star"></div></div>
+	<div class="awesomeRatingValue">
+		<span class="awesomeRatingValue" data-bind="text: &#39;Value: &#39; + rating()">Value: E</span>
+	</div>
+	<script type="text/javascript" src="./Awesome Rating - KnockoutJS Sample_files/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="./Awesome Rating - KnockoutJS Sample_files/knockout-3.1.0.js"></script>
+	<script type="text/javascript" src="./Awesome Rating - KnockoutJS Sample_files/awesomerating.knockout.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var model = {
+				rating : ko.observable("D"),
+				options : {
+					values: ["A", "B", "C", "D", "E"],
+					targetSelector: 'span.awesomeRatingValue'
+				}
+			};
+
+			ko.applyBindings(model);
+		});
+	</script>
+
+</body></html>

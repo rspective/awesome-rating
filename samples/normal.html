@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Awesome Rating - JQuery Sample</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="dist/awesomerating.min.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<div class="awesomeRating"></div>
+	<div class="awesomeRatingValue">
+		<span>Rating value:</span>&nbsp;<span class="awesomeRatingValue"></span>
+	</div>
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="dist/awesomeRating.min.js"></script>
+	<script type="text/javascript">
+		$('.awesomeRating').awesomeRating({
+			valueInitial: "D",
+			values: ["A", "B", "C", "D", "E"],
+			targetSelector: "span.awesomeRatingValue"
+		});
+	</script>
+</body>
+</html>

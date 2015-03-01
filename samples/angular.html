@@ -1,0 +1,26 @@
+<html ng-app="ratingApp">
+<head>
+	<title>Awesome Rating - AngularJS Sample</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="dist/awesomerating.min.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body ng-controller="RatingController">
+	<div class="awesomeRating" awesome-rating="rating" awesome-rating-options="options"></div>
+	<div class="awesomeRatingValue">
+		<span class="awesomeRatingValue" ng-bind="'Rating value: ' + rating"></span>
+	</div>
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="dist/awesomerating.angular.js"></script>
+	<script type="text/javascript">
+		angular.module("ratingApp", ["awesome-rating"])
+			.controller("RatingController", function($scope) {
+				$scope.rating = "D";
+				$scope.options = {
+					values : [ "A", "B", "C", "D", "E"]
+				};
+			});
+	</script>
+</body>
+</html>
