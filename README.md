@@ -153,7 +153,7 @@ Advanced usage
 [Annotated source](http://bandraszyk.github.io/awesome-rating/docs/awesomeRating.html)
 
 
-Live Demo
+Demo
 --------------
 
 Please, feel free to visit [Demo Page](http://bandraszyk.github.io/awesome-rating/) to check how the library can be useful for you.
