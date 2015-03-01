@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ratingApp">
 
 <head>
 
@@ -9,21 +9,35 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>Awesome Rating - JQuery plugin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link href="stylesheets/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/heroic-features.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+    <!-- Awesome Rating CSS -->
+    <link href="stylesheets/awesomeRating.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="javascripts/jquery.js"></script>
+
+    <!-- AngularJS -->
+    <script src="javascripts/angular.min.js"></script>
+
+    <!-- KnockoutJS -->
+    <script src="javascripts/knockout.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -39,19 +53,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Awesome Rating</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#jquery">JQuery</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#angularjs">AngularJS</a>
+                    </li>
+                    <li>
+                        <a href="#knockoutjs">KnockoutJS</a>
                     </li>
                 </ul>
             </div>
@@ -64,80 +81,532 @@
     <div class="container">
 
         <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>A Warm Welcome!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-            <p><a class="btn btn-primary btn-large">Call to action!</a>
-            </p>
+        <header class="jumbotron hero-spacer" id="about">
+            <h1>Awesome Rating</h1>
+            <div class="links">
+                <a href="https://github.com/bandraszyk/awesome-rating/zipball/master">
+                    <button type="button" class="btn btn-default"><i class="fa fa-file-archive-o"></i> Download <strong>ZIP File</strong></button>
+                </a>
+
+                <a href="https://github.com/bandraszyk/awesome-rating/tarball/master">
+                    <button type="button" class="btn btn-default"><i class="fa fa-download"></i> Download <strong>TAR Ball</strong></button>
+                </a>
+
+                <a href="https://github.com/bandraszyk/awesome-rating" target="_blank">
+                    <button type="button" class="btn btn-default"><i class="fa fa-github"></i> View On <strong>GitHub</strong></button>
+                </a>
+            </div>
         </header>
 
-        <hr>
-
-        <!-- Title -->
+        <hr id="jquery" />
         <div class="row">
             <div class="col-lg-12">
-                <h3>Latest Features</h3>
+                <h2>JQuery</h2>
             </div>
         </div>
-        <!-- /.row -->
 
-        <!-- Page Features -->
+        <div class="row text-center">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Default configuration</h3>
+                        <div class="awesome-rating jqueryStandard"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryStandardValue"></span></p>
+<pre class="text-left">
+$(".jqueryStandard")
+    .awesomeRating({
+        valueInitial: 4,
+        targetSelector: "span.jqueryStandardValue"
+    });
+</pre>
+                        <script>
+                            $(function() {
+                                $(".jqueryStandard")
+                                        .awesomeRating({
+                                            valueInitial: 3,
+                                            targetSelector: "span.jqueryStandardValue"
+                                        });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Changing values</h3>
+                        <div class="awesome-rating jqueryValues"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryValuesValue"></span></p>
+<pre class="text-left">
+$(".jqueryValues")
+    .awesomeRating({
+        values: ["A", "B", "C", "D", "E", "F", "G"],
+        valueInitial: "D",
+        targetSelector: "span.jqueryValuesValue"
+    });
+</pre>
+                        <script>
+                            $(function() {
+                               $(".jqueryValues")
+                                   .awesomeRating({
+                                           values: ["A", "B", "C", "D", "E", "F", "G"],
+                                           valueInitial: "D",
+                                           targetSelector: "span.jqueryValuesValue"
+                                       });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row text-center">
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-md-6 col-sm-12 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
+                        <h3>CSS adjustments</h3>
+                        <div class="awesome-rating jqueryCSS"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryCSSValue"></span></p>
+<pre class="text-left">
+$(".jqueryCSS")
+    .awesomeRating({
+        cssBaseSelected     : "fa-check",
+        cssBaseUnselected   : "fa-minus",
+        cssValuesSelected : [
+            "first-selected",
+            "second-selected",
+            "third-selected",
+            "forth-selected",
+            "fifth-selected" ],
+        cssValuesUnselected: [
+            "first-unselected",
+            "second-unselected",
+            "third-unselected",
+            "forth-unselected",
+            "fifth-unselected" ],
+        cssHover: "rating-star-hover-transparent",
+        valueInitial: 1,
+        targetSelector: "span.jqueryCSSValue"
+    });
+</pre>
+                        <script>
+                            $(function() {
+                                $(".jqueryCSS")
+                                        .awesomeRating({
+                                            cssBaseSelected     : "fa-check",
+                                            cssBaseUnselected   : "fa-minus",
+                                            cssValuesSelected : [
+                                                "first-selected",
+                                                "second-selected",
+                                                "third-selected",
+                                                "forth-selected",
+                                                "fifth-selected" ],
+                                            cssValuesUnselected: [
+                                                "first-unselected",
+                                                "second-unselected",
+                                                "third-unselected",
+                                                "forth-unselected",
+                                                "fifth-unselected" ],
+                                            cssHover: "rating-star-hover-transparent",
+                                            valueInitial: 1,
+                                            targetSelector: "span.jqueryCSSValue"
+                                        });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-md-6 col-sm-12 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
+                        <h3>Fractional behaviour</h3>
+                        <div class="awesome-rating jqueryFractional"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryFractionalValue"></span></p>
+<pre class="text-left">
+$(".jqueryFractional")
+    .awesomeRating({
+        values: ["A", "B", "C", "D", "E", "F"],
+        valueInitial: "CD",
+        targetSelector: "span.jqueryFractionalValue",
+        allowFractional: true,
+        calculateFractional: function(current, rate) {
+            if (current.indexOf(rate) === 1) { return 0.4; }
+            return 1;
+        },
+        allowFractional: true,
+        readonly: true,
+        applyHoverCss: false
+    });
+</pre>
+                        <script>
+                            $(function() {
+                                $(".jqueryFractional")
+                                        .awesomeRating({
+                                            values: ["A", "B", "C", "D", "E", "F"],
+                                            valueInitial: "CD",
+                                            targetSelector: "span.jqueryFractionalValue",
+                                            allowFractional: true,
+                                            calculateFractional: function(current, rate) {
+                                                if (current.indexOf(rate) === 1) { return 0.4; }
+                                                return 1;
+                                            },
+                                            allowFractional: true,
+                                            readonly: true,
+                                            applyHoverCss: false
+                                        });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <!-- /.row -->
+
+        <hr id="angularjs" />
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>AngularJS</h2>
+            </div>
+        </div>
+
+        <script>
+            var ratingApp = angular.module("ratingApp", ["awesome-rating"]);
+        </script>
+
+        <div class="row text-center">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption" ng-controller="StandardController">
+                        <h3>Default configuration</h3>
+                        <div class="awesome-rating" awesome-rating="standard.rating"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="standard.rating"></span></p>
+<pre class="text-left">
+ratingApp.controller("StandardController", [ "$scope", function($scope) {
+    $scope.standard = {
+        rating: 4
+    };
+}]);
+</pre>
+                        <script>
+                            ratingApp.controller("StandardController", [ "$scope", function($scope) {
+                                $scope.standard = {
+                                    rating: 4
+                                };
+                            }]);
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption" ng-controller="ValuesController">
+                        <h3>Changing values</h3>
+                        <div class="awesome-rating" awesome-rating="values.rating" awesome-rating-options="values.options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="values.rating"></span></p>
+<pre class="text-left">
+ratingApp.controller("ValuesController", [ "$scope", function($scope) {
+    $scope.values = {
+        rating: "F",
+        options: {
+            values: ["A", "B", "C", "D", "E", "F", "G"]
+        }
+    };
+}]);
+</pre>
+                        <script>
+                            ratingApp.controller("ValuesController", [ "$scope", function($scope) {
+                                $scope.values = {
+                                    rating: "F",
+                                    options: {
+                                        values: ["A", "B", "C", "D", "E", "F", "G"]
+                                    }
+                                };
+                            }]);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>CSS adjustments</h3>
+                        <div class="awesome-rating jqueryCSS"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryCSSValue"></span></p>
+<pre class="text-left">
+$(".jqueryCSS")
+    .awesomeRating({
+        cssBaseSelected     : "fa-check",
+        cssBaseUnselected   : "fa-minus",
+        cssValuesSelected : [
+            "first-selected",
+            "second-selected",
+            "third-selected",
+            "forth-selected",
+            "fifth-selected" ],
+        cssValuesUnselected: [
+            "first-unselected",
+            "second-unselected",
+            "third-unselected",
+            "forth-unselected",
+            "fifth-unselected" ],
+        cssHover: "rating-star-hover-transparent",
+        valueInitial: 1,
+        targetSelector: "span.jqueryCSSValue"
+    });
+</pre>
+                        <script>
+                            $(function() {
+                                $(".jqueryCSS")
+                                        .awesomeRating({
+                                            cssBaseSelected     : "fa-check",
+                                            cssBaseUnselected   : "fa-minus",
+                                            cssValuesSelected : [
+                                                "first-selected",
+                                                "second-selected",
+                                                "third-selected",
+                                                "forth-selected",
+                                                "fifth-selected" ],
+                                            cssValuesUnselected: [
+                                                "first-unselected",
+                                                "second-unselected",
+                                                "third-unselected",
+                                                "forth-unselected",
+                                                "fifth-unselected" ],
+                                            cssHover: "rating-star-hover-transparent",
+                                            valueInitial: 1,
+                                            targetSelector: "span.jqueryCSSValue"
+                                        });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Fractional behaviour</h3>
+                        <div class="awesome-rating jqueryFractional"></div>
+                        <p>Rating value: <span class="awesome-rating-value jqueryFractionalValue"></span></p>
+<pre class="text-left">
+$(".jqueryFractional")
+    .awesomeRating({
+        values: ["A", "B", "C", "D", "E", "F"],
+        valueInitial: "CD",
+        targetSelector: "span.jqueryFractionalValue",
+        allowFractional: true,
+        calculateFractional: function(current, rate) {
+            if (current.indexOf(rate) === 1) { return 0.4; }
+            return 1;
+        },
+        allowFractional: true,
+        readonly: true,
+        applyHoverCss: false
+    });
+</pre>
+                        <script>
+                            $(function() {
+                                $(".jqueryFractional")
+                                        .awesomeRating({
+                                            values: ["A", "B", "C", "D", "E", "F"],
+                                            valueInitial: "CD",
+                                            targetSelector: "span.jqueryFractionalValue",
+                                            allowFractional: true,
+                                            calculateFractional: function(current, rate) {
+                                                if (current.indexOf(rate) === 1) { return 0.4; }
+                                                return 1;
+                                            },
+                                            allowFractional: true,
+                                            readonly: true,
+                                            applyHoverCss: false
+                                        });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr id="knockoutjs" />
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>KnockoutJS</h2>
+            </div>
+        </div>
+
+
+        <div class="row text-center">
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption knockoutjsStandard">
+                        <h3>Default configuration</h3>
+                        <div class="awesome-rating" data-bind="awesomeRating: rating"></div>
+                        <p>Rating value: <span class="awesome-rating-value knockoutjsStandardValue" data-bind="text: rating"></span></p>
+<pre class="text-left">
+var model = {
+    rating: ko.observable(2)
+};
+ko.applyBindings(model, $(".knockoutjsStandard")[0]);
+</pre>
+                        <script>
+                            $(function() {
+                                var model = {
+                                    rating: ko.observable(2)
+                                };
+                                ko.applyBindings(model, $(".knockoutjsStandard")[0]);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption knockoutjsValues">
+                        <h3>Changing values</h3>
+                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
+<pre class="text-left">
+var model = {
+    rating: ko.observable(2),
+    options: {
+        values: ["A", "B", "C", "D", "E", "F", "G"],
+        valueInitial: "D"
+    }
+};
+ko.applyBindings(model, $(".knockoutjsValues")[0]);
+</pre>
+                        <script>
+                            $(function() {
+                                var model = {
+                                    rating: ko.observable("C"),
+                                    options: {
+                                        values: ["A", "B", "C", "D", "E", "F", "G"]
+                                    }
+                                };
+                                ko.applyBindings(model, $(".knockoutjsValues")[0]);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption knockoutjsCSS">
+                        <h3>CSS adjustments</h3>
+                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
+<pre class="text-left">
+var model = {
+    rating: ko.observable(5),
+    options: {
+        cssBaseSelected     : "fa-check",
+        cssBaseUnselected   : "fa-minus",
+        cssValuesSelected : [
+            "first-selected",
+            "second-selected",
+            "third-selected",
+            "forth-selected",
+            "fifth-selected" ],
+        cssValuesUnselected: [
+            "first-unselected",
+            "second-unselected",
+            "third-unselected",
+            "forth-unselected",
+            "fifth-unselected" ],
+        cssHover: "rating-star-hover-transparent"
+    }
+};
+ko.applyBindings(model, $(".knockoutjsCSS")[0]);
+</pre>
+                        <script>
+                            $(function() {
+                                var model = {
+                                    rating: ko.observable(5),
+                                    options: {
+                                        cssBaseSelected     : "fa-check",
+                                        cssBaseUnselected   : "fa-minus",
+                                        cssValuesSelected : [
+                                            "first-selected",
+                                            "second-selected",
+                                            "third-selected",
+                                            "forth-selected",
+                                            "fifth-selected" ],
+                                        cssValuesUnselected: [
+                                            "first-unselected",
+                                            "second-unselected",
+                                            "third-unselected",
+                                            "forth-unselected",
+                                            "fifth-unselected" ],
+                                        cssHover: "rating-star-hover-transparent"
+                                    }
+                                };
+                                ko.applyBindings(model, $(".knockoutjsCSS")[0]);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption knockoutjsFractional">
+                        <h3>Fractional behaviour</h3>
+                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
+<pre class="text-left">
+var model = {
+    rating: ko.observable("CD"),
+    options: {
+        values: ["A", "B", "C", "D", "E", "F"],
+        allowFractional: true,
+        calculateFractional: function(current, rate) {
+            if (current.indexOf(rate) === 1) { return 0.7 };
+            return 1;
+        },
+        allowFractional: true,
+        readonly: true,
+        applyHoverCss: false
+    }
+};
+ko.applyBindings(model, $(".knockoutjsFractional")[0]);
+</pre>
+                        <script>
+                            $(function() {
+                                var model = {
+                                    rating: ko.observable("AB"),
+                                    options: {
+                                        values: ["A", "B", "C", "D", "E", "F"],
+                                        allowFractional: true,
+                                        calculateFractional: function(current, rate) {
+                                            if (current.indexOf(rate) === 1) { return 0.7 };
+                                            return 1;
+                                        },
+                                        allowFractional: true,
+                                        readonly: true,
+                                        applyHoverCss: false
+                                    }
+                                };
+                                ko.applyBindings(model, $(".knockoutjsFractional")[0]);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <hr>
 
@@ -145,7 +614,8 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>
+                    <p>Hosted on GitHub Pages</p>
                 </div>
             </div>
         </footer>
@@ -153,11 +623,13 @@
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <!-- Awesome Rating -->
+    <script src="javascripts/awesomeRating.min.js"></script>
+    <script src="javascripts/awesomeRating.angular.min.js"></script>
+    <script src="javascripts/awesomeRating.knockout.min.js"></script>
 
 </body>
 
