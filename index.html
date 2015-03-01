@@ -280,20 +280,16 @@ $(".jqueryFractional")
                 <div class="thumbnail">
                     <div class="caption" ng-controller="StandardController">
                         <h3>Default configuration</h3>
-                        <div class="awesome-rating" awesome-rating="standard.rating"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="standard.rating"></span></p>
+                        <div class="awesome-rating" awesome-rating="rating"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
 <pre class="text-left">
 ratingApp.controller("StandardController", [ "$scope", function($scope) {
-    $scope.standard = {
-        rating: 4
-    };
+    $scope.rating = 4;
 }]);
 </pre>
                         <script>
                             ratingApp.controller("StandardController", [ "$scope", function($scope) {
-                                $scope.standard = {
-                                    rating: 4
-                                };
+                                $scope.rating = 4;
                             }]);
                         </script>
                     </div>
@@ -304,25 +300,21 @@ ratingApp.controller("StandardController", [ "$scope", function($scope) {
                 <div class="thumbnail">
                     <div class="caption" ng-controller="ValuesController">
                         <h3>Changing values</h3>
-                        <div class="awesome-rating" awesome-rating="values.rating" awesome-rating-options="values.options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="values.rating"></span></p>
+                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
 <pre class="text-left">
 ratingApp.controller("ValuesController", [ "$scope", function($scope) {
-    $scope.values = {
-        rating: "F",
-        options: {
-            values: ["A", "B", "C", "D", "E", "F", "G"]
-        }
+    $scope.rating = "F";
+    $scope.options = {
+        values: ["A", "B", "C", "D", "E", "F", "G"]
     };
 }]);
 </pre>
                         <script>
                             ratingApp.controller("ValuesController", [ "$scope", function($scope) {
-                                $scope.values = {
-                                    rating: "F",
-                                    options: {
-                                        values: ["A", "B", "C", "D", "E", "F", "G"]
-                                    }
+                                $scope.rating = "B";
+                                $scope.options = {
+                                    values: ["A", "B", "C", "D", "E", "F", "G"]
                                 };
                             }]);
                         </script>
@@ -335,13 +327,14 @@ ratingApp.controller("ValuesController", [ "$scope", function($scope) {
 
             <div class="col-md-6 col-sm-12 hero-feature">
                 <div class="thumbnail">
-                    <div class="caption">
+                    <div class="caption" ng-controller="CSSController">
                         <h3>CSS adjustments</h3>
-                        <div class="awesome-rating jqueryCSS"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryCSSValue"></span></p>
+                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
 <pre class="text-left">
-$(".jqueryCSS")
-    .awesomeRating({
+ratingApp.controller("CSSController", [ "$scope", function($scope) {
+    $scope.rating = 4;
+    $scope.options = {
         cssBaseSelected     : "fa-check",
         cssBaseUnselected   : "fa-minus",
         cssValuesSelected : [
@@ -356,34 +349,31 @@ $(".jqueryCSS")
             "third-unselected",
             "forth-unselected",
             "fifth-unselected" ],
-        cssHover: "rating-star-hover-transparent",
-        valueInitial: 1,
-        targetSelector: "span.jqueryCSSValue"
-    });
+        cssHover: "rating-star-hover-transparent"
+    };
+}]);
 </pre>
                         <script>
-                            $(function() {
-                                $(".jqueryCSS")
-                                        .awesomeRating({
-                                            cssBaseSelected     : "fa-check",
-                                            cssBaseUnselected   : "fa-minus",
-                                            cssValuesSelected : [
-                                                "first-selected",
-                                                "second-selected",
-                                                "third-selected",
-                                                "forth-selected",
-                                                "fifth-selected" ],
-                                            cssValuesUnselected: [
-                                                "first-unselected",
-                                                "second-unselected",
-                                                "third-unselected",
-                                                "forth-unselected",
-                                                "fifth-unselected" ],
-                                            cssHover: "rating-star-hover-transparent",
-                                            valueInitial: 1,
-                                            targetSelector: "span.jqueryCSSValue"
-                                        });
-                            });
+                            ratingApp.controller("CSSController", [ "$scope", function($scope) {
+                                $scope.rating = 4;
+                                $scope.options = {
+                                    cssBaseSelected     : "fa-check",
+                                    cssBaseUnselected   : "fa-minus",
+                                    cssValuesSelected : [
+                                        "first-selected",
+                                        "second-selected",
+                                        "third-selected",
+                                        "forth-selected",
+                                        "fifth-selected" ],
+                                    cssValuesUnselected: [
+                                        "first-unselected",
+                                        "second-unselected",
+                                        "third-unselected",
+                                        "forth-unselected",
+                                        "fifth-unselected" ],
+                                    cssHover: "rating-star-hover-transparent"
+                                };
+                            }]);
                         </script>
                     </div>
                 </div>
@@ -391,17 +381,15 @@ $(".jqueryCSS")
 
             <div class="col-md-6 col-sm-12 hero-feature">
                 <div class="thumbnail">
-                    <div class="caption">
+                    <div class="caption" ng-controller="FractionalController">
                         <h3>Fractional behaviour</h3>
-                        <div class="awesome-rating jqueryFractional"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryFractionalValue"></span></p>
+                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
+                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
 <pre class="text-left">
-$(".jqueryFractional")
-    .awesomeRating({
+ratingApp.controller("FractionalController", [ "$scope", function($scope) {
+    $scope.rating = "EF";
+    $scope.options = {
         values: ["A", "B", "C", "D", "E", "F"],
-        valueInitial: "CD",
-        targetSelector: "span.jqueryFractionalValue",
-        allowFractional: true,
         calculateFractional: function(current, rate) {
             if (current.indexOf(rate) === 1) { return 0.4; }
             return 1;
@@ -409,25 +397,23 @@ $(".jqueryFractional")
         allowFractional: true,
         readonly: true,
         applyHoverCss: false
-    });
+    };
+}]);
 </pre>
                         <script>
-                            $(function() {
-                                $(".jqueryFractional")
-                                        .awesomeRating({
-                                            values: ["A", "B", "C", "D", "E", "F"],
-                                            valueInitial: "CD",
-                                            targetSelector: "span.jqueryFractionalValue",
-                                            allowFractional: true,
-                                            calculateFractional: function(current, rate) {
-                                                if (current.indexOf(rate) === 1) { return 0.4; }
-                                                return 1;
-                                            },
-                                            allowFractional: true,
-                                            readonly: true,
-                                            applyHoverCss: false
-                                        });
-                            });
+                            ratingApp.controller("FractionalController", [ "$scope", function($scope) {
+                                $scope.rating = "EF";
+                                $scope.options = {
+                                    values: ["A", "B", "C", "D", "E", "F"],
+                                    allowFractional: true,
+                                    calculateFractional: function(current, rate) {
+                                        if (current.indexOf(rate) === 1) { return 0.4; }
+                                        return 1;
+                                    },
+                                    readonly: true,
+                                    applyHoverCss: false
+                                };
+                            }]);
                         </script>
                     </div>
                 </div>
