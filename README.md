@@ -12,6 +12,13 @@ The plugin requires a **jQuery**  and it's recommended to use the latest one, al
 - *KnockoutJS (when using KnockoutJS)
 - *FontAwesome (when using standard configuration)
 
+###Features:
+
+- works out of the box
+- allows to specify any values you want to, the type of data doesn't matter because mechanism is based on indexes
+- is easy to customize with the use of CSS, because all styles can be adjusted or you can even specify your own classes
+- supports displaying fractional values
+
 ###In action:
 
 ![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating.png)
