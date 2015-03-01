@@ -21,7 +21,10 @@ The plugin requires a **jQuery**  and it's recommended to use the latest one, al
 
 ###In action:
 
-![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating.png)
+
+![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating_1.png)
+
+![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating_2.png)
 
 Installation
 --------------
