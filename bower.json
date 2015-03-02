@@ -15,7 +15,9 @@
     "tests",
     "docs",
     "samples",
-    "src"
+    "src",
+    "bower.json",
+    "./*.js"
   ],
   "keywords": ["rating", "fractional rating", "jquery", "plugin", "html", "flexible", "angularjs", "knockoutjs"]
 }
