@@ -16,7 +16,6 @@
     "docs",
     "samples",
     "src",
-    "bower.json",
     "./*.js"
   ],
   "keywords": [
