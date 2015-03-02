@@ -29,7 +29,7 @@ The plugin requires a **jQuery**  and it's recommended to use the latest one, al
 Installation
 --------------
 
-TODO: Register package
+    bower install awesome-rating
 
 Basic usage
 --------------

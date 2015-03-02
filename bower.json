@@ -12,6 +12,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
-  ]
+    "tests",
+    "docs",
+    "samples",
+    "src"
+  ],
+  "keywords": ["rating", "fractional rating", "jquery", "plugin", "html", "flexible", "angularjs", "knockoutjs"]
 }
