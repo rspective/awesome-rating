@@ -19,5 +19,17 @@
     "bower.json",
     "./*.js"
   ],
-  "keywords": ["rating", "fractional rating", "jquery", "plugin", "html", "flexible", "angularjs", "knockoutjs"]
+  "keywords": [
+    "rating",
+    "fractional rating",
+    "jquery",
+    "plugin",
+    "html",
+    "flexible",
+    "angularjs",
+    "knockoutjs"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
 }
