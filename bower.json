@@ -16,7 +16,8 @@
     "docs",
     "samples",
     "src",
-    "./*.js"
+    "gruntfile.js",
+    "package.json"
   ],
   "keywords": [
     "rating",
