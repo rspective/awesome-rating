@@ -129,7 +129,16 @@ ratingApp.controller("colourController", [ "$scope", function($scope) {
     					<span class="result" ng-bind="rating"></span>
 					</p>
 <pre class="text-left">
-
+ratingApp.controller("readonlyController", [ "$scope", function($scope) {
+	$scope.rating = 3;
+	$scope.options = {
+		values 		: [ 1, 3, 5, 7, 9 ],
+		cssBaseSelected     : "fa-thumbs-up",
+		cssBaseUnselected   : "fa-thumbs-o-up",
+		readonly 	: true,
+		applyHoverCss	: false
+	};
+}]);
 </pre>
     			</div>
     		</div>
