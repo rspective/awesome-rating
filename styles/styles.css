@@ -1,0 +1,239 @@
+/*------------------------------------------------*/
+/* Animations
+/*------------------------------------------------*/
+@-webkit-keyframes zoom-out {
+	from,to { -webkit-transform: scale(0.0) }
+	45%,55% { -webkit-transform: scale(1.0) }
+}
+@-moz-keyframes zoom-out {
+	from,to { -moz-transform: scale(0.0) }
+	45%,55% { -moz-transform: scale(1.0) }
+}
+@keyframes zoom-out {
+	from,to { transform: scale(0.0) }
+	45%,55% { transform: scale(1.0) }
+}
+
+/*------------------------------------------------*/
+/* Basics
+/*------------------------------------------------*/
+html, body {
+	background-color: white;
+	font-family: 'Lora', serif;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+}
+
+body > header,
+body > footer,
+body > section {
+	display: none;
+}
+
+@media screen and (min-width: 1400px) {
+	html, body {
+		font-size: 1vw;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, button {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 1.75em;
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+pre.prettyprint {
+	text-align: left;
+	padding: 1em;
+	border: 1px solid #d3d3d3;
+}
+
+/*------------------------------------------------*/
+/* Generic
+/*------------------------------------------------*/
+.full-container {
+	width: auto;
+	margin: 0;
+	clear: both;
+	border-bottom: 1px #D6D6D6 solid;
+	padding: 0 1.5em;
+}
+
+.container {
+	width: auto;
+	margin: 0 auto;
+	padding: 1em 0;
+	text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+	.container {
+		width: 70em;
+		padding: 3em 0;
+	}
+}
+
+.full-container.primary {
+	background-color: #1188d8;
+	color: white;
+}
+
+.full-container.secondary {
+	background-color: #f3f3f3;
+	color: black;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+/*------------------------------------------------*/
+/* Forms
+/*------------------------------------------------*/
+button {
+  	font-size: 1em;
+	color: black;
+	line-height: 2em;
+	padding: 0.2em 1em;
+	background-color: white;
+	border: 1px solid #d3d3d3;
+	-webkit-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	border-radius: 0.3em;
+	margin: 0.2em;
+}
+
+button:hover {
+	color: black;
+  	background-color: #a2d5f8;
+  	border: 1px solid #1188d8;
+}
+
+/*------------------------------------------------*/
+/* Loader
+/*------------------------------------------------*/
+.plugin-page .loader {
+	background-color: white;
+	position: absolute;
+	left: 0;
+	top: 0;	
+	height: 100%;
+	width: 100%;
+	z-index: 1000;
+	color: #1188d8;
+}
+
+.plugin-page .loader > div {
+	height: 100px;
+	left: 50%;
+	margin-left: -3em;
+	margin-top: -3em;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	width: 6em;
+	z-index: 999;
+}
+
+.plugin-page .loader .spinner {
+	margin: 0 auto 1em;
+	width: 4em;
+}
+
+.plugin-page .loader .spinner .square {
+	-webkit-animation-name: zoom-out;	
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-name: zoom-out;
+	-moz-animation-duration: 2s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	animation-name: zoom-out;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	background: #1799dd;
+	border-radius: 1em;
+	float: left;
+	height: 1.5em;
+	margin: 0.2em;
+	width: 1.5em;
+}
+
+.plugin-page .loader .spinner .square:nth-child(2) {
+	-moz-animation-delay: 150ms;
+	-webkit-animation-delay: 150ms;
+	animation-delay: 150ms;
+}
+.plugin-page .loader .spinner .square:nth-child(3) {
+	-moz-animation-delay: 300ms;
+	-webkit-animation-delay: 300ms;
+	animation-delay: 300ms;
+}
+.plugin-page .loader .spinner .square:nth-child(4) {
+	-moz-animation-delay: 450ms;
+	-webkit-animation-delay: 450ms;
+	animation-delay: 450ms;
+}
+
+/*------------------------------------------------*/
+/* Page Title
+/*------------------------------------------------*/
+
+.plugin-page .title h1 {
+	margin-bottom: 0em;
+}
+
+.plugin-page .title h2 {
+	margin-top: 0.5em;
+}
+
+/*------------------------------------------------*/
+/* Plugin styles
+/*------------------------------------------------*/
+.full-container .rating {
+	font-size: 3em;
+	text-align: center;
+}
+
+.full-container .rating > * {
+	margin: 0.05em;
+}
+
+.full-container.title .rating {
+	margin-bottom: 0.25em;
+}
+
+.full-container.title .fa-star-o {
+	color: #a2d5f8;
+	opacity: 0.3;
+}
+
+.full-container.title .rating .rating-star {
+	cursor: default;
+}

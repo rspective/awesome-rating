@@ -1,0 +1,11 @@
+.rating-star { color: lightgrey; cursor: pointer; }
+.rating-star.fa.fa-star { color: #FDD05B; }
+.rating-star.first-selected { color: #CA5252; }
+.rating-star.first-unselected { color: lightgrey; }
+.rating-star.second-selected { color: #FDD05B; }
+.rating-star.second-unselected { color: lightgrey; }
+.rating-star.third-selected { color: #2CAF61; }
+.rating-star.third-unselected { color: lightgrey; }
+.rating-star-hover { opacity: 0.6; }
+.rating-star-hover-blue { color: #a2d5f8; }
+.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }

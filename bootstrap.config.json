@@ -1,0 +1,10 @@
+{
+  "vars": {},
+  "css": [
+    "print.less",
+    "grid.less",
+    "responsive-utilities.less"
+  ],
+  "js": [],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=3af17d58b9f203c2b0f9"
+}

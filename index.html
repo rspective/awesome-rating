@@ -1,662 +1,304 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="ratingApp">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Awesome Rating - JQuery plugin</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome CSS -->
-    <link href="stylesheets/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="stylesheets/style.css" rel="stylesheet">
-
-    <!-- Awesome Rating CSS -->
-    <link href="stylesheets/awesomeRating.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="javascripts/jquery.js"></script>
-
-    <!-- AngularJS -->
-    <script src="javascripts/angular.min.js"></script>
-
-    <!-- KnockoutJS -->
-    <script src="javascripts/knockout.min.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<title>Awesome Rating v1.0.0 jQuery plugin</title>
+	<link rel="stylesheet" type="text/css" media="all" href="http://fonts.googleapis.com/css?family=Lora:400,700|Josefin+Sans" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../Desktop/plugin-page-template/styles/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" media="all"href="../../Desktop/plugin-page-template/styles/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../Desktop/plugin-page-template/styles/prettify.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../Desktop/plugin-page-template/styles/prettify-theme.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../Desktop/plugin-page-template/styles/styles.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../Desktop/plugin-page-template/styles/awesomeRating.css" />
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/modernizr.custom.77109.js"></script>
 </head>
+<body class="plugin-page">
 
-<body>
+	<header>
+	</header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Awesome Rating</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#jquery">JQuery</a>
-                    </li>
-                    <li>
-                        <a href="#angularjs">AngularJS</a>
-                    </li>
-                    <li>
-                        <a href="#knockoutjs">KnockoutJS</a>
-                    </li>
-                    <li>
-                        <a href="#cssconfiguration">CSS configuration</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+	<section class="full-container primary title">
+		<div class="container">
+			<h1>Awesome Rating</h1>
+			<h2>v1.0.0</h2>
+			<div class="rating rating-main"></div>
+		</div>
+	</section>
 
-    <!-- Page Content -->
-    <div class="container">
+	<section class="full-container secondary links">
+		<div class="container">
+    		<a href="https://github.com/bandraszyk/awesome-rating" target="_blank"><button type="button"><i class="fa fa-github"></i> View On <strong>GitHub</strong></button></a>
+			<a hef="https://github.com/bandraszyk/awesome-rating/zipball/master"><button type="button"><i class="fa fa-file-archive-o"></i> Download <strong>ZIP File</strong></button></a>
+    		<a href="https://github.com/bandraszyk/awesome-rating/tarball/master"><button type="button"><i class="fa fa-download"></i> Download <strong>TAR Ball</strong></button></a>
+		</div>
+	</section>
 
-        <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer" id="about">
-            <h1>Awesome Rating</h1>
-            <div class="links">
-                <a href="https://github.com/bandraszyk/awesome-rating/zipball/master">
-                    <button type="button" class="btn btn-default"><i class="fa fa-file-archive-o"></i> Download <strong>ZIP File</strong></button>
-                </a>
+	
+	<section class="full-container description">
+		<div class="container text-justify">
+			<p>
+				<b>Awesome-rating</b> is a <b>jQuery plugin</b> that allows you to use simple, but flexible <b>rating mechanism</b>. The basic configuration uses <b>Font Awesome</b>, but it's not a problem to replace it with any library you like. 
+			</p>
+		</div>
+	</section>
 
-                <a href="https://github.com/bandraszyk/awesome-rating/tarball/master">
-                    <button type="button" class="btn btn-default"><i class="fa fa-download"></i> Download <strong>TAR Ball</strong></button>
-                </a>
-
-                <a href="https://github.com/bandraszyk/awesome-rating" target="_blank">
-                    <button type="button" class="btn btn-default"><i class="fa fa-github"></i> View On <strong>GitHub</strong></button>
-                </a>
-            </div>
-        </header>
-
-        <hr id="jquery" />
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>JQuery</h2>
-            </div>
-        </div>
-
-        <div class="row text-center">
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Default configuration</h3>
-                        <div class="awesome-rating jqueryStandard"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryStandardValue"></span></p>
+	<section class="full-container jquery">
+		<div class="container">
+    		<h2>JQuery</h2>
+    		<div class="row">
+    			<div class="col-xs-12 col-sm-6 jquery-default">
+    				<h3>Default configuration</h3>
+    				<p class="text-justify">
+    					The plugin works out of the box. You only need to call <i>.aswesomeRating()</i> jQuery function to have your rating from <b>1 - 5</b>:
+    				</p>
+    				<div class="rating"></div>
+    				<p>
+    					<span><i>Value:</i></span>
+    					<span class="result"></span>
+					</p>
 <pre class="text-left">
-$(".jqueryStandard")
-    .awesomeRating({
-        valueInitial: 4,
-        targetSelector: "span.jqueryStandardValue"
-    });
+$(".jquery-default .rating").awesomeRating({
+	valueInitial	: 3,
+	targetSelector	: ".jquery-default .result"
+});
 </pre>
-                        <script>
-                            $(function() {
-                                $(".jqueryStandard")
-                                        .awesomeRating({
-                                            valueInitial: 3,
-                                            targetSelector: "span.jqueryStandardValue"
-                                        });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Changing values</h3>
-                        <div class="awesome-rating jqueryValues"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryValuesValue"></span></p>
+    			</div>
+    			<div class="col-xs-12 col-sm-6 jquery-string">
+    				<h3>String values</h3>
+    				<p class="text-justify">
+    					You are not forced to use numeric values so if you need to have more descriptive ones just pass them as one of the options:
+    				</p>
+    				<div class="rating"></div>
+    				<p>
+    					<span><i>Value:</i></span>
+    					<span class="result"></span>
+					</p>
 <pre class="text-left">
-$(".jqueryValues")
-    .awesomeRating({
-        values: ["A", "B", "C", "D", "E", "F", "G"],
-        valueInitial: "D",
-        targetSelector: "span.jqueryValuesValue"
-    });
+$(".jquery-string .rating").awesomeRating({
+	valueInitial	: "Awesome",
+	values		: [ "Really bad", "Could be worse", "Improvable", "Good", "Awesome" ],
+	targetSelector	: ".jquery-string .result"
+});
 </pre>
-                        <script>
-                            $(function() {
-                               $(".jqueryValues")
-                                   .awesomeRating({
-                                           values: ["A", "B", "C", "D", "E", "F", "G"],
-                                           valueInitial: "D",
-                                           targetSelector: "span.jqueryValuesValue"
-                                       });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
+    			</div>
+    		</div>
+		</div>
+	</section>
 
-        <div class="row text-center">
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>CSS adjustments</h3>
-                        <div class="awesome-rating jqueryCSS"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryCSSValue"></span></p>
+	<section class="full-container angular">
+		<div class="container">
+    		<h2>AngularJS</h2>
+    		<div class="row">
+    			<div class="col-xs-12 col-sm-6 angular-styling" ng-controller="colourController">
+    				<h3>Styling</h3>
+    				<p class="text-justify">
+    					The plugin allows you to fully customize the styling, not only by changing existing classes but also by allowing you to specify your own that will be applied to specific elements:
+    				</p>
+    				<div class="rating" awesome-rating="rating" awesome-rating-options="options"></div>
+    				<p>
+    					<span><i>Value:</i></span>
+    					<span class="result" ng-bind="rating"></span>
+					</p>
 <pre class="text-left">
-$(".jqueryCSS")
-    .awesomeRating({
-        cssBaseSelected     : "fa-check",
-        cssBaseUnselected   : "fa-minus",
-        cssValuesSelected : [
+ratingApp.controller("colourController", [ "$scope", function($scope) {
+    $scope.rating = 1;
+    $scope.options = {
+    	values 			: [ 1, 2, 3 ],
+        cssBaseSelected     	: "fa-thumbs-up",
+        cssBaseUnselected   	: "fa-thumbs-o-up",
+        cssValuesSelected 	: [
             "first-selected",
             "second-selected",
-            "third-selected",
-            "forth-selected",
-            "fifth-selected" ],
-        cssValuesUnselected: [
+            "third-selected",],
+        cssValuesUnselected	: [
             "first-unselected",
             "second-unselected",
-            "third-unselected",
-            "forth-unselected",
-            "fifth-unselected" ],
-        cssHover: "rating-star-hover-transparent",
-        valueInitial: 1,
-        targetSelector: "span.jqueryCSSValue"
-    });
-</pre>
-                        <script>
-                            $(function() {
-                                $(".jqueryCSS")
-                                        .awesomeRating({
-                                            cssBaseSelected     : "fa-check",
-                                            cssBaseUnselected   : "fa-minus",
-                                            cssValuesSelected : [
-                                                "first-selected",
-                                                "second-selected",
-                                                "third-selected",
-                                                "forth-selected",
-                                                "fifth-selected" ],
-                                            cssValuesUnselected: [
-                                                "first-unselected",
-                                                "second-unselected",
-                                                "third-unselected",
-                                                "forth-unselected",
-                                                "fifth-unselected" ],
-                                            cssHover: "rating-star-hover-transparent",
-                                            valueInitial: 1,
-                                            targetSelector: "span.jqueryCSSValue"
-                                        });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Fractional behaviour</h3>
-                        <div class="awesome-rating jqueryFractional"></div>
-                        <p>Rating value: <span class="awesome-rating-value jqueryFractionalValue"></span></p>
-<pre class="text-left">
-$(".jqueryFractional")
-    .awesomeRating({
-        values: ["A", "B", "C", "D", "E", "F"],
-        valueInitial: "CD",
-        targetSelector: "span.jqueryFractionalValue",
-        allowFractional: true,
-        calculateFractional: function(current, rate) {
-            if (current.indexOf(rate) === 1) { return 0.4; }
-            return 1;
-        },
-        allowFractional: true,
-        readonly: true,
-        applyHoverCss: false
-    });
-</pre>
-                        <script>
-                            $(function() {
-                                $(".jqueryFractional")
-                                        .awesomeRating({
-                                            values: ["A", "B", "C", "D", "E", "F"],
-                                            valueInitial: "CD",
-                                            targetSelector: "span.jqueryFractionalValue",
-                                            allowFractional: true,
-                                            calculateFractional: function(current, rate) {
-                                                if (current.indexOf(rate) === 1) { return 0.4; }
-                                                return 1;
-                                            },
-                                            allowFractional: true,
-                                            readonly: true,
-                                            applyHoverCss: false
-                                        });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr id="angularjs" />
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>AngularJS</h2>
-            </div>
-        </div>
-
-        <script>
-            var ratingApp = angular.module("ratingApp", ["awesome-rating"]);
-        </script>
-
-        <div class="row text-center">
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption" ng-controller="StandardController">
-                        <h3>Default configuration</h3>
-                        <div class="awesome-rating" awesome-rating="rating"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
-<pre class="text-left">
-ratingApp.controller("StandardController", [ "$scope", function($scope) {
-    $scope.rating = 4;
-}]);
-</pre>
-                        <script>
-                            ratingApp.controller("StandardController", [ "$scope", function($scope) {
-                                $scope.rating = 4;
-                            }]);
-                        </script>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption" ng-controller="ValuesController">
-                        <h3>Changing values</h3>
-                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
-<pre class="text-left">
-ratingApp.controller("ValuesController", [ "$scope", function($scope) {
-    $scope.rating = "F";
-    $scope.options = {
-        values: ["A", "B", "C", "D", "E", "F", "G"]
+            "thirs-unselected",],
+        cssHover		: "rating-star-hover-blue"
     };
 }]);
 </pre>
-                        <script>
-                            ratingApp.controller("ValuesController", [ "$scope", function($scope) {
-                                $scope.rating = "B";
-                                $scope.options = {
-                                    values: ["A", "B", "C", "D", "E", "F", "G"]
-                                };
-                            }]);
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center">
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption" ng-controller="CSSController">
-                        <h3>CSS adjustments</h3>
-                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
+    			</div>
+    			<div class="col-xs-12 col-sm-6 angular-readonly" ng-controller="readonlyController">
+    				<h3>Readonly</h3>
+    				<p>
+    					The plugin is also useful when you want only to display a current value without allowing users to change it. In such case it's recommended to disable the hover behaviour as well.
+    				</p>
+    				<div class="rating" awesome-rating="rating" awesome-rating-options="options"></div>
+    				<p>
+    					<span><i>Value:</i></span>
+    					<span class="result" ng-bind="rating"></span>
+					</p>
 <pre class="text-left">
-ratingApp.controller("CSSController", [ "$scope", function($scope) {
-    $scope.rating = 4;
-    $scope.options = {
-        cssBaseSelected     : "fa-check",
-        cssBaseUnselected   : "fa-minus",
-        cssValuesSelected : [
-            "first-selected",
-            "second-selected",
-            "third-selected",
-            "forth-selected",
-            "fifth-selected" ],
-        cssValuesUnselected: [
-            "first-unselected",
-            "second-unselected",
-            "third-unselected",
-            "forth-unselected",
-            "fifth-unselected" ],
-        cssHover: "rating-star-hover-transparent"
-    };
-}]);
+
 </pre>
-                        <script>
-                            ratingApp.controller("CSSController", [ "$scope", function($scope) {
-                                $scope.rating = 4;
-                                $scope.options = {
-                                    cssBaseSelected     : "fa-check",
-                                    cssBaseUnselected   : "fa-minus",
-                                    cssValuesSelected : [
-                                        "first-selected",
-                                        "second-selected",
-                                        "third-selected",
-                                        "forth-selected",
-                                        "fifth-selected" ],
-                                    cssValuesUnselected: [
-                                        "first-unselected",
-                                        "second-unselected",
-                                        "third-unselected",
-                                        "forth-unselected",
-                                        "fifth-unselected" ],
-                                    cssHover: "rating-star-hover-transparent"
-                                };
-                            }]);
-                        </script>
-                    </div>
-                </div>
-            </div>
+    			</div>
+    		</div>
 
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption" ng-controller="FractionalController">
-                        <h3>Fractional behaviour</h3>
-                        <div class="awesome-rating" awesome-rating="rating" awesome-rating-options="options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" ng-bind="rating"></span></p>
+		</div>
+	</section>
+
+	<section class="full-container knockout">
+		<div class="container">
+    		<h2>KnockoutJS</h2>
+    		<div class="row">
+				<div class="col-xs-12 col-sm-6 knockout-fractional">
+					<h3>Fractional values</h3>
+					<p>
+						There is also a possibility to use fractional values, although the fractional value can only be specified from the code.
+					</p>
+					<div class="rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
+					<p>
+						<span><i>Value:</i></span>
+						<span class="result" data-bind="text: rating"></span>
+					</p>
 <pre class="text-left">
-ratingApp.controller("FractionalController", [ "$scope", function($scope) {
-    $scope.rating = "EF";
-    $scope.options = {
-        values: ["A", "B", "C", "D", "E", "F"],
-        calculateFractional: function(current, rate) {
-            if (current.indexOf(rate) === 1) { return 0.4; }
+var modelFractional = {
+    rating 	: ko.observable("CD"),
+    options 	: {
+        values 		: ["A", "B", "C", "D", "E"],
+        allowFractional	: true,
+        calculateFractional	: function(current, rate) {
+            if (current.indexOf(rate) === 1) { return 0.6 };
             return 1;
         },
-        allowFractional: true,
-        readonly: true,
-        applyHoverCss: false
-    };
-}]);
-</pre>
-                        <script>
-                            ratingApp.controller("FractionalController", [ "$scope", function($scope) {
-                                $scope.rating = "EF";
-                                $scope.options = {
-                                    values: ["A", "B", "C", "D", "E", "F"],
-                                    allowFractional: true,
-                                    calculateFractional: function(current, rate) {
-                                        if (current.indexOf(rate) === 1) { return 0.4; }
-                                        return 1;
-                                    },
-                                    readonly: true,
-                                    applyHoverCss: false
-                                };
-                            }]);
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <hr id="knockoutjs" />
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>KnockoutJS</h2>
-            </div>
-        </div>
-
-
-        <div class="row text-center">
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption knockoutjsStandard">
-                        <h3>Default configuration</h3>
-                        <div class="awesome-rating" data-bind="awesomeRating: rating"></div>
-                        <p>Rating value: <span class="awesome-rating-value knockoutjsStandardValue" data-bind="text: rating"></span></p>
-<pre class="text-left">
-var model = {
-    rating: ko.observable(2)
-};
-ko.applyBindings(model, $(".knockoutjsStandard")[0]);
-</pre>
-                        <script>
-                            $(function() {
-                                var model = {
-                                    rating: ko.observable(2)
-                                };
-                                ko.applyBindings(model, $(".knockoutjsStandard")[0]);
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption knockoutjsValues">
-                        <h3>Changing values</h3>
-                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
-<pre class="text-left">
-var model = {
-    rating: ko.observable(2),
-    options: {
-        values: ["A", "B", "C", "D", "E", "F", "G"],
-        valueInitial: "D"
+        allowFractional	: true,
+        readonly		: true,
+        applyHoverCss	: false
     }
 };
-ko.applyBindings(model, $(".knockoutjsValues")[0]);
+ko.applyBindings(modelFractional, $(".knockout-fractional")[0]);
 </pre>
-                        <script>
-                            $(function() {
-                                var model = {
-                                    rating: ko.observable("C"),
-                                    options: {
-                                        values: ["A", "B", "C", "D", "E", "F", "G"]
-                                    }
-                                };
-                                ko.applyBindings(model, $(".knockoutjsValues")[0]);
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center">
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption knockoutjsCSS">
-                        <h3>CSS adjustments</h3>
-                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
+				</div>
+				<div class="col-xs-12 col-sm-6 knockout-events">
+					<h3>Events</h3>
+					<p>
+						You are also able to attach external event handler to specified by you event that will be fired every time rating value is changed. 
+					</p>
+					<div class="rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
+					<p>
+						<span><i>Value:</i></span>
+						<span class="result" data-bind="text: displayedValue"></span>
+					</p>
 <pre class="text-left">
-var model = {
-    rating: ko.observable(5),
+$(".knockout-events .rating").on("ratingChanged", function(event, value) {
+	modelEvents.displayedValue(value);
+});
+
+var modelEvents = {
+    rating 		: ko.observable(1),
+    displayedValue  	: ko.observable(),
     options: {
-        cssBaseSelected     : "fa-check",
-        cssBaseUnselected   : "fa-minus",
-        cssValuesSelected : [
-            "first-selected",
-            "second-selected",
-            "third-selected",
-            "forth-selected",
-            "fifth-selected" ],
-        cssValuesUnselected: [
-            "first-unselected",
-            "second-unselected",
-            "third-unselected",
-            "forth-unselected",
-            "fifth-unselected" ],
-        cssHover: "rating-star-hover-transparent"
+        htmlEvent	: "mouseenter",
+        eventName	: "ratingChanged"
     }
 };
-ko.applyBindings(model, $(".knockoutjsCSS")[0]);
+ko.applyBindings(modelEvents, $(".knockout-events")[0]);
 </pre>
-                        <script>
-                            $(function() {
-                                var model = {
-                                    rating: ko.observable(5),
-                                    options: {
-                                        cssBaseSelected     : "fa-check",
-                                        cssBaseUnselected   : "fa-minus",
-                                        cssValuesSelected : [
-                                            "first-selected",
-                                            "second-selected",
-                                            "third-selected",
-                                            "forth-selected",
-                                            "fifth-selected" ],
-                                        cssValuesUnselected: [
-                                            "first-unselected",
-                                            "second-unselected",
-                                            "third-unselected",
-                                            "forth-unselected",
-                                            "fifth-unselected" ],
-                                        cssHover: "rating-star-hover-transparent"
-                                    }
-                                };
-                                ko.applyBindings(model, $(".knockoutjsCSS")[0]);
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+	<footer>
+	</footer>
 
-            <div class="col-md-6 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption knockoutjsFractional">
-                        <h3>Fractional behaviour</h3>
-                        <div class="awesome-rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
-                        <p>Rating value: <span class="awesome-rating-value" data-bind="text: rating"></span></p>
-<pre class="text-left">
-var model = {
-    rating: ko.observable("CD"),
-    options: {
-        values: ["A", "B", "C", "D", "E", "F"],
-        allowFractional: true,
-        calculateFractional: function(current, rate) {
-            if (current.indexOf(rate) === 1) { return 0.7 };
-            return 1;
-        },
-        allowFractional: true,
-        readonly: true,
-        applyHoverCss: false
-    }
-};
-ko.applyBindings(model, $(".knockoutjsFractional")[0]);
-</pre>
-                        <script>
-                            $(function() {
-                                var model = {
-                                    rating: ko.observable("AB"),
-                                    options: {
-                                        values: ["A", "B", "C", "D", "E", "F"],
-                                        allowFractional: true,
-                                        calculateFractional: function(current, rate) {
-                                            if (current.indexOf(rate) === 1) { return 0.7 };
-                                            return 1;
-                                        },
-                                        allowFractional: true,
-                                        readonly: true,
-                                        applyHoverCss: false
-                                    }
-                                };
-                                ko.applyBindings(model, $(".knockoutjsFractional")[0]);
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<!-- START Loader -->
+	<div class="loader" id="page-loader">
+	    <div>
+	        <div class="spinner">
+	            <div class="square"></div>
+	            <div class="square"></div>
+	            <div class="square"></div>
+	            <div class="square"></div>
+	        </div>
+	    </div>
+	</div>
+	<!-- END Loader -->
 
-        <hr id="cssconfiguration" />
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>CSS configuration</h2>
-            </div>
-        </div>
+    <script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/angular.min.js"></script>
+    <script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/knockout.min.js"></script>
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/prettify.js"></script>
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/awesomeRating.js"></script>
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/awesomeRating.knockout.js"></script>
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/awesomeRating.angular.js"></script>
+	<script type="text/javascript" src="../../Desktop/plugin-page-template/javascripts/scripts.js"></script>
+	<script type="text/javascript">
+		(function($) {
+			$(".full-container.title .rating-main").awesomeRating({ valueInitial: 4.3, allowFractional: true, readonly: true, applyHoverCss: false });
 
-        <div class="row text-center">
-            <div class="col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-<pre class="text-left">
-.rating-star { color: lightgrey; cursor: pointer; }
-.rating-star.fa.fa-star { color: #FDD05B; }
-.rating-star.first-selected { color: #CA5252; }
-.rating-star.first-unselected { color: lightgrey; }
-.rating-star.second-selected { color: #E59257; }
-.rating-star.second-unselected { color: lightgrey; }
-.rating-star.third-selected { color: #FDD05B; }
-.rating-star.third-unselected { color: lightgrey; }
-.rating-star.forth-selected { color: #8DBE5E; }
-.rating-star.forth-unselected { color: lightgrey; }
-.rating-star.fifth-selected { color: #2CAF61; }
-.rating-star.fifth-unselected { color: lightgrey; }
-.rating-star.sixth-selected { color: #5E97B6; }
-.rating-star.sixth-unselected { color: lightgrey; }
-.rating-star.seventh-selected { color: #8286F2; }
-.rating-star.seventh-unselected { color: lightgrey; }
-.rating-star-hover { opacity: 0.6; }
-.rating-star-hover-transparent { opacity: 0.2; }
-.rating-star-fractional {  position: absolute; overflow: hidden; z-index: 2; }
-</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
+			$(".jquery-default .rating").awesomeRating({
+				valueInitial	: 3,
+				targetSelector	: ".jquery-default .result"
+			});
 
+			$(".jquery-string .rating").awesomeRating({
+				valueInitial	: "Awesome",
+				values			: [ "Really bad", "Could be worse", "Improvable", "Good", "Awesome" ],
+				targetSelector	: ".jquery-string .result"
+			});
 
-        <hr>
+			var ratingApp = angular.module("ratingApp", ["awesome-rating"]);
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>This project is maintained by <a href="https://github.com/bandraszyk">bandraszyk</a></p>
-                    <p>Hosted on GitHub Pages</p>
-                </div>
-            </div>
-        </footer>
+			ratingApp.controller("colourController", [ "$scope", function($scope) {
+			    $scope.rating = 1;
+			    $scope.options = {
+			    	values 				: [ 1, 2, 3 ],
+			        cssBaseSelected     : "fa-thumbs-up",
+			        cssBaseUnselected   : "fa-thumbs-o-up",
+			        cssValuesSelected : [
+			            "first-selected",
+			            "second-selected",
+			            "third-selected",],
+			        cssValuesUnselected: [
+			            "first-unselected",
+			            "second-unselected",
+			            "thirs-unselected",],
+			        cssHover: "rating-star-hover-blue"
+			    };
+			}]);
 
-    </div>
-    <!-- /.container -->
+			ratingApp.controller("readonlyController", [ "$scope", function($scope) {
+			    $scope.rating = 3;
+			    $scope.options = {
+			    	values 				: [ 1, 3, 5, 7, 9 ],
+			    	cssBase 			: "rating-star fa",
+		        	cssBaseSelected     : "fa-thumbs-up",
+		        	cssBaseUnselected   : "fa-thumbs-o-up",
+			        readonly 			: true,
+			        applyHoverCss		: false
+			    };
+			}]);
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="javascripts/bootstrap.min.js"></script>
+			var modelFractional = {
+			    rating 		: ko.observable("CD"),
+			    options 	: {
+			        values 			: ["A", "B", "C", "D", "E"],
+			        allowFractional	: true,
+			        calculateFractional: function(current, rate) {
+			            if (current.indexOf(rate) === 1) { return 0.6 };
+			            return 1;
+			        },
+			        allowFractional	: true
+			    }
+			};
+			ko.applyBindings(modelFractional, $(".knockout-fractional")[0]);
 
-    <!-- Awesome Rating -->
-    <script src="javascripts/awesomeRating.min.js"></script>
-    <script src="javascripts/awesomeRating.angular.min.js"></script>
-    <script src="javascripts/awesomeRating.knockout.min.js"></script>
+			$(".knockout-events .rating").on("ratingChanged", function(event, value) {
+				modelEvents.displayedValue(value);
+			});
 
+			var modelEvents = {
+			    rating 			: ko.observable(1),
+			    displayedValue  : ko.observable(),
+			    options: {
+			        htmlEvent	: "mouseenter",
+			        eventName	: "ratingChanged"
+			    }
+			};
+			ko.applyBindings(modelEvents, $(".knockout-events")[0]);
+
+		})(jQuery);
+	</script>
 </body>
-
 </html>
