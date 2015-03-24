@@ -227,7 +227,7 @@ header .container {
 }
 
 header a.rspective {
-	display: block;
+	display: inline-block;;
 }
 
 header a.rspective object {
@@ -256,6 +256,10 @@ header nav {
 	margin: 0.05em;
 }
 
+.full-container p.description {
+	min-height: 5em;
+}
+
 .full-container.title .rating {
 	margin-bottom: 0.25em;
 }
@@ -269,6 +273,7 @@ header nav {
 	cursor: default;
 }
 
-.full-container p.description {
-	min-height: 5em;
+.full-container.title .buttons {
+	padding-top: 0.5em;
 }
+
