@@ -47,8 +47,8 @@
     		<div class="row">
     			<div class="col-xs-12 col-sm-6 jquery-default">
     				<h3>Default configuration</h3>
-    				<p class="text-justify">
-    					The plugin works out of the box. You only need to call <i>.aswesomeRating()</i> jQuery function to have your rating from <b>1 - 5</b>:
+    				<p class="description text-justify">
+						The plugin works out of the box. Simply call <i>.aswesomeRating()</i> jQuery function on given container then stars (1 - 5) are populated automatically.
     				</p>
     				<div class="rating"></div>
     				<p>
@@ -64,9 +64,9 @@ $(".jquery-default .rating").awesomeRating({
     			</div>
     			<div class="col-xs-12 col-sm-6 jquery-string">
     				<h3>String values</h3>
-    				<p class="text-justify">
-    					You are not forced to use numeric values so if you need to have more descriptive ones just pass them as one of the options:
-    				</p>
+    				<p class="description text-justify">
+						You are not forced to use numeric values so if you need to have more descriptive ones just pass them as one of the options. You are not limited here!
+					</p>
     				<div class="rating"></div>
     				<p>
     					<span><i>Value:</i></span>
@@ -90,8 +90,8 @@ $(".jquery-string .rating").awesomeRating({
     		<div class="row">
     			<div class="col-xs-12 col-sm-6 angular-styling" ng-controller="colourController">
     				<h3>Styling</h3>
-    				<p class="text-justify">
-    					The plugin allows you to fully customize the styling, not only by changing existing classes but also by allowing you to specify your own that will be applied to specific elements:
+    				<p class="description text-justify">
+						The plugin is fully customizable. It not only allows you to change existing styling but also to specify your own. Isn't it cool?
     				</p>
     				<div class="rating" awesome-rating="rating" awesome-rating-options="options"></div>
     				<p>
@@ -120,8 +120,8 @@ ratingApp.controller("colourController", [ "$scope", function($scope) {
     			</div>
     			<div class="col-xs-12 col-sm-6 angular-readonly" ng-controller="readonlyController">
     				<h3>Readonly</h3>
-    				<p>
-    					The plugin is also useful when you want only to display a current value without allowing users to change it. In such case it's recommended to disable the hover behaviour as well.
+    				<p class="description text-justify">
+						Sometimes you only need to dispaly the rating for particular thing/ servic e without allowing users to change the value. Check it on the example below!
     				</p>
     				<div class="rating" awesome-rating="rating" awesome-rating-options="options"></div>
     				<p>
@@ -152,8 +152,8 @@ ratingApp.controller("readonlyController", [ "$scope", function($scope) {
     		<div class="row">
 				<div class="col-xs-12 col-sm-6 knockout-fractional">
 					<h3>Fractional values</h3>
-					<p>
-						There is also a possibility to use fractional values, although the fractional value can only be specified from the code.
+					<p class="description text-justify">
+						In many situations you calculate the rating as an average so that you need a fractional values for sure! Additionally, you are able to use fractional values with your non-numeric rating as well!
 					</p>
 					<div class="rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
 					<p>
@@ -180,8 +180,8 @@ ko.applyBindings(modelFractional, $(".knockout-fractional")[0]);
 				</div>
 				<div class="col-xs-12 col-sm-6 knockout-events">
 					<h3>Events</h3>
-					<p>
-						You are also able to attach external event handler to specified by you event that will be fired every time rating value is changed. 
+					<p class="description text-justify">
+						Events enable the possibility to integrate the rating with an external code. Just simply attach your handler and you are good to go to store the value in databse!
 					</p>
 					<div class="rating" data-bind="awesomeRating: rating, awesomeRatingOptions: options"></div>
 					<p>

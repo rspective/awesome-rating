@@ -237,3 +237,7 @@ button:hover {
 .full-container.title .rating .rating-star {
 	cursor: default;
 }
+
+.full-container p.description {
+	min-height: 5em;
+}
