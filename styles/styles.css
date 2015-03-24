@@ -40,6 +40,7 @@ body > section {
 
 h1, h2, h3, h4, h5, h6, button {
 	font-family: 'Josefin Sans', sans-serif;
+	line-height: 1;
 }
 
 h1 {
@@ -92,6 +93,11 @@ pre.prettyprint {
 
 .full-container.secondary {
 	background-color: #f3f3f3;
+	color: black;
+}
+
+.full-container.default {
+	background-color: white;
 	color: black;
 }
 
@@ -214,7 +220,32 @@ button:hover {
 }
 
 /*------------------------------------------------*/
-/* Plugin styles
+/* Header styles
+/*------------------------------------------------*/
+header .container {
+	padding: 0 0;
+}
+
+header a.rspective {
+	display: block;
+}
+
+header a.rspective object {
+	width: 15em;
+	margin-top: -0.5em;
+	margin-bottom: -2.5em;
+	pointer-events: none;
+}
+
+header nav {
+	padding: 1em 0 1em 0
+}
+
+header nav {
+
+}
+/*------------------------------------------------*/
+/* Page styles
 /*------------------------------------------------*/
 .full-container .rating {
 	font-size: 3em;

@@ -13,9 +13,6 @@
 </head>
 <body class="plugin-page">
 
-	<header>
-	</header>
-
 	<section class="full-container primary title">
 		<div class="container">
 			<h1>Awesome Rating</h1>
@@ -23,6 +20,27 @@
 			<div class="rating rating-main"></div>
 		</div>
 	</section>
+
+	<header>
+		<div class="full-container secondary">
+			<div class="container">
+				<a href="http://www.rspective.com" target="_blank" class="rspective">
+				<span>
+					<object type="image/svg+xml" data="images/rspective.svg" >rspective</object>
+				</span>
+				</a>
+			</div>
+		</div>
+		<div class="full-container default">
+			<div class="container text-center">
+				<nav>
+					<a href="#section-jquery" data-menu-duration="500">jQuery</a>
+					<a href="#section-angular" data-menu-duration="500">AngularJS</a>
+					<a href="#section-knockout" data-menu-duration="500">KnockoutJS</a>
+				</nav>
+			</div>
+		</div>
+	</header>
 
 	<section class="full-container secondary links">
 		<div class="container">
@@ -32,7 +50,6 @@
 		</div>
 	</section>
 
-	
 	<section class="full-container description">
 		<div class="container text-justify">
 			<p>
@@ -41,7 +58,7 @@
 		</div>
 	</section>
 
-	<section class="full-container jquery">
+	<section class="full-container jquery" id="section-jquery" data-menu-offset="-100">
 		<div class="container">
     		<h2>JQuery</h2>
     		<div class="row">
@@ -84,7 +101,7 @@ $(".jquery-string .rating").awesomeRating({
 		</div>
 	</section>
 
-	<section class="full-container angular">
+	<section class="full-container angular" id="section-angular" data-menu-offset="-100">
 		<div class="container">
     		<h2>AngularJS</h2>
     		<div class="row">
@@ -146,7 +163,7 @@ ratingApp.controller("readonlyController", [ "$scope", function($scope) {
 		</div>
 	</section>
 
-	<section class="full-container knockout">
+	<section class="full-container knockout" id="section-knockout" data-menu-offset="-100">
 		<div class="container">
     		<h2>KnockoutJS</h2>
     		<div class="row">
@@ -225,9 +242,21 @@ ko.applyBindings(modelEvents, $(".knockout-events")[0]);
 	<!-- END Loader -->
 
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/jquery.sticky.js"></script>
+	<script  type="text/javascript">
+		$(document).ready(function(){
+			$("header").sticky({ topSpacing: 0 });
+		});
+	</script>
     <script type="text/javascript" src="javascripts/angular.min.js"></script>
     <script type="text/javascript" src="javascripts/knockout.min.js"></script>
 	<script type="text/javascript" src="javascripts/prettify.js"></script>
+	<script type="text/javascript" src="javascripts/skrollr.min.js"></script>
+	<script type="text/javascript" src="javascripts/skrollr.menu.min.js"></script>
+	<script  type="text/javascript">
+		var Skrollr = skrollr.init(/*other stuff*/);
+		skrollr.menu.init(Skrollr, {});
+	</script>
 	<script type="text/javascript" src="javascripts/awesomeRating.js"></script>
 	<script type="text/javascript" src="javascripts/awesomeRating.knockout.js"></script>
 	<script type="text/javascript" src="javascripts/awesomeRating.angular.js"></script>
