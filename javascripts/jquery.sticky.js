@@ -45,7 +45,7 @@
               .css('position', '')
               .css('z-index', '')
               .css('top', '');
-            s.stickyElement.trigger('sticky-end', [s]).parent().removeClass(s.className);
+            s.stickyElement.parent().next().css("margin-top", 0);
             s.currentTop = null;
 
             $("body").css("paddingTop", 0);
@@ -67,7 +67,7 @@
               .css('z-index', '10000')
               .css('top', newTop);
 
-            $("body").css("paddingTop", s.stickyElement.height());
+            s.stickyElement.parent().next().css("margin-top", s.stickyElement.height());
 
             if (typeof s.getWidthFrom !== 'undefined') {
               s.stickyElement.css('width', $(s.getWidthFrom).width());
@@ -85,7 +85,7 @@
       for (var i = 0; i < sticked.length; i++) {
         var s = sticked[i];
         if (typeof s.getWidthFrom !== 'undefined' && s.responsiveWidth === true) {
-          $("body").css("paddingTop", s.stickyElement.height());
+          s.stickyElement.parent().next().css("margin-top", s.stickyElement.height());
         }
       }
     },
