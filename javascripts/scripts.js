@@ -18,7 +18,12 @@
 	//-- END Header
 
 	//-- START Navigation
-	skrollr.menu.init(skrollr.init(), {});
+	skrollr.menu.init(skrollr.init({
+		mobileCheck: function() {
+			//hack - forces mobile version to be off
+			return false;
+		}
+	}), {});
 	//-- END Navigation
 
 	//-- START Code blocks
