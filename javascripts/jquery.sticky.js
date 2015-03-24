@@ -47,6 +47,8 @@
               .css('top', '');
             s.stickyElement.trigger('sticky-end', [s]).parent().removeClass(s.className);
             s.currentTop = null;
+
+            $("body").css("paddingTop", 0);
           }
         }
         else {
@@ -65,6 +67,8 @@
               .css('z-index', '10000')
               .css('top', newTop);
 
+            $("body").css("paddingTop", s.stickyElement.height());
+
             if (typeof s.getWidthFrom !== 'undefined') {
               s.stickyElement.css('width', $(s.getWidthFrom).width());
             }
@@ -81,7 +85,7 @@
       for (var i = 0; i < sticked.length; i++) {
         var s = sticked[i];
         if (typeof s.getWidthFrom !== 'undefined' && s.responsiveWidth === true) {
-          s.stickyElement.css('width', $(s.getWidthFrom).width());
+          $("body").css("paddingTop", s.stickyElement.height());
         }
       }
     },
