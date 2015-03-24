@@ -39,9 +39,17 @@
 		<div class="full-container default">
 			<div class="container text-center">
 				<nav>
-					<a href="#section-jquery" data-menu-duration="500">jQuery</a>
-					<a href="#section-angular" data-menu-duration="500">AngularJS</a>
-					<a href="#section-knockout" data-menu-duration="500">KnockoutJS</a>
+					<ul>
+						<li>
+							<a href="#section-jquery" data-menu-duration="500">jQuery</a>
+						</li>
+						<li>
+							<a href="#section-angular" data-menu-duration="500">AngularJS</a>
+						</li>
+						<li>
+							<a href="#section-knockout" data-menu-duration="500">KnockoutJS</a>
+						</li>
+					</ul>
 				</nav>
 			</div>
 		</div>
@@ -113,6 +121,13 @@ $(".jquery-string .rating").awesomeRating({
     					<span class="result" ng-bind="rating"></span>
 					</p>
 <pre class="text-left">
+&lt;div ng-controller="colourController"&gt;
+	&lt;div awesome-rating="rating" awesome-rating-options="options"&gt;&lt;/div&gt;
+	&lt;p&gt;
+		&lt;span ng-bind="rating">&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
 ratingApp.controller("colourController", [ "$scope", function($scope) {
     $scope.rating = 1;
     $scope.options = {
@@ -130,6 +145,7 @@ ratingApp.controller("colourController", [ "$scope", function($scope) {
         cssHover		: "rating-star-hover-blue"
     };
 }]);
+&lt;/script&gt;
 </pre>
     			</div>
     			<div class="col-xs-12 col-sm-6 angular-readonly" ng-controller="readonlyController">
@@ -143,6 +159,13 @@ ratingApp.controller("colourController", [ "$scope", function($scope) {
     					<span class="result" ng-bind="rating"></span>
 					</p>
 <pre class="text-left">
+&lt;div ng-controller="readonlyController"&gt;
+	&lt;div awesome-rating="rating" awesome-rating-options="options"&gt;&lt;/div&gt;
+	&lt;p&gt;
+		&lt;span ng-bind="rating">&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
 ratingApp.controller("readonlyController", [ "$scope", function($scope) {
 	$scope.rating = 3;
 	$scope.options = {
@@ -153,6 +176,7 @@ ratingApp.controller("readonlyController", [ "$scope", function($scope) {
 		applyHoverCss	: false
 	};
 }]);
+&lt;/script&gt;
 </pre>
     			</div>
     		</div>
@@ -175,21 +199,29 @@ ratingApp.controller("readonlyController", [ "$scope", function($scope) {
 						<span class="result" data-bind="text: rating"></span>
 					</p>
 <pre class="text-left">
+&lt;div class="knockout-fractional"&gt;
+	&lt;div data-bind="awesomeRating: rating, awesomeRatingOptions: options"&gt;&lt;/div&gt;
+	&lt;p&gt;
+		&lt;span data-bind="text: rating">&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
 var modelFractional = {
-    rating 	: ko.observable("CD"),
-    options 	: {
-        values 		: ["A", "B", "C", "D", "E"],
-        allowFractional	: true,
-        calculateFractional	: function(current, rate) {
-            if (current.indexOf(rate) === 1) { return 0.6 };
-            return 1;
-        },
-        allowFractional	: true,
-        readonly		: true,
-        applyHoverCss	: false
+	rating 	: ko.observable("CD"),
+	options 	: {
+		values 		: ["A", "B", "C", "D", "E"],
+		allowFractional	: true,
+		calculateFractional	: function(current, rate) {
+			if (current.indexOf(rate) === 1) { return 0.6 };
+			return 1;
+		},
+		allowFractional	: true,
+		readonly		: true,
+		applyHoverCss	: false
     }
 };
 ko.applyBindings(modelFractional, $(".knockout-fractional")[0]);
+&lt;/script&gt;
 </pre>
 				</div>
 				<div class="col-xs-12 col-sm-6 knockout-events">
@@ -203,10 +235,16 @@ ko.applyBindings(modelFractional, $(".knockout-fractional")[0]);
 						<span class="result" data-bind="text: displayedValue"></span>
 					</p>
 <pre class="text-left">
+&lt;div class="knockout-events"&gt;
+	&lt;div data-bind="awesomeRating: rating, awesomeRatingOptions: options"&gt;&lt;/div&gt;
+	&lt;p&gt;
+		&lt;span data-bind="text: rating">&lt;/span&gt;
+	&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
 $(".knockout-events .rating").on("ratingChanged", function(event, value) {
 	modelEvents.displayedValue(value);
 });
-
 var modelEvents = {
     rating 		: ko.observable(1),
     displayedValue  	: ko.observable(),
@@ -216,6 +254,7 @@ var modelEvents = {
     }
 };
 ko.applyBindings(modelEvents, $(".knockout-events")[0]);
+&lt;/script&gt;
 </pre>
 				</div>
 			</div>
@@ -240,26 +279,18 @@ ko.applyBindings(modelEvents, $(".knockout-events")[0]);
 
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 	<script type="text/javascript" src="javascripts/jquery.sticky.js"></script>
-	<script  type="text/javascript">
-		$(document).ready(function(){
-			$("header").sticky({ topSpacing: 0 });
-		});
-	</script>
     <script type="text/javascript" src="javascripts/angular.min.js"></script>
     <script type="text/javascript" src="javascripts/knockout.min.js"></script>
 	<script type="text/javascript" src="javascripts/prettify.js"></script>
 	<script type="text/javascript" src="javascripts/skrollr.min.js"></script>
 	<script type="text/javascript" src="javascripts/skrollr.menu.min.js"></script>
-	<script  type="text/javascript">
-		var Skrollr = skrollr.init(/*other stuff*/);
-		skrollr.menu.init(Skrollr, {});
-	</script>
 	<script type="text/javascript" src="javascripts/awesomeRating.js"></script>
 	<script type="text/javascript" src="javascripts/awesomeRating.knockout.js"></script>
 	<script type="text/javascript" src="javascripts/awesomeRating.angular.js"></script>
 	<script type="text/javascript" src="javascripts/scripts.js"></script>
 	<script type="text/javascript">
 		(function($) {
+
 			$(".full-container.title .rating-main").awesomeRating({ valueInitial: 4.3, allowFractional: true, readonly: true, applyHoverCss: false });
 
 			$(".jquery-default .rating").awesomeRating({

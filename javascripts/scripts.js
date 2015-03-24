@@ -1,6 +1,6 @@
 (function($){
+	//-- START Loader
 	$(window).on('load', function(){
-
 		// Remove loading indicator
 		setTimeout(function(){
 			$('#page-loader.loader > div').fadeOut(400, function(){
@@ -9,9 +9,21 @@
 			});
 		}, 800);
 	});
+	//-- END Loader
 
-	//-- Apply google prettify code plugin
+	//-- START Header
+	$(document).ready(function(){
+		$("header").sticky({ topSpacing: 0 });
+	});
+	//-- END Header
+
+	//-- START Navigation
+	skrollr.menu.init(skrollr.init(), {});
+	//-- END Navigation
+
+	//-- START Code blocks
 	$('pre').addClass('prettyprint');
 	prettyPrint();
-   
+	//-- END Code blocks
+
 })(jQuery);
