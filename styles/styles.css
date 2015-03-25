@@ -121,7 +121,7 @@ pre.prettyprint {
 /* Forms
 /*------------------------------------------------*/
 button {
-  	font-size: 1em;
+	font-size: 1em;
 	color: black;
 	line-height: 2em;
 	padding: 0.2em 1em;
@@ -135,25 +135,25 @@ button {
 
 button:hover {
 	color: black;
-  	background-color: #a2d5f8;
-  	border: 1px solid #1188d8;
+	background-color: #a2d5f8;
+	border: 1px solid #1188d8;
 }
 
 /*------------------------------------------------*/
 /* Loader
 /*------------------------------------------------*/
-.plugin-page .loader {
+.loader {
 	background-color: white;
 	position: absolute;
 	left: 0;
-	top: 0;	
+	top: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 1000;
 	color: #1188d8;
 }
 
-.plugin-page .loader > div {
+.loader > div {
 	height: 100px;
 	left: 50%;
 	margin-left: -3em;
@@ -165,13 +165,13 @@ button:hover {
 	z-index: 999;
 }
 
-.plugin-page .loader .spinner {
+.loader .spinner {
 	margin: 0 auto 1em;
 	width: 4em;
 }
 
-.plugin-page .loader .spinner .square {
-	-webkit-animation-name: zoom-out;	
+.loader .spinner .square {
+	-webkit-animation-name: zoom-out;
 	-webkit-animation-duration: 2s;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
@@ -191,17 +191,19 @@ button:hover {
 	width: 1.5em;
 }
 
-.plugin-page .loader .spinner .square:nth-child(2) {
+.loader .spinner .square:nth-child(2) {
 	-moz-animation-delay: 150ms;
 	-webkit-animation-delay: 150ms;
 	animation-delay: 150ms;
 }
-.plugin-page .loader .spinner .square:nth-child(3) {
+
+.loader .spinner .square:nth-child(3) {
 	-moz-animation-delay: 300ms;
 	-webkit-animation-delay: 300ms;
 	animation-delay: 300ms;
 }
-.plugin-page .loader .spinner .square:nth-child(4) {
+
+.loader .spinner .square:nth-child(4) {
 	-moz-animation-delay: 450ms;
 	-webkit-animation-delay: 450ms;
 	animation-delay: 450ms;
@@ -210,15 +212,13 @@ button:hover {
 /*------------------------------------------------*/
 /* Page Title
 /*------------------------------------------------*/
-
-.plugin-page .title h1 {
+.full-container.title h1 {
 	margin-bottom: 0em;
 }
 
-.plugin-page .title h2 {
+.full-container.title h2 {
 	margin-top: 0.5em;
 }
-
 /*------------------------------------------------*/
 /* Header styles
 /*------------------------------------------------*/
@@ -253,37 +253,36 @@ header nav ul li {
 	display: inline-block;
 	padding: 1em;
 }
-
 /*------------------------------------------------*/
 /* Page styles
 /*------------------------------------------------*/
-.full-container .rating {
+.plugin-page .full-container .rating {
 	font-size: 3em;
 	text-align: center;
 }
 
-.full-container .rating > * {
+.plugin-page .full-container .rating > * {
 	margin: 0.05em;
 }
 
-.full-container p.description {
+.plugin-page .full-container p.description {
 	min-height: 5em;
 }
 
-.full-container.title .rating {
+.plugin-page .full-container.title .rating {
 	margin-bottom: 0.25em;
 }
 
-.full-container.title .fa-star-o {
+.plugin-page .full-container.title .fa-star-o {
 	color: #a2d5f8;
 	opacity: 0.3;
 }
 
-.full-container.title .rating .rating-star {
+.plugin-page .full-container.title .rating .rating-star {
 	cursor: default;
 }
 
-.full-container.title .buttons {
+.plugin-page .full-container.title .buttons {
 	padding-top: 0.5em;
 }
 
