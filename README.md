@@ -48,6 +48,13 @@ Always remember to place scripts tags before calling plugin:
 	<!-- AngularJS --><script type="text/javascript" src="js/angular.min.js"></script>
 	<!-- AngularJS --><script type="text/javascript" src="dist/awesomerating.angular.min.js"></script>
 
+###Styles:
+
+Always remember to include basic styling:
+
+    <link rel="stylesheet" type="text/css" media="all" href="dist/awesomeRating.min.css">
+
+Although it's very simple so you can easily copy the content so that you do not need to link another file - it's up to you.
 
 ###jQuery:
 
@@ -160,7 +167,6 @@ Advanced usage
 --------------
 
 [Annotated source](http://bandraszyk.github.io/awesome-rating/docs/awesomeRating.html)
-
 
 Demo
 --------------
