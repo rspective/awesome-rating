@@ -1,4 +1,4 @@
-[Awesome Rating v1.0.0](http://bandraszyk.github.io/awesome-rating/)
+[Awesome Rating v1.0.0](http://rspective.github.io/awesome-rating/)
 ==============
 
 Awesome-rating is a jQuery plugin that allows you to use simple, but flexible rating mechanism. The basic configuration uses [Font Awesome](https://github.com/FortAwesome/Font-Awesome), but it's not a problem to replace it with any library you like.
@@ -22,9 +22,9 @@ The plugin requires a **jQuery**  and it's recommended to use the latest one, al
 ###In action:
 
 
-![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating_1.png)
+![alt Awesome Rating](http://rspective.github.io/awesome-rating/rating_1.png)
 
-![alt Awesome Rating](http://bandraszyk.github.io/awesome-rating/rating_2.png)
+![alt Awesome Rating](http://rspective.github.io/awesome-rating/rating_2.png)
 
 Installation
 --------------
@@ -166,9 +166,9 @@ It's included in the package, but as you can see the content is pretty simple so
 Advanced usage
 --------------
 
-[Annotated source](http://bandraszyk.github.io/awesome-rating/docs/awesomeRating.html)
+[Annotated source](http://rspective.github.io/awesome-rating/docs/awesomeRating.html)
 
 Demo
 --------------
 
-Please, feel free to visit [Demo Page](http://bandraszyk.github.io/awesome-rating/) to check how the library can be useful for you.
+Please, feel free to visit [Demo Page](http://rspective.github.io/awesome-rating/) to check how the library can be useful for you.
