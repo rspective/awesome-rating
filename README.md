@@ -5,21 +5,21 @@ Awesome-rating is a jQuery plugin that allows you to use simple, but flexible ra
 
 The plugin requires a **jQuery**  and it's recommended to use the latest one, although only basic methods were used (see Advanced Usage for more details). In the package you can also find integration scripts that allows to use the plugin with **AngularJS** and **KnockoutJS**.
 
-###Required dependencies:
+### Required dependencies:
 
 - jQuery
 - *AngularJS (when using AngularJS)
 - *KnockoutJS (when using KnockoutJS)
 - *FontAwesome (when using standard configuration)
 
-###Features:
+### Features:
 
 - works out of the box
 - allows to specify any values you want to, the type of data doesn't matter because mechanism is based on indexes
 - is easy to customize with the use of CSS, because all styles can be adjusted or you can even specify your own classes
 - supports displaying fractional values
 
-###In action:
+### In action:
 
 
 ![alt Awesome Rating](http://rspective.github.io/awesome-rating/rating_1.png)
@@ -34,7 +34,7 @@ Installation
 Basic usage
 --------------
 
-###Scripts:
+### Scripts:
 
 Always remember to place scripts tags before calling plugin:
 
@@ -48,7 +48,7 @@ Always remember to place scripts tags before calling plugin:
 	<!-- AngularJS --><script type="text/javascript" src="js/angular.min.js"></script>
 	<!-- AngularJS --><script type="text/javascript" src="dist/awesomerating.angular.min.js"></script>
 
-###Styles:
+### Styles:
 
 Always remember to include basic styling:
 
@@ -56,7 +56,7 @@ Always remember to include basic styling:
 
 Although it's very simple so you can easily copy the content so that you do not need to link another file - it's up to you.
 
-###jQuery:
+### jQuery:
 
     <div class="awesomeRating"></div>
     <div class="awesomeRatingValue">
@@ -70,7 +70,7 @@ Although it's very simple so you can easily copy the content so that you do not 
         });
     </script>
 
-###AngularJS:
+### AngularJS:
 
     <div class="awesomeRating" awesome-rating="rating" awesome-rating-options="options"></div>
 	<div class="awesomeRatingValue">
@@ -86,7 +86,7 @@ Although it's very simple so you can easily copy the content so that you do not 
 			});
 	</script>
 
-###KnockoutJS:
+### KnockoutJS:
 
     <div class="awesomeRating" data-bind=" awesomeRating: rating, awesomeRatingOptions: options"></div>
 	<div class="awesomeRatingValue">
@@ -110,7 +110,7 @@ Default Configuration
 
 The default configuration is provided as global settings for the plugin. You can easily change it globally (for every usage on your page) or pass as an object (with same properties' names) to awesomeRating method to change it locally for single usage.
 
-###Options
+### Options
 
     $.fn.awesomeRating.defaults = {
         values              : [ 1, 2, 3, 4, 5 ],
@@ -152,7 +152,7 @@ Options meaning is as follows:
 - **calculateFractional**: a special method used to calculate fractional values (the difference between two elements); It should return values between 0 and 1 when current value should be treated as fractional. It is called with currentValue as first parameter and particular rateValue from values array as second one.
 - **eventName**: an event name that is fired when user changes rating value
 
-###CSS
+### CSS
 
 The base CSS is as follows:
 
